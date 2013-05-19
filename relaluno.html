@@ -1,0 +1,55 @@
+<div class="row-fluid">
+	<div class="widget span5 clearfix">
+		<div class="widget-header">
+			<span>Pesquisar</span>
+		</div>
+		<div class="widget-content">
+            <form id="relaluno_form">
+                <div class="section">
+                    <label>Nome</label>
+                    <div>
+                        <input class="full" type="text" name="nome"> 
+                    </div>
+                </div>
+                <div class="section">
+                    <label>Data</label>
+                    <div>
+                        <input class="medium data" type="text" name="dataini" size="10"> a 
+                        <input class="medium data" type="text" name="datafim" size="10">
+                    </div>
+                </div>
+                <div class="section last">
+                    <div>
+                    <a class="btn btn-success" rel="1" title="Pesquisar">Pesquisar</a>
+                    <a class="btn">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+		</div>
+	</div>
+	<div class="widget span7 clearfix">
+        <div class="widget-header">
+            <span>Aluno</span>
+        </div>
+        <div class="widget-content">
+            <table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Plano</th>
+						<th>Aulas/Abril</th>
+						<th>Aulas/Data</th>
+					</tr>
+				</thead>
+				<tbody align="center">
+					<tr ng-repeat="relaluno in dataset.relaluno">
+						<td>{{relaluno.nome}}</td>
+						<td>{{relaluno.plano}}</td>
+						<td>{{relaluno.mesAtual}}</td>
+						<td>{{relaluno.data}}</td>
+					</tr>
+				</tbody>
+			</table>    
+        </div>
+    </div>
+</div>

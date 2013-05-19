@@ -1,0 +1,113 @@
+<div class="row-fluid adicionar">
+	<div class="widget span12 clearfix">
+		<div class="widget-header">
+			<span>Cadastrar</span>
+		</div>
+		<div class="widget-content">
+			<form id="estacionamento_form" class="form">
+				<div class="section">
+					<label>Aluno</label>
+					<div>
+						<input class="full" type="text" name="aluno">
+					</div>
+				</div>
+				<div class="section">
+					<label>Modelo</label>
+					<div>
+						<input class="full" type="text" name="modelo">
+					</div>
+				</div>
+				<div class="section">
+					<label>Cor</label>
+					<div>
+						<input class="full" type="text" name="cor">
+					</div>
+				</div>
+				<div class="section">
+					<label>Placa</label>
+					<div>
+						<input class="medium placa" type="text" name="placa">
+					</div>
+				</div>
+				<div class="section">
+					<label>Plano</label>
+					<div>
+						<select class="selectBox" style="width:200px">
+							<option value="e2">Estacionamento 2x</option>
+							<option value="e3">Estacionamento 3x</option>
+							<option value="e4">Estacionamento 4x</option>
+							<option value="e5">Estacionamento 5x</option>
+						</select>
+					</div>
+				</div>
+				<div class="section last">
+					<div>
+						<a class="btn btn-success" title="Salvar" onClick="Application.callMethod(this.id, 'cadastrar')">Salvar</a>
+						<input type="reset" class="btn" value="Cancelar">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="row-fluid listar">
+	<div class="widget span4 clearfix">
+		<div class="widget-header">
+			<span>Pesquisar</span>
+		</div>
+		<div class="widget-content">
+			<form>
+				<div class="section">
+					<label>Nome</label>
+					<div>
+						<input class="full" type="text" name="nome">
+					</div>
+				</div>
+				<div class="section">
+					<label>Placa</label>
+					<div>
+						<input class="full" type="text" name="placa">
+					</div>
+				</div>
+				<div class="section last">
+					<div>
+					<a class="btn btn-success" rel="1" title="Saving">Buscar</a>
+					<a class="btn">Cancelar</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="widget span8 clearfix">
+		<div class="widget-header">
+			<span>Resultado da busca</span>
+		</div>
+		<div class="widget-content">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Aluno</th>
+						<th>Modelo</th>
+						<th>Cor</th>
+						<th>Placa</th>
+						<th>Plano</th>
+						<th>Ação</th>
+					</tr>
+				</thead>
+				<tbody align="center">
+					<tr ng-repeat="estacionamento in dataset.estacionamento">
+						<td>{{estacionamento.aluno}}</td>
+						<td>{{estacionamento.modelo}}</td>
+						<td>{{estacionamento.cor}}</td>
+						<td>{{estacionamento.placa}}</td>
+						<td>{{estacionamento.plano}}</td>
+						<td>
+							<a ng-click="edit('estacionamento',$index);"><img src="images/icon/icon_edit.png"></a>
+							<a ng-click="delete('estacionamento',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

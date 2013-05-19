@@ -1,0 +1,62 @@
+<div class="row-fluid">
+	<div class="widget span6 clearfix">
+		<div class="widget-header">
+			<span>Trocar Senha</span>
+		</div>
+		<div class="widget-content">
+			<form id="perfil_formTrocarSenha" class="form">
+				<div class="section">
+					<label>Senha Atual</label>
+					<div>
+						<input id="senhaatual" class="full" type="password" name="senhaatual" />
+					</div>
+				</div>
+				<div class="section">
+					<label>Nova Senha</label>
+					<div>
+						<input id="senhanova" class="full" type="password" name="senhanova" />
+					</div>
+				</div>
+				<div class="section">
+					<label>Confirmação</label>
+					<div>
+						<input id="confirmacao" class="full" type="password" name="confirmacao" />
+					</div>
+				</div>
+				<div class="section last">
+					<div>
+						<a class="btn btn-success" title="Salvar" onClick="Application.callMethod(this.id, 'alterarSenha')">Salvar</a>
+						<input type="reset" class="btn" value="Cancelar">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="widget span6 clearfix">
+		<div class="widget-header">
+			<span>Trocar Nome Exibido</span>
+		</div>
+		<div class="widget-content">
+			<form id="perfil_formTrocarNome" class="form">
+				<div class="section">
+					<label>Nome</label>
+					<div>
+						<input id="nome" class="full" type="text" name="nome" />
+					</div>
+				</div>
+				<div class="section">
+					<label>Senha</label>
+					<div>
+						<input id="senha" class="full" type="password" name="senha" />
+					</div>
+				</div>
+				<div class="section last">
+					<div>
+						<a id="btnTrocarNome" class="btn btn-success" title="Salvar" onClick="Application.callMethod(this.id, 'alterarNome')">Salvar</a>
+						<input type="reset" class="btn" value="Cancelar">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

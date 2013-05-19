@@ -1,0 +1,55 @@
+<div class="row-fluid">
+	<div class="widget span5 clearfix">
+		<div class="widget-header">
+			<span>Cadastrar</span>
+		</div>
+		<div class="widget-content">
+			<form id="desconto_form" class="form">
+				<div class="section">
+					<label>Nome</label>
+					<div>
+						<input class="full" type="text" name="nome">
+					</div>
+				</div>
+				<div class="section">
+					<label>% de Desconto</label>
+					<div>
+						<input class="full" type="text" name="porcDesc">
+					</div>
+				</div>
+				<div class="section last">
+					<div>
+						<a id="btnCadastrarDesconto" class="btn btn-success" title="Salvar" onClick="Application.callMethod(this.id, 'cadastrar')">Salvar</a>
+						<input type="reset" class="btn" value="Cancelar">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="widget span7 clearfix">
+		<div class="widget-header">
+			<span>Descontos</span>
+		</div>
+		<div class="widget-content">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>% Desc</th>
+						<th>Ação</th>
+					</tr>
+				</thead>
+				<tbody align="center">
+					<tr ng-repeat="desconto in dataset.desconto">
+	            		<td>{{desconto.nome}}</td>
+	            		<td>{{descontoporcDesconto}}</td>
+	            		<td>
+	            			<a ng-click="edit('desconto',$index);"><img src="images/icon/icon_edit.png"></a>
+							<a ng-click="delete('desconto',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+	            		</td>
+            		</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,69 @@
+<div class="row-fluid">
+	<div class="widget span5 clearfix">
+		<div class="widget-header">
+			<span>Cadastrar</span>
+		</div>
+		<div class="widget-content">
+			<form id="plano_form" class="form">
+				<div class="section">
+					<label>Nome</label>
+					<div>
+						<input class="full" type="text" name="nome">
+					</div>
+				</div>
+				<div class="section">
+					<label>Tipo</label>
+					<div>
+						<select class="small selectBox" name="tipo">
+							<option></option>
+							<option value="1">Mensal</option>
+							<option value="2">Trimestral</option>
+							<option value="3">Semestral</option>
+							<option value="4">Anual</option>
+						</select>
+					</div>
+				</div>
+				<div class="section">
+					<label>Valor</label>
+					<div>
+						<i class="moeda"></i><input type="text" class="medium" name="valor"/>
+					</div>
+				</div>
+				<div class="section last">
+					<div>
+						<a id="btnSalvar" class="btn btn-success" title="Salvar" ng-click ="save('plano');">Salvar</a>
+						<input type="reset" class="btn" value="Cancelar">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="widget span7 clearfix">
+		<div class="widget-header">
+			<span>Planos</span>
+		</div>
+		<div class="widget-content">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Tipo</th>
+						<th>Valor</th>
+						<th>Ação</th>
+					</tr>
+				</thead>
+				<tbody align="center">
+					<tr ng-repeat="plano in dataset.plano">
+						<td>{{plano.nome}}</td>
+						<td>{{plano.descricao}}</td>
+						<td>{{plano.valor}}</td>
+						<td>
+							<a ng-click="edit('plano',$index);"><img src="images/icon/icon_edit.png"></a>
+							<a ng-click="delete('plano',$index);"><img src="images/icon/icon_delete.png"></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

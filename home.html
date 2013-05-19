@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myController">
+<head>
+  <meta charset="utf-8">
+  <title> Sistema Crossfit -  {{pageTitle}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/> 
+
+  <link type="text/css" rel="stylesheet" href="components/bootstrap/bootstrap.css" />
+  <link type="text/css" rel="stylesheet" href="components/bootstrap/bootstrap-responsive.css" />
+  <link type="text/css" rel="stylesheet" href="css/zice.style.css"/>
+  <link type="text/css" rel="stylesheet" href="css/app.css"/>
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="components/bootstrap/bootstrap.min.js"></script>
+  <script type="text/javascript" src="components/form/form.js"></script>
+  <script type="text/javascript" src="components/editor/jquery.cleditor.js"></script>
+  <script type="text/javascript" src="js/bootbox.min.js"></script>
+  <script type="text/javascript" src="js/zice.custom.js"></script>
+  <script type="text/javascript" src="js/angular.min.js"></script>
+  <script type="text/javascript" src="js/application.js"></script>
+  <script type="text/javascript" src="js/controllers.js"></script>
+  
+</head>        
+<body>        
+
+  <!-- Header -->
+  <div id="header">
+      <ul id="account_info" class="pull-right"> 
+          <li class="setting">
+              Bem vindo(a), <b class="green">---NOME---</b>
+              <ul class="subnav">
+                  <li><a ng-click="openWindow('perfil', 'Perfil')">Perfil</a></li>
+                  <br class="clearfix"/>
+              </ul>
+          </li>
+          <li><a href="_class/logout.php" title="Sair">Sair</a></li> 
+      </ul>
+  </div><!-- End Header -->
+  
+    <!-- left_menu --> 
+    <div id="left_menu">
+          <ul id="main_menu" class="main_menu">
+            	<li><a href="home.php"><span class="ico gray shadow home" ></span><b>Home</b></a></li>
+            	<li><a ng-click="openWindow('aluno', 'Aluno')"><span class="ico gray user"></span><b>Aluno</b></a></li>
+            	<li><a ng-click="openWindow('aulaexp', 'Aula Experimental')"><span class="ico gray diary"></span><b>Aula Experimental</b></a></li>
+              <li><a ng-click="openWindow('email', 'Email')"><span class="ico gray mail"></span><b>E-mail</b></a></li>
+              <li><a ng-click="openWindow('estacionamento', 'Estacionamento')"><span class="ico gray car"></span><b>Estacionamento</b></a></li>
+              <li><a ng-click="openWindow('fisionutri', 'Fisioterapia e Nutrição')"><span class="ico gray clipboard"></span><b>Fisio / Nutri</b></a></li>
+              <li><a ng-click="openWindow('presenca', 'Presença')"><span class="ico gray checkmark"></span><b>Presença</b></a></li>
+              <li>
+                <a><span class="ico gray stats_bars"></span><b>Relatório</b></a>
+                <ul>
+                  <li><a ng-click="openWindow('relaluno', 'Relatório - Aluno')">Aluno</a></li>
+                  <li><a ng-click="openWindow('relaula', 'Relatório - Aula')">Aula</a></li>
+                </ul>
+              </li>
+            	<li>
+            		<a><span class="ico gray gear"></span><b>Configurações</b></a>
+            		<ul>
+            			<li><a ng-click="openWindow('desconto', 'Desconto')">Desconto</a></li>
+            			<li><a ng-click="openWindow('plano', 'Plano')">Plano</a></li>
+            		</ul>
+        		</li>
+          </ul>
+     </div>
+     
+    <div id="content" >
+      <div class="inner">
+                          
+          <div class="row-fluid">
+                <div class="span12 clearfix">
+                  <div class="logo"></div>
+                  <ul id="shortcut" class="clearfix">
+                    <li>
+                      <a title="Adicionar" onclick="adicionar();">
+                        <img alt="Adicionar" src="images/adicionar.png">
+                        <strong>Adicionar</strong>
+                      </a>
+                    </li>
+                    <li>
+                      <a title="Listar" onclick="listar();">
+                        <img alt="Adicionar" src="images/listar.png">
+                        <strong>Listar</strong>
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="title_page"><h1>{{pageTitle}}</h1></div>
+                </div>
+          </div>
+          <div id="container" class="row-fluid" ng-include src="template"></div><!--// End container -->
+  </div> <!--// End inner -->
+	</div> <!--// End ID content --> 
+      <div class="clear"></div>
+  <div id="versionBar" >
+        <div class="copyright" > &copy; Copyright 2013 Todos os direitos reservados <span class="tip"><a  href="http://www.bernardfaria.com.br" title="Bernard Faria" >Bernard Faria</a> </span> </div>
+    <!-- // copyright-->
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<div id="login" class="row-fluid" ng-controller="loginController">
+    <div class="inner clearfix">
+        <div class="logo" ><img src="images/logo.png" alt="Logo Crossfit BH" /></div>
+        <div class="formLogin">
+            <form name="formLogin" id="login_form">
+                <div class="tip">
+                    <input name="username" type="text"  id="username_id"  title="Usuário"   />
+                </div>
+                <div class="tip">
+                    <input name="password" type="password" id="password"   title="Senha"  />
+                </div>
+                <div class="loginButton">
+                    <div class=" pull-right" style="margin-right:-8px;">
+                        <button type="button" class="btn btn-success" id="but_login" ng-click="valida()">Login</button>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+    <div class="shadow"></div>
+</div>
