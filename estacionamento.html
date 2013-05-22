@@ -1,3 +1,7 @@
+<ul id="shortcut">
+    <li><a href="#" title="Adicionar" class="btn_add"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+    <li><a href="#" title="Listar" class="btn_list"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
+</ul>
 <div class="row-fluid adicionar">
 	<div class="widget span12 clearfix">
 		<div class="widget-header">
@@ -42,7 +46,7 @@
 				</div>
 				<div class="section last">
 					<div>
-						<a class="btn btn-success" title="Salvar" onClick="Application.callMethod(this.id, 'cadastrar')">Salvar</a>
+						<a class="btn btn-success" title="Salvar" ng-click="save('estacionamento');">Salvar</a>
 						<input type="reset" class="btn" value="Cancelar">
 					</div>
 				</div>

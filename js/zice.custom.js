@@ -181,15 +181,8 @@ function alertMessage(type,str){
 	// type is a success ,info, warning ,error
 	$('body').append('<div id="alertMessage" class="alertMessage '+type+'">');
 	$.alertbox=$('#alertMessage').html(str);
-	$.alertbox.show().animate({ opacity: 1,right: '10' },500);
-}	  
-
-/* Funções Adicionar e Listar */
-function adicionar(){
-	$('.listar').hide();
-	$('.adicionar').show();
-}
-function listar(){
-	$('.adicionar').hide();
-	$('.listar').show();
+	$.alertbox.show().animate({ opacity:1,right: '10' },500);
+	setInterval(function(){
+		$.alertbox.animate({ opacity: 0,right: '30'}, 500,function(){ $(this).remove(); });
+	}, 3000);
 }
