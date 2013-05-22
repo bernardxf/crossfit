@@ -1,19 +1,3 @@
-/*
-Zice admin  v1.7
-Release Date: Jan 6, 2012
-*/
-$.fn.imgdata = function(key){
-	return this.find('.dataImg li:eq('+key+')').text();
-}
-$.fn.hdata = function(key){
-	return this.find('.dataSet li:eq('+key+')').text();
-}
-var buttonActions = {
-	  'close_windows':function(){
-		  $.fancybox.close(); 
-		  ResetForm();
-	}	
-}
 $(document).ready(function(){	
 	// Main menu 
 	$('ul#main_menu ul').hide();
@@ -25,8 +9,27 @@ $(document).ready(function(){
 		  $('#' + parent + ' ul:visible li:first').append('<div class="arr"><span></span></div>');
 		  $('#' + parent + ' ul:visible ').live({  mouseleave: function(){  $(this).hide(); } });
 	});
-	// WYSIWYG Editor
-	$("#editor,#editor2").cleditor();	
+
+	// Maskedinput 
+    $.mask.definitions['~'] = "[+-]";
+    $(".data").mask("99/99/9999");
+    $(".fone").mask("(99) 9999-9999");
+    $(".cpf").mask("999.999.999-99");
+    $(".cep").mask("99999-999");
+    $(".uf").mask("aa");
+    $(".placa").mask("aaa-9999");
+
+    /* Botões Adicionar e Listar */
+    $('div.listar').hide();
+    $('a.btn_add').click(function(){
+    	$('div.listar').hide();
+    	$('div.adicionar').hide();
+    });
+    $('a.btn_list').click(function(){
+    	$('div.adicionar').hide();
+    	$('div.listar').hide();
+    });
+
 });	
 
 $(function() {		
@@ -42,28 +45,6 @@ $(function() {
 	  $('.alertMessage').live('click',function(){
 		  alertHide();
 	  });
-
-	// Maskedinput 
-    $.mask.definitions['~'] = "[+-]";
-    $(".data").mask("99/99/9999");
-    $(".fone").mask("(99) 9999-9999");
-    $(".cpf").mask("999.999.999-99");
-    $(".cep").mask("99999-999");
-    $(".uf").mask("aa");
-    $(".placa").mask("aaa-9999");
-
-    /* Dialog */
-    $('.delete').click(function(){
-    	bootbox.dialog("Deseja realmente excluir?", [{
-			"label" : "Sim",
-			"class" : "btn-success",
-			"callback": function() {
-				alertMessage("success","Excluído com sucesso!");
-			}
-		}, {
-			"label" : "Cancelar"
-		}]);
-    });
 
  function Processgraph(){
 	var 	bar = $('.bar'), bw = bar.width(), percent = bar.find('.percent'), circle = bar.find('.circle'), ps =  percent.find('span'),
@@ -87,62 +68,6 @@ $(function() {
 		}
 	}
 	
-	// Spinner options 
-	var itemListspinner = [
-		{url: "http://ejohn.org", title: "John Resig"},
-		{url: "http://bassistance.de/", title: "J&ouml;rn Zaefferer"},
-		{url: "http://snook.ca/jonathan/", title: "Jonathan Snook"},
-		{url: "http://rdworth.org/", title: "Richard Worth"},
-		{url: "http://www.paulbakaus.com/", title: "Paul Bakaus"},
-		{url: "http://www.yehudakatz.com/", title: "Yehuda Katz"},
-		{url: "http://www.azarask.in/", title: "Aza Raskin"},
-		{url: "http://www.karlswedberg.com/", title: "Karl Swedberg"},
-		{url: "http://scottjehl.com/", title: "Scott Jehl"},
-		{url: "http://jdsharp.us/", title: "Jonathan Sharp"},
-		{url: "http://www.kevinhoyt.org/", title: "Kevin Hoyt"},
-		{url: "http://www.codylindley.com/", title: "Cody Lindley"},
-		{url: "http://malsup.com/jquery/", title: "Mike Alsup"}
-	];
-	var optionspinner = {
-		'sDec': {decimals:2},
-		'sMinMax':{min: -100, max: 100 },
-		'sStep': {stepping: 0.25},
-		'sStep': {stepping: 0.25},
-		'sCur': {currency: 'R$ '},
-		'sCur2': {currency: 'R$ '}, 
-        'sCur3': {currency: 'R$ '},
-		'sInline': {},
-		'sLink': {
-			init: function(e, ui) {
-				for (var i=0; i<itemListspinner.length; i++) {
-					ui.add('<a href="'+ itemListspinner[i].url +'" target="_blank">'+ itemListspinner[i].title +'</a>');
-				}
-			},
-			format: '<a href="%(url)" target="_blank">%(title)</a>',
-			items: itemListspinner
-		}
-	};	
-	for (var n in optionspinner){
-		$("#"+n).spinner(optionspinner[n]);
-	}
-
-	// Icon  gray Hover
-	$('.iconBox.gray').hover(function(){
-		  var name=$(this).find('img').attr('alt');
-		  $(this).find('img').animate({ opacity: 0.5 }, 0, function(){
-			    $(this).attr('src','images/icon/color_18/'+name+'.png').animate({ opacity: 1 }, 700);									 
-		 });
-	},function(){
-		  var name=$(this).find('img').attr('alt');
-		  $(this).find('img').attr('src','images/icon/gray_18/'+name+'.png');
-	 })
-	
-	// ShoutcutBox   Hover
-	$('.shoutcutBox').hover(function(){
-		  $(this).animate({ left: '+=15'}, 200);
-	},function(){
-		  $(this).animate({ left: '0'}, 200);
-	 });
 	// Shoutcut   Hover
 	$("#shortcut li").hover(function() {
 		 var e = this;

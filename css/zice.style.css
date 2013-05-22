@@ -1915,11 +1915,10 @@ label.iPhoneCheckLabelOff span {
 #shortcut {
 	list-style: none;
 	display: block;
-	margin-top: 15px;
 	font-size: 11px;
 	float: right;
-	margin-bottom: 0px;
-	padding-bottom: 25px;
+	margin: -90px 0 0 0;
+	padding: 0;
 	height: 75px;
 }
 #shortcut li {
@@ -2916,6 +2915,7 @@ img.stackphotos {
 	font-size: 10px;
 	color: #999999;
 }
+.homes{padding-bottom: 35px;}
 /*
 ------------------------------------------------------------
 	error pages 
@@ -4152,5 +4152,4 @@ margin-left:4px;
 }
  #header #account_info div.logout {
 padding:0 10px 0 29px;
-}
 }
