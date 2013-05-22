@@ -5,14 +5,14 @@ include 'sql.php';
 $methodToCall = $_POST['methodToCall'];
 
 if ($methodToCall == 'loadData'){
-    $rows = DB::get_rows(DB::query('SELECT * FROM plano ORDER BY idPlano ASC'));
+    $rows = DB::get_rows(DB::query('SELECT * FROM plano ORDER BY id_plano ASC'));
 
     echo json_encode($rows);
 }
 
 if ($methodToCall == 'save'){
     
-    $id = $_POST['dataset']['idPlano'];  
+    $id = $_POST['dataset']['id_plano'];  
     $nome = $_POST['dataset']['nome'];
     $tipo = $_POST['dataset']['tipo'];
     $valor = floatval($_POST['dataset']['valor']);
@@ -28,7 +28,7 @@ if ($methodToCall == 'save'){
 
     } else if($state == 'U') {
        
-        DB::query('UPDATE plano SET nome = %s, tipo = %s, valor = %d WHERE idPlano = %d', $nome, $tipo, $valor, $id);
+        DB::query('UPDATE plano SET nome = %s, tipo = %s, valor = %d WHERE id_plano = %d', $nome, $tipo, $valor, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -44,8 +44,8 @@ if ($methodToCall == 'save'){
 }
 
 if($methodToCall == 'delete'){
-    $idPlano = $_POST['dataset']['idPlano'];
-    DB::query('DELETE from plano where idPlano = %d',$idPlano);
+    $id_plano = $_POST['dataset']['id_plano'];
+    DB::query('DELETE from plano where id_plano = %d',$id_plano);
 
     $response['type'] = 'success';
     $response['message'] = 'Excluido com sucesso!';
