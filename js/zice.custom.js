@@ -1,14 +1,4 @@
 $(document).ready(function(){	
-	// Main menu 
-	$('ul#main_menu ul').hide();
-	$('ul#main_menu li ').hover( function () {
-		  var parent = $(this).parents('ul').attr('id');
-		   var parents = $(this).find('ul');
-		  $('#' + parent + ' ul:visible').hide();
-		   $(parents).show();
-		  $('#' + parent + ' ul:visible li:first').append('<div class="arr"><span></span></div>');
-		  $('#' + parent + ' ul:visible ').live({  mouseleave: function(){  $(this).hide(); } });
-	});
 
 	// Maskedinput 
     $.mask.definitions['~'] = "[+-]";

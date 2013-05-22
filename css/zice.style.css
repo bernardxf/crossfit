@@ -1609,7 +1609,6 @@ label.iPhoneCheckLabelOff span {
 .main_menu li ul {
 	margin-bottom: 10px;
 	float: left;
-	display: block;
 	width: 150px;
 	border:1px #111111 solid;
 	-webkit-border-radius: 5px;
@@ -1745,6 +1744,7 @@ label.iPhoneCheckLabelOff span {
 .main_menu li.select ul li a:hover {
 	background-image:none;
 }
+.main_menu li:hover ul{display: block;}
 .iconmenu {
 	margin: 0;
 	padding: 0;
