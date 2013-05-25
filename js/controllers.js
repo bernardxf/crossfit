@@ -4,6 +4,7 @@ myApp.controller('myController',function($scope){
 	$scope.template = 'login.html',
 	$scope.pageTitle = 'Sistema Crossfit - Login',
 	$scope.dataset = {},
+	$scope.visualType = 'grid',
 	$scope.form = {},
 	$scope.loadData = function(className){
 		Application.loadData(className, function(){
@@ -12,20 +13,19 @@ myApp.controller('myController',function($scope){
 		});			
 	},
 
+	$scope.newRow = function(className){
+		$scope.toggle('form');
+		var data = {"_STATE" : "I"};
+		$scope.form[className] = data;
+	}
+
 	$scope.edit = function(className, index){
+		$scope.toggle('form');
+
 		var data = $scope.dataset[className][index];
-		var form = $('#'+className+"_form");
-
-		angular.forEach(data, function(value,key){
-			var field = form.find("[name = '"+key+"']");
-			if(field.length){
-				field.val(value);	
-			}
-		});
-
 		data['_STATE'] = 'U';
-		
-		form.data({dataset : data});
+
+		$scope.form[className] = data;
 	},
 
 	$scope.delete = function(className, index){
@@ -44,14 +44,10 @@ myApp.controller('myController',function($scope){
 	},
 
 	$scope.save = function(className){
-		var form = $('#'+className+"_form");
-		var dataset = form.data('dataset') ? form.data('dataset') : {};
-		var values = Application.getDataset(form);
-		
-		angular.extend(dataset,values);
-
+		var dataset = $scope.form[className];
 		Application.saveRow(className, dataset);
-
+		$scope.loadData(className);
+		$scope.toggle('grid');
 	},
 
 	$scope.openWindow = function(className, pageTitle){
@@ -69,6 +65,10 @@ myApp.controller('myController',function($scope){
 
 	$scope.setLogged = function(logged){
 		$scope.logged = logged;
+	},
+
+	$scope.toggle = function(type){
+		$scope.visualType = type;
 	}
 
 });
