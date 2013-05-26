@@ -69,4 +69,13 @@ if ($methodToCall == 'save'){
     }
 }
 
+if($methodToCall == 'delete'){
+    $id_aluno = $_POST['dataset']['id_aluno'];
+    DB::query('DELETE from plano where id_aluno = %d',$id_aluno);
+
+    $response['type'] = 'success';
+    $response['message'] = 'Excluido com sucesso!';
+    echo json_encode($response);
+}
+
 ?>

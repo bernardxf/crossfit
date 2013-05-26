@@ -43,4 +43,13 @@ if ($methodToCall == 'save'){
 
     }
 }
+
+if($methodToCall == 'delete'){
+    $id_aulaexp = $_POST['dataset']['id_aulaexp'];
+    DB::query('DELETE from plano where id_aulaexp = %d',$id_aulaexp);
+
+    $response['type'] = 'success';
+    $response['message'] = 'Excluido com sucesso!';
+    echo json_encode($response);
+}
 ?>

@@ -40,4 +40,14 @@ if ($methodToCall == 'save'){
 
     }
 }
+
+if($methodToCall == 'delete'){
+    $id_desconto = $_POST['dataset']['id_desconto'];
+    DB::query('DELETE from plano where id_desconto = %d',$id_desconto);
+
+    $response['type'] = 'success';
+    $response['message'] = 'Excluido com sucesso!';
+    echo json_encode($response);
+}
+
 ?>

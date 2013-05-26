@@ -43,4 +43,14 @@ if ($methodToCall == 'save'){
 
     }
 }
+
+if($methodToCall == 'delete'){
+    $id_estacionamento = $_POST['dataset']['id_estacionamento'];
+    DB::query('DELETE from plano where id_estacionamento = %d',$id_estacionamento);
+
+    $response['type'] = 'success';
+    $response['message'] = 'Excluido com sucesso!';
+    echo json_encode($response);
+}
+
 ?>
