@@ -1,273 +1,275 @@
 <ul id="shortcut">
-    <li><a href="#" title="Adicionar" class="btn_add"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
-    <li><a href="#" title="Listar" class="btn_list"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
+    <li><a href="#" title="Adicionar" ng-click="newRow('aluno');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+    <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
 </ul>
-<div class="row-fluid adicionar">
-	<div class="widget span12 clearfix">
-		<div class="widget-header">
-			<span>Cadastrar</span>
-		</div>
-		<div class="widget-content">
-			<form id="aluno_form" class="form">
-				<div class="section">
-					<label>Nome</label>
-					<div>
-						<input class="full" type="text" name="nome">
-					</div>
-				</div>
-				<div class="section">
-					<label>Data Nascimento</label>
-					<div>
-						<input class="xsmall data" type="text" name="dataNasc" size="10">
-					</div>
-				</div>
-				<div class="section">
-					<label>RG</label>
-					<div>
-						<input class="xsmall" type="text" name="rg" />
-					</div>
-				</div>
-				<div class="section">
-					<label>CPF</label>
-					<div>
-						<input class="small cpf" type="text" name="cpf" />
-					</div>
-				</div>
-				<div class="section">
-					<label>Estado Civil</label>
-					<div>
-						<select class="selectBox" name="estadoCivil">
-							<option value=""></option>
-							<option value="solteiro">Solteiro</option>
-							<option value="casado">Casado</option>
-							<option value="divorciado">Divorciado</option>
-							<option value="viuvo">Viúvo</option>
-						</select>
-					</div>
-				</div>
-				<div class="section">
-					<label>E-mail</label>
-					<div>
-						<input class="large" type="text" name="email">
-					</div>
-				</div>
-				<div class="section">
-					<label>Logradouro</label>
-					<div>
-						<input class="full" type="text" name="logradouro">
-					</div>
-				</div>
-				<div class="section">
-					<label>Complemento</label>
-					<div>
-						<input class="small" type="text" name="complemento">
-					</div>
-				</div>
-				<div class="section">
-					<label>Bairro</label>
-					<div>
-						<input class="full" type="text" name="bairro">
-					</div>
-				</div>
-				<div class="section">
-					<label>Cidade</label>
-					<div>
-						<input class="full" type="text" name="cidade">
-					</div>
-				</div>
-				<div class="section">
-					<label>UF</label>
-					<div>
-						<input class="xxsmall uf" type="text" name="uf">
-					</div>
-				</div>
-				<div class="section">
-					<label>CEP</label>
-					<div>
-						<input class="xsmall cep" type="text" name="cep">
-					</div>
-				</div>
-				<div class="section">
-					<label>Telefone Fixo</label>
-					<div>
-						<input class="small fone" type="text" name="telfixo">
-					</div>
-				</div>
-				<div class="section">
-					<label>Telefone Celular</label>
-					<div>
-						<input class="small fone" type="text" name="telcel">
-					</div>
-				</div>
-				<div class="section">
-					<label>Pessoa Referência</label>
-					<div>
-						<input class="full" type="text" name="pessoaref">
-					</div>
-				</div>
-				<div class="section">
-					<label>Telefone Referência</label>
-					<div>
-						<input class="small fone" type="text" name="telref">
-					</div>
-				</div>
-				<div class="section">
-					<label>Plano de Saúde</label>
-					<div>
-						<input class="medium" type="text" name="planoSaude">
-					</div>
-				</div>
-				<div class="section">
-					<label>Atestado Médico</label>
-					<div>
-						<div class="checksquared">
-							<input id="check-1" type="checkbox" value="action" name="atestadoMedico">
-							<label title="Sim" for="check-1"></label>
+<div ng-switch on="visualType">
+	<div class="row-fluid" ng-switch-when="form">
+		<div class="widget span12 clearfix">
+			<div class="widget-header">
+				<span>Cadastrar</span>
+			</div>
+			<div class="widget-content">
+				<form id="aluno_form" class="form">
+					<div class="section">
+						<label>Nome</label>
+						<div>
+							<input class="full" type="text" name="nome">
 						</div>
 					</div>
-				</div>
-				<div class="section">
-					<label>Plano</label>
-					<div>
-						<select class="selectBox" name="plano">
-							<option value="62">Semestral 2x</option>
-							<option value="63">Semestral 3x</option>
-							<option value="64">Semestral 4x</option>
-							<option value="65">Semestral 5x</option>
-						</select>
-					</div>
-				</div>
-				<div class="section">
-					<label>Horario Econômico</label>
-					<div>
-						<div class="checksquared">
-							<input id="check-1" type="checkbox" value="action" name="horarioeconomico">
-							<label title="Sim" for="check-1"></label>
+					<div class="section">
+						<label>Data Nascimento</label>
+						<div>
+							<input class="xsmall data" type="text" name="dataNasc" size="10">
 						</div>
 					</div>
-				</div>
-				<div class="section">
-					<label>Forma de Pagamento</label>
-					<div>
-						<select class="selectBox" name="formaPagamento">
-							<option value=""></option>
-							<option value="1">Cartão de Crédito</option>
-							<option value="2">Cartão de Débito</option>
-							<option value="3">Cheque</option>
-							<option value="4">Dinheiro</option>
-						</select>
+					<div class="section">
+						<label>RG</label>
+						<div>
+							<input class="xsmall" type="text" name="rg" />
+						</div>
 					</div>
-				</div>
-				<div class="section">
-					<label>Desconto</label>
-					<div>
-						<select class="selectBox" name="desconto">
-							<option value="25">Bolsa 25</option>
-							<option value="50">Bolsa 50</option>
-							<option value="75">Bolsa 75</option>
-							<option value="100">Bolsa 100</option>
-						</select>
+					<div class="section">
+						<label>CPF</label>
+						<div>
+							<input class="small cpf" type="text" name="cpf" />
+						</div>
 					</div>
-				</div>
-				<div class="section">
-					<label>Valor Total</label>
-					<div>
-						<i class="moeda"></i><input type="text" class="small" name="valorTotal" />
+					<div class="section">
+						<label>Estado Civil</label>
+						<div>
+							<select class="selectBox" name="estadoCivil">
+								<option value=""></option>
+								<option value="solteiro">Solteiro</option>
+								<option value="casado">Casado</option>
+								<option value="divorciado">Divorciado</option>
+								<option value="viuvo">Viúvo</option>
+							</select>
+						</div>
 					</div>
-				</div>
-				<div class="section">
-					<label>Status</label>
-					<div>
-						<select class="selectBox" name="status">
-							<option value="1">Ativo</option>
-							<option value="2">Inativo</option>
-							<option value="3">Trancado</option>
-						</select>
+					<div class="section">
+						<label>E-mail</label>
+						<div>
+							<input class="large" type="text" name="email">
+						</div>
 					</div>
-				</div>
-				<div class="section last">
-					<div>
-						<a id="btnCadastrarDesconto" class="btn btn-success" title="Salvar" ng-click ="save('aluno');">Salvar</a>
-						<input type="reset" class="btn" value="Cancelar">
-						<a class="btn" title="Imprimir Contrato"><i class="icon-file"></i> Imprimir Contrato</a>
+					<div class="section">
+						<label>Logradouro</label>
+						<div>
+							<input class="full" type="text" name="logradouro">
+						</div>
 					</div>
-				</div>
-			</form>
+					<div class="section">
+						<label>Complemento</label>
+						<div>
+							<input class="small" type="text" name="complemento">
+						</div>
+					</div>
+					<div class="section">
+						<label>Bairro</label>
+						<div>
+							<input class="full" type="text" name="bairro">
+						</div>
+					</div>
+					<div class="section">
+						<label>Cidade</label>
+						<div>
+							<input class="full" type="text" name="cidade">
+						</div>
+					</div>
+					<div class="section">
+						<label>UF</label>
+						<div>
+							<input class="xxsmall uf" type="text" name="uf">
+						</div>
+					</div>
+					<div class="section">
+						<label>CEP</label>
+						<div>
+							<input class="xsmall cep" type="text" name="cep">
+						</div>
+					</div>
+					<div class="section">
+						<label>Telefone Fixo</label>
+						<div>
+							<input class="small fone" type="text" name="telfixo">
+						</div>
+					</div>
+					<div class="section">
+						<label>Telefone Celular</label>
+						<div>
+							<input class="small fone" type="text" name="telcel">
+						</div>
+					</div>
+					<div class="section">
+						<label>Pessoa Referência</label>
+						<div>
+							<input class="full" type="text" name="pessoaref">
+						</div>
+					</div>
+					<div class="section">
+						<label>Telefone Referência</label>
+						<div>
+							<input class="small fone" type="text" name="telref">
+						</div>
+					</div>
+					<div class="section">
+						<label>Plano de Saúde</label>
+						<div>
+							<input class="medium" type="text" name="planoSaude">
+						</div>
+					</div>
+					<div class="section">
+						<label>Atestado Médico</label>
+						<div>
+							<div class="checksquared">
+								<input id="check-1" type="checkbox" value="action" name="atestadoMedico">
+								<label title="Sim" for="check-1"></label>
+							</div>
+						</div>
+					</div>
+					<div class="section">
+						<label>Plano</label>
+						<div>
+							<select class="selectBox" name="plano">
+								<option value="62">Semestral 2x</option>
+								<option value="63">Semestral 3x</option>
+								<option value="64">Semestral 4x</option>
+								<option value="65">Semestral 5x</option>
+							</select>
+						</div>
+					</div>
+					<div class="section">
+						<label>Horario Econômico</label>
+						<div>
+							<div class="checksquared">
+								<input id="check-1" type="checkbox" value="action" name="horarioeconomico">
+								<label title="Sim" for="check-1"></label>
+							</div>
+						</div>
+					</div>
+					<div class="section">
+						<label>Forma de Pagamento</label>
+						<div>
+							<select class="selectBox" name="formaPagamento">
+								<option value=""></option>
+								<option value="1">Cartão de Crédito</option>
+								<option value="2">Cartão de Débito</option>
+								<option value="3">Cheque</option>
+								<option value="4">Dinheiro</option>
+							</select>
+						</div>
+					</div>
+					<div class="section">
+						<label>Desconto</label>
+						<div>
+							<select class="selectBox" name="desconto">
+								<option value="25">Bolsa 25</option>
+								<option value="50">Bolsa 50</option>
+								<option value="75">Bolsa 75</option>
+								<option value="100">Bolsa 100</option>
+							</select>
+						</div>
+					</div>
+					<div class="section">
+						<label>Valor Total</label>
+						<div>
+							<i class="moeda"></i><input type="text" class="small" name="valorTotal" />
+						</div>
+					</div>
+					<div class="section">
+						<label>Status</label>
+						<div>
+							<select class="selectBox" name="status">
+								<option value="1">Ativo</option>
+								<option value="2">Inativo</option>
+								<option value="3">Trancado</option>
+							</select>
+						</div>
+					</div>
+					<div class="section last">
+						<div>
+							<a id="btnCadastrarDesconto" class="btn btn-success" title="Salvar" ng-click ="save('aluno');">Salvar</a>
+							<input type="reset" class="btn" value="Cancelar">
+							<a class="btn" title="Imprimir Contrato"><i class="icon-file"></i> Imprimir Contrato</a>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
-<div class="row-fluid listar">
-	<div class="widget span4 clearfix">
-		<div class="widget-header">
-			<span>Pesquisar</span>
-		</div>
-		<div class="widget-content">
-			<form>
-				<div class="section">
-					<label>Nome</label>
-					<div>
-						<input class="full" type="text" name="nome">
-					</div>
-				</div>
-				<div class="section">
-					<label>Plano</label>
-					<div>
-						<select class="small selectBox" style="width: 198px">
-							<option value=""></option>
-							<option value="1">Mensal 2x</option>
-							<option value="2">Trimestral 2x</option>
-							<option value="3">Semestral 2x</option>
-							<option value="4">Anual 2x</option>
-						</select>
-					</div>
-				</div>
-				<div class="section">
-					<label>Horario Econômico</label>
-					<div>
-						<div class="checksquared">
-							<input id="check-1" type="checkbox" value="action" name="horarioeconomico">
-							<label title="Sim" for="check-1"></label>
+	<div class="row-fluid" ng-switch-when="grid">
+		<div class="widget span4 clearfix">
+			<div class="widget-header">
+				<span>Pesquisar</span>
+			</div>
+			<div class="widget-content">
+				<form>
+					<div class="section">
+						<label>Nome</label>
+						<div>
+							<input class="full" type="text" name="nome">
 						</div>
 					</div>
-				</div>
-				<div class="section last">
-					<div>
-					<a class="btn btn-success" rel="1" title="Saving">Buscar</a>
-					<a class="btn">Cancelar</a>
+					<div class="section">
+						<label>Plano</label>
+						<div>
+							<select class="small selectBox" style="width: 198px">
+								<option value=""></option>
+								<option value="1">Mensal 2x</option>
+								<option value="2">Trimestral 2x</option>
+								<option value="3">Semestral 2x</option>
+								<option value="4">Anual 2x</option>
+							</select>
+						</div>
 					</div>
-				</div>
-			</form>
+					<div class="section">
+						<label>Horario Econômico</label>
+						<div>
+							<div class="checksquared">
+								<input id="check-1" type="checkbox" value="action" name="horarioeconomico">
+								<label title="Sim" for="check-1"></label>
+							</div>
+						</div>
+					</div>
+					<div class="section last">
+						<div>
+						<a class="btn btn-success" rel="1" title="Saving">Buscar</a>
+						<a class="btn">Cancelar</a>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
-	<div class="widget span8 clearfix">
-		<div class="widget-header">
-			<span>Resultado Buscas</span>
-		</div>
-		<div class="widget-content">
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>E-mail</th>
-						<th>Telefone Celular</th>
-						<th>Plano</th>
-						<th>Ação</th>
-					</tr>
-				</thead>
-				<tbody align="center">
-					<tr ng-repeat="aluno in dataset.aluno">
-						<td>{{aluno.nome}}</td>
-						<td>{{aluno.email}}</td>
-						<td>{{aluno.telefoneCelular}}</td>
-						<td>{{aluno.plano}}</td>
-						<td>
-							<a ng-click="edit('aluno',$index);"><img src="images/icon/icon_edit.png"></a>
-							<a ng-click="delete('aluno',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
-							<a href="javascript:;" class="print" title="Imprimir Contrato"><img src="images/icon/color_18/print2.png"></a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="widget span8 clearfix">
+			<div class="widget-header">
+				<span>Resultado Buscas</span>
+			</div>
+			<div class="widget-content">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>E-mail</th>
+							<th>Telefone Celular</th>
+							<th>Plano</th>
+							<th>Ação</th>
+						</tr>
+					</thead>
+					<tbody align="center">
+						<tr ng-repeat="aluno in dataset.aluno">
+							<td>{{aluno.nome}}</td>
+							<td>{{aluno.email}}</td>
+							<td>{{aluno.telefoneCelular}}</td>
+							<td>{{aluno.plano}}</td>
+							<td>
+								<a ng-click="edit('aluno',$index);"><img src="images/icon/icon_edit.png"></a>
+								<a ng-click="delete('aluno',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+								<a href="javascript:;" class="print" title="Imprimir Contrato"><img src="images/icon/color_18/print2.png"></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

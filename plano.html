@@ -1,77 +1,77 @@
 <ul id="shortcut">
-    <li><a href="#" title="Adicionar" class="btn_add" ng-click="newRow('plano');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
-    <li><a href="#" title="Listar" class="btn_list" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
+    <li><a href="#" title="Adicionar" ng-click="newRow('plano');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+    <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
 </ul>	
 <div ng-switch on="visualType">
-<div class="row-fluid adicionar" ng-switch-when="form">
-	<div class="widget span12 clearfix">
-		<div class="widget-header">
-			<span>Cadastrar</span>
-		</div>
-		<div class="widget-content">
-			<form id="plano_form" class="form">
-				<div class="section">
-					<label>Nome</label>
-					<div>
-						<input class="full" type="text" name="nome" ng-model="form.plano.nome">
+	<div class="row-fluid" ng-switch-when="form">
+		<div class="widget span12 clearfix">
+			<div class="widget-header">
+				<span>Cadastrar</span>
+			</div>
+			<div class="widget-content">
+				<form id="plano_form" class="form">
+					<div class="section">
+						<label>Nome</label>
+						<div>
+							<input class="full" type="text" name="nome" ng-model="form.plano.nome">
+						</div>
 					</div>
-				</div>
-				<div class="section">
-					<label>Tipo</label>
-					<div>
-						<select class="small selectBox" name="tipo" ng-model="form.plano.tipo">
-							<option></option>
-							<option value="1">Mensal</option>
-							<option value="2">Trimestral</option>
-							<option value="3">Semestral</option>
-							<option value="4">Anual</option>
-						</select>
+					<div class="section">
+						<label>Tipo</label>
+						<div>
+							<select class="small selectBox" name="tipo" ng-model="form.plano.tipo">
+								<option></option>
+								<option value="1">Mensal</option>
+								<option value="2">Trimestral</option>
+								<option value="3">Semestral</option>
+								<option value="4">Anual</option>
+							</select>
+						</div>
 					</div>
-				</div>
-				<div class="section">
-					<label>Valor</label>
-					<div>
-						<i class="moeda"></i><input type="text" class="medium" name="valor" ng-model="form.plano.valor"/>
+					<div class="section">
+						<label>Valor</label>
+						<div>
+							<i class="moeda"></i><input type="text" class="medium" name="valor" ng-model="form.plano.valor"/>
+						</div>
 					</div>
-				</div>
-				<div class="section last">
-					<div>
-						<a id="btnSalvar" class="btn btn-success" title="Salvar" ng-click ="save('plano');">Salvar</a>
-						<input type="reset" class="btn" value="Cancelar">
+					<div class="section last">
+						<div>
+							<a id="btnSalvar" class="btn btn-success" title="Salvar" ng-click ="save('plano');">Salvar</a>
+							<input type="reset" class="btn" value="Cancelar">
+						</div>
 					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<div class="row-fluid listar" ng-switch-when="grid">
-	<div class="widget span12 clearfix">
-		<div class="widget-header">
-			<span>Planos</span>
-		</div>
-		<div class="widget-content">
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Tipo</th>
-						<th>Valor</th>
-						<th>Ação</th>
-					</tr>
-				</thead>
-				<tbody align="center">
-					<tr ng-repeat="plano in dataset.plano">
-						<td>{{plano.nome}}</td>
-						<td>{{plano.tipo}}</td>
-						<td>{{plano.valor}}</td>
-						<td>
-							<a ng-click="edit('plano',$index);"><img src="images/icon/icon_edit.png"></a>
-							<a ng-click="delete('plano',$index);"><img src="images/icon/icon_delete.png"></a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
+	<div class="row-fluid" ng-switch-when="grid">
+		<div class="widget span12 clearfix">
+			<div class="widget-header">
+				<span>Planos</span>
+			</div>
+			<div class="widget-content">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Tipo</th>
+							<th>Valor</th>
+							<th>Ação</th>
+						</tr>
+					</thead>
+					<tbody align="center">
+						<tr ng-repeat="plano in dataset.plano">
+							<td>{{plano.nome}}</td>
+							<td>{{plano.tipo}}</td>
+							<td>{{plano.valor}}</td>
+							<td>
+								<a ng-click="edit('plano',$index);"><img src="images/icon/icon_edit.png"></a>
+								<a ng-click="delete('plano',$index);"><img src="images/icon/icon_delete.png"></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>

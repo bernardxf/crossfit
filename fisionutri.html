@@ -1,137 +1,139 @@
 <ul id="shortcut">
-    <li><a href="#" title="Adicionar" class="btn_add"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
-    <li><a href="#" title="Listar" class="btn_list"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
-</ul>
-<div class="row-fluid adicionar">
-	<div class="widget span12 clearfix">
-		<div class="widget-header">
-			<span>Cadastrar</span>
-		</div>
-		<div class="widget-content">
-			<form id="fisionutri_form" class="form">
-				<div class="section">
-					<label>Nome</label>
-					<div>
-						<input class="full" type="text" name="nome">
-					</div>
-				</div>
-				<div class="section">
-					<label>Data</label>
-					<div>
-						<input class="xsmall data" type="text" name="data" size="10"/>
-					</div>
-				</div>
-				<div class="section">
-					<label>Telefone</label>
-					<div>
-						<input class="small fone" type="text" name="telefone">
-					</div>
-				</div>
-				<div class="section">
-					<label>Tipo</label>
-					<div>
-						<div class="radiorounded">
-							<input id="radio-1" type="radio" value="1" name="tipo">
-							<label title="Fisioterapia" for="radio-1"></label>
-						</div>
-						<div class="radiorounded">
-							<input id="radio-2" type="radio" value="2" name="tipo">
-							<label title="Nutrição" for="radio-2"></label>
+    <li><a href="#" title="Adicionar" ng-click="newRow('fisionutri');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+    <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
+</ul>	
+<div ng-switch on="visualType">
+	<div class="row-fluid" ng-switch-when="form">
+		<div class="widget span12 clearfix">
+			<div class="widget-header">
+				<span>Cadastrar</span>
+			</div>
+			<div class="widget-content">
+				<form id="fisionutri_form" class="form">
+					<div class="section">
+						<label>Nome</label>
+						<div>
+							<input class="full" type="text" name="nome">
 						</div>
 					</div>
-				</div>
-				<div class="section">
-					<label>Serviço</label>
-					<div>
-						<input class="full" type="text" name="servico">
+					<div class="section">
+						<label>Data</label>
+						<div>
+							<input class="xsmall data" type="text" name="data" size="10"/>
+						</div>
 					</div>
-				</div>
-				<div class="section">
-					<label>Valor</label>
-					<div>
-						<i class="moeda"></i><input type="text" class="small" name="valor" />
+					<div class="section">
+						<label>Telefone</label>
+						<div>
+							<input class="small fone" type="text" name="telefone">
+						</div>
 					</div>
-				</div>
-				<div class="section last">
-					<div>
-						<a id="btnSalvar" class="btn btn-success" title="Salvar" ng-click="save('fisionutri');">Salvar</a>
-						<input type="reset" class="btn" value="Cancelar">
+					<div class="section">
+						<label>Tipo</label>
+						<div>
+							<div class="radiorounded">
+								<input id="radio-1" type="radio" value="1" name="tipo">
+								<label title="Fisioterapia" for="radio-1"></label>
+							</div>
+							<div class="radiorounded">
+								<input id="radio-2" type="radio" value="2" name="tipo">
+								<label title="Nutrição" for="radio-2"></label>
+							</div>
+						</div>
 					</div>
-				</div>
-			</form>
+					<div class="section">
+						<label>Serviço</label>
+						<div>
+							<input class="full" type="text" name="servico">
+						</div>
+					</div>
+					<div class="section">
+						<label>Valor</label>
+						<div>
+							<i class="moeda"></i><input type="text" class="small" name="valor" />
+						</div>
+					</div>
+					<div class="section last">
+						<div>
+							<a id="btnSalvar" class="btn btn-success" title="Salvar" ng-click="save('fisionutri');">Salvar</a>
+							<input type="reset" class="btn" value="Cancelar">
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
-<div class="row-fluid listar">
-	<div class="widget span4 clearfix">
-		<div class="widget-header">
-			<span>Pesquisar</span>
-		</div>
-		<div class="widget-content">
-			<form>
-				<div class="section">
-					<label>Data</label>
-					<div>
-						<input class="medium data" type="text" name="dataini" size="10">
-						a <input class="medium data" type="text" name="datafim" size="10">
-					</div>
-				</div>
-				<div class="section">
-					<label>Tipo</label>
-					<div>
-						<div class="radiorounded">
-							<input id="radio-1" type="radio" value="1" name="opinions">
-							<label title="Fisioterapia" for="radio-1"></label>
-						</div>
-						<div class="radiorounded">
-							<input id="radio-2" type="radio" value="2" name="opinions">
-							<label title="Nutrição" for="radio-2"></label>
+	<div class="row-fluid" ng-switch-when="grid">
+		<div class="widget span4 clearfix">
+			<div class="widget-header">
+				<span>Pesquisar</span>
+			</div>
+			<div class="widget-content">
+				<form>
+					<div class="section">
+						<label>Data</label>
+						<div>
+							<input class="medium data" type="text" name="dataini" size="10">
+							a <input class="medium data" type="text" name="datafim" size="10">
 						</div>
 					</div>
-				</div>
-				<div class="section last">
-					<div>
-					<a class="btn btn-success" rel="1" title="Saving">Buscar</a>
-					<a class="btn">Cancelar</a>
+					<div class="section">
+						<label>Tipo</label>
+						<div>
+							<div class="radiorounded">
+								<input id="radio-1" type="radio" value="1" name="opinions">
+								<label title="Fisioterapia" for="radio-1"></label>
+							</div>
+							<div class="radiorounded">
+								<input id="radio-2" type="radio" value="2" name="opinions">
+								<label title="Nutrição" for="radio-2"></label>
+							</div>
+						</div>
 					</div>
-				</div>
-			</form>
+					<div class="section last">
+						<div>
+						<a class="btn btn-success" rel="1" title="Saving">Buscar</a>
+						<a class="btn">Cancelar</a>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
-	<div class="widget span8 clearfix">
-		<div class="widget-header">
-			<span>Resultado Buscas</span>
-		</div>
-		<div class="widget-content">
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Data</th>
-						<th>Tipo</th>
-						<th>Valor</th>
-						<th>Ação</th>
-					</tr>
-				</thead>
-				<tbody align="center">
-					<tr ng-repeat="fisionutri in dataset.fisionutri">
-						<td>{{fisionutri.nome}}</td>
-						<td>{{fisionutri.data}}</td>
-						<td>{{fisionutri.tipo}}</td>
-						<td>{{fisionutri.valor}}</td>
-						<td>
-							<a ng-click="edit('fisionutri',$index);"><img src="images/icon/icon_edit.png"></a>
-							<a ng-click="delete('fisionutri',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
-						</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<th align="right" colspan="3">TOTAL:</th>
-						<th align="left" colspan="2">R$ 400</th>
-					</tr>
-				</tfoot>
-			</table>
+		<div class="widget span8 clearfix">
+			<div class="widget-header">
+				<span>Resultado Buscas</span>
+			</div>
+			<div class="widget-content">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Data</th>
+							<th>Tipo</th>
+							<th>Valor</th>
+							<th>Ação</th>
+						</tr>
+					</thead>
+					<tbody align="center">
+						<tr ng-repeat="fisionutri in dataset.fisionutri">
+							<td>{{fisionutri.nome}}</td>
+							<td>{{fisionutri.data}}</td>
+							<td>{{fisionutri.tipo}}</td>
+							<td>{{fisionutri.valor}}</td>
+							<td>
+								<a ng-click="edit('fisionutri',$index);"><img src="images/icon/icon_edit.png"></a>
+								<a ng-click="delete('fisionutri',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th align="right" colspan="3">TOTAL:</th>
+							<th align="left" colspan="2">R$ 400</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
