@@ -13,13 +13,13 @@
 					<div class="section">
 						<label>Nome</label>
 						<div>
-							<input class="full" type="text" name="nome">
+							<input class="full" type="text" name="nome" ng-model="form.desconto.nome">
 						</div>
 					</div>
 					<div class="section">
 						<label>% de Desconto</label>
 						<div>
-							<input class="full" type="text" name="porcDesc">
+							<input class="full" type="text" name="porc_desc" ng-model="form.desconto.porc_desc">
 						</div>
 					</div>
 					<div class="section last">
@@ -49,7 +49,7 @@
 					<tbody align="center">
 						<tr ng-repeat="desconto in dataset.desconto">
 		            		<td>{{desconto.nome}}</td>
-		            		<td>{{descontoporcDesconto}}</td>
+		            		<td>{{desconto.porc_desc}}</td>
 		            		<td>
 		            			<a ng-click="edit('desconto',$index);"><img src="images/icon/icon_edit.png"></a>
 								<a ng-click="delete('desconto',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>

@@ -51,7 +51,7 @@ var Application = {
 	getDataset : function(form){
 		return form.serializeObject();
 	},
-	request : function(className, methodToCall, dataset, responseHandler){
+	request : function(className, methodToCall, dataset, responseHandler, callback){
 		var params = {
 			dataset : dataset,
 			methodToCall : methodToCall
@@ -59,12 +59,12 @@ var Application = {
 
 		$.post("_class/"+className+".php", params, function(response){
             responseHandler(response);
+            if(callback)callback();
 		});
 	},
-    defaultResponseHandler : function(response){
+    defaultResponseHandler : function(response, callback){
         response = JSON.parse(response);
         alertMessage(response.type,response.message);
-        $('.form').each (function(){this.reset();}); 
     },
     loadData: function(className, callback){
         Application.request(className, 'loadData', undefined, function(response){
@@ -74,11 +74,11 @@ var Application = {
             }
         });
     },
-    saveRow: function(className, data){
-        Application.request(className, 'save', data, Application.defaultResponseHandler);
+    saveRow: function(className, data, callback){
+        Application.request(className, 'save', data, Application.defaultResponseHandler, callback);
     },
-    deleteRow: function(className, data){
-        Application.request(className, 'delete', data, Application.defaultResponseHandler);
+    deleteRow: function(className, data, callback){
+        Application.request(className, 'delete', data, Application.defaultResponseHandler, callback);
     }
 
 };

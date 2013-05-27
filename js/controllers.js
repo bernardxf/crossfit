@@ -36,7 +36,10 @@ myApp.controller('myController',function($scope){
 				var data = $scope.dataset[className][index];
 				data['_STATE'] = 'D';
 
-				Application.deleteRow(className, data);
+				Application.deleteRow(className, data, function(){
+					$scope.loadData(className);
+				});
+
 			}
 		}, {
 			"label" : "Cancelar"
@@ -45,8 +48,9 @@ myApp.controller('myController',function($scope){
 
 	$scope.save = function(className){
 		var dataset = $scope.form[className];
-		Application.saveRow(className, dataset);
-		$scope.loadData(className);
+		Application.saveRow(className, dataset, function(){
+			$scope.loadData(className);
+		});
 		$scope.toggle('grid');
 	},
 

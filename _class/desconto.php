@@ -13,12 +13,12 @@ if ($methodToCall == 'save'){
 
     $id = $_POST['dataset']['id_desconto'];
     $nome = $_POST['dataset']['nome'];
-    $porcDesc = $_POST['dataset']['porcDesc'];
+    $porc_desc = $_POST['dataset']['porc_desc'];
     $state = $_POST['dataset']['_STATE'];
 
     if($state == 'I'){
 
-        DB::query('INSERT INTO desconto (nome, porcDesc) VALUES (%s,%d)', $nome, $porcDesc);
+        DB::query('INSERT INTO desconto (nome, porc_desc) VALUES (%s,%d)', $nome, $porc_desc);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -26,7 +26,7 @@ if ($methodToCall == 'save'){
 
     } else if($state == 'U'){
 
-        DB::query('UPDATE desconto SET nome = %s, porcDesc = %d WHERE id_desconto = %d', $nome, $porcDesc, $id);
+        DB::query('UPDATE desconto SET nome = %s, porc_desc = %d WHERE id_desconto = %d', $nome, $porc_desc, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -43,7 +43,7 @@ if ($methodToCall == 'save'){
 
 if($methodToCall == 'delete'){
     $id_desconto = $_POST['dataset']['id_desconto'];
-    DB::query('DELETE from plano where id_desconto = %d',$id_desconto);
+    DB::query('DELETE from desconto where id_desconto = %d',$id_desconto);
 
     $response['type'] = 'success';
     $response['message'] = 'Excluido com sucesso!';
