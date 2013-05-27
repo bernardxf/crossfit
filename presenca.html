@@ -10,10 +10,10 @@
 			</div>
 			<div class="widget-content">
 				<form>
-					<div class="section">
+					<div class="section last">
 						<label>Aluno</label>
 						<div>
-							<input class="large" type="text" name="nome" style="width:170px">
+							<input class="full" type="text" name="nome">
 							<a class="btn btn-success" rel="1" title="Saving">Buscar</a>
 						</div>
 					</div>
@@ -48,6 +48,32 @@
 			</div>
 			<div class="widget-content">
 				<form>
+					<div class="section">
+						<label>Data</label>
+						<div>
+							<input class="full" type="text" name="data">
+						</div>
+					</div>
+					<div class="section">
+						<label>Horário</label>
+	                    <div>
+	                        <select class="full" name="horario">
+	                            <option value="630">6:30</option>
+	                            <option value="700">7:00</option>
+	                            <option value="730">7:30</option>
+	                            <option value="800">8:30</option>
+	                            <option value="1200">12:00</option>
+	                            <option value="1400">14:00</option>
+	                            <option value="1500">15:00</option>
+	                            <option value="1600">16:00</option>
+	                            <option value="1700">17:00</option>
+	                            <option value="1800">18:00</option>
+	                            <option value="1900">19:00</option>
+	                            <option value="2000">20:00</option>
+	                            <option value="2100">21:00</option>
+	                        </select>
+	                    </div>
+					</div>
 					<ol class="rectangle-list">
 						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
 						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
@@ -90,8 +116,7 @@
 					<div class="section">
 	                    <label>Horário</label>
 	                    <div>
-	                        <select class="small selectBox" style="width: 180px">
-	                            <option value=""></option>
+	                        <select class="full" name="horario">
 	                            <option value="630">6:30</option>
 	                            <option value="700">7:00</option>
 	                            <option value="730">7:30</option>
@@ -111,7 +136,7 @@
 					<div class="section">
 						<label>Data</label>
 						<div>
-							<input class="medium data" type="text" name="data" size="10">
+							<input class="full data" type="text" name="data" size="10">
 						</div>
 					</div>
 					<div class="section last">

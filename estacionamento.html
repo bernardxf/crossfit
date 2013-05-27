@@ -13,31 +13,31 @@
 					<div class="section">
 						<label>Aluno</label>
 						<div>
-							<input class="full" type="text" name="aluno">
+							<input class="full" type="text" name="aluno" ng-model="form.estacionamento.aluno">
 						</div>
 					</div>
 					<div class="section">
 						<label>Modelo</label>
 						<div>
-							<input class="full" type="text" name="modelo">
+							<input class="full" type="text" name="modelo" ng-model="form.estacionamento.modelo">
 						</div>
 					</div>
 					<div class="section">
 						<label>Cor</label>
 						<div>
-							<input class="full" type="text" name="cor">
+							<input class="full" type="text" name="cor" ng-model="form.estacionamento.cor">
 						</div>
 					</div>
 					<div class="section">
 						<label>Placa</label>
 						<div>
-							<input class="medium placa" type="text" name="placa">
+							<input class="medium placa" type="text" name="placa" ng-model="form.estacionamento.placa">
 						</div>
 					</div>
 					<div class="section">
 						<label>Plano</label>
 						<div>
-							<select class="selectBox" style="width:200px">
+							<select class="selectBox" name="plano"  ng-model="form.estacionamento.plano">
 								<option value="e2">Estacionamento 2x</option>
 								<option value="e3">Estacionamento 3x</option>
 								<option value="e4">Estacionamento 4x</option>

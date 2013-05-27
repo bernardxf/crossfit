@@ -13,26 +13,26 @@
 					<div class="section">
 						<label>Nome</label>
 						<div>
-							<input class="full" type="text" name="nome">
+							<input class="full" type="text" name="nome" ng-model="form.aulaexp.nome">
 						</div>
 					</div>
 					<div class="section">
 						<label>Data Aula</label>
 						<div>
-							<input class="medium data" type="text" name="data" size="10">
+							<input class="medium data" type="text" name="data" size="10" ng-model="form.aulaexp.data">
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone</label>
 						<div>
-							<input class="large fone" type="text" name="telefone">
+							<input class="large fone" type="text" name="telefone" ng-model="form.aulaexp.telefone">
 						</div>
 					</div>
 					<div class="section">
 						<label>Confirmado</label>
 						<div>
 							<div class="checksquared">
-								<input id="confirmado" type="checkbox" value="action" name="confirmado">
+								<input id="confirmado" type="checkbox" value="action" name="confirmado" ng-model="form.aulaexp.confirmado">
 								<label title="Sim" for="confirmado"></label>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 						<label>Presente</label>
 						<div>
 							<div class="checksquared">
-								<input id="presente" type="checkbox" value="action" name="presente">
+								<input id="presente" type="checkbox" value="action" name="presente" ng-model="form.aulaexp.presente">
 								<label title="Sim" for="presente"></label>
 							</div>
 						</div>
@@ -92,19 +92,21 @@
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th>Aluno</th>
+							<th>Nome</th>
 							<th>Data Aula</th>
 							<th>Telefone</th>
-							<th>Status</th>
+							<th>Confirmado</th>
+							<th>Presente</th>
 							<th>Ação</th>
 						</tr>
 					</thead>
 					<tbody align="center">
 						<tr ng-repeat="aulaexp in dataset.aulaexp">
-							<td>{{aulaexp.aluno}}</td>
-							<td>{{aulaexp.dataAula}}</td>
+							<td>{{aulaexp.nome}}</td>
+							<td>{{aulaexp.data}}</td>
 							<td>{{aulaexp.telefone}}</td>
-							<td>{{aulaexp.status}}</td>
+							<td>{{aulaexp.confirmado}}</td>
+							<td>{{aulaexp.presente}}</td>
 							<td>
 								<a ng-click="edit('aulaexp',$index);"><img src="images/icon/icon_edit.png"></a>
 								<a ng-click="delete('aulaexp',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>

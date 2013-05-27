@@ -13,30 +13,30 @@
 					<div class="section">
 						<label>Nome</label>
 						<div>
-							<input class="full" type="text" name="nome">
+							<input class="full" type="text" name="nome" ng-model="form.fisionutri.nome">
 						</div>
 					</div>
 					<div class="section">
 						<label>Data</label>
 						<div>
-							<input class="xsmall data" type="text" name="data" size="10"/>
+							<input class="xsmall data" type="text" name="data" size="10" ng-model="form.fisionutri.data"/>
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone</label>
 						<div>
-							<input class="small fone" type="text" name="telefone">
+							<input class="small fone" type="text" name="telefone" ng-model="form.fisionutri.telefone">
 						</div>
 					</div>
 					<div class="section">
 						<label>Tipo</label>
 						<div>
 							<div class="radiorounded">
-								<input id="radio-1" type="radio" value="1" name="tipo">
+								<input id="radio-1" type="radio" value="1" name="tipo" ng-model="form.fisionutri.tipo">
 								<label title="Fisioterapia" for="radio-1"></label>
 							</div>
 							<div class="radiorounded">
-								<input id="radio-2" type="radio" value="2" name="tipo">
+								<input id="radio-2" type="radio" value="2" name="tipo" ng-model="form.fisionutri.tipo">
 								<label title="Nutrição" for="radio-2"></label>
 							</div>
 						</div>
@@ -44,13 +44,13 @@
 					<div class="section">
 						<label>Serviço</label>
 						<div>
-							<input class="full" type="text" name="servico">
+							<input class="full" type="text" name="servico" ng-model="form.fisionutri.servico">
 						</div>
 					</div>
 					<div class="section">
 						<label>Valor</label>
 						<div>
-							<i class="moeda"></i><input type="text" class="small" name="valor" />
+							<i class="moeda"></i><input type="text" class="small" name="valor" ng-model="form.fisionutri.valor" />
 						</div>
 					</div>
 					<div class="section last">
@@ -110,7 +110,7 @@
 							<th>Nome</th>
 							<th>Data</th>
 							<th>Tipo</th>
-							<th>Valor</th>
+							<th>Valor (R$)</th>
 							<th>Ação</th>
 						</tr>
 					</thead>
