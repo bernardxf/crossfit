@@ -59,7 +59,7 @@ myApp.controller('myController',function($scope){
 		$scope.pageTitle = pageTitle;
 		$scope.loadData(className);
 	},
-
+ 
 	$scope.callMethod = function(className, methodToCall, responseHandler){
 		var form = $("#"+className).parents("form");
 		var dataset = Application.getDataset(form);

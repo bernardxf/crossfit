@@ -13,31 +13,31 @@
 					<div class="section">
 						<label>Nome</label>
 						<div>
-							<input class="full" type="text" name="nome">
+							<input class="full" type="text" name="nome" ng-model="form.aluno.nome">
 						</div>
 					</div>
 					<div class="section">
 						<label>Data Nascimento</label>
 						<div>
-							<input class="xsmall data" type="text" name="dataNasc" size="10">
+							<input class="xsmall data" type="text" name="dataNasc" size="10" ng-model="form.aluno.dataNasc">
 						</div>
 					</div>
 					<div class="section">
 						<label>RG</label>
 						<div>
-							<input class="xsmall" type="text" name="rg" />
+							<input class="xsmall" type="text" name="rg" ng-model="form.aluno.rg"/>
 						</div>
 					</div>
 					<div class="section">
 						<label>CPF</label>
 						<div>
-							<input class="small cpf" type="text" name="cpf" />
+							<input class="small cpf" type="text" name="cpf" ng-model="form.aluno.cpf"/>
 						</div>
 					</div>
 					<div class="section">
 						<label>Estado Civil</label>
 						<div>
-							<select class="selectBox" name="estadoCivil">
+							<select class="selectBox" name="estadoCivil" ng-model="form.aluno.estadoCivil">
 								<option value=""></option>
 								<option value="solteiro">Solteiro</option>
 								<option value="casado">Casado</option>
@@ -49,80 +49,80 @@
 					<div class="section">
 						<label>E-mail</label>
 						<div>
-							<input class="large" type="text" name="email">
+							<input class="large" type="text" name="email" ng-model="form.aluno.email">
 						</div>
 					</div>
 					<div class="section">
 						<label>Logradouro</label>
 						<div>
-							<input class="full" type="text" name="logradouro">
+							<input class="full" type="text" name="logradouro" ng-model="form.aluno.logradouro">
 						</div>
 					</div>
 					<div class="section">
 						<label>Complemento</label>
 						<div>
-							<input class="small" type="text" name="complemento">
+							<input class="small" type="text" name="complemento" ng-model="form.aluno.complemento">
 						</div>
 					</div>
 					<div class="section">
 						<label>Bairro</label>
 						<div>
-							<input class="full" type="text" name="bairro">
+							<input class="full" type="text" name="bairro" ng-model="form.aluno.bairro">
 						</div>
 					</div>
 					<div class="section">
 						<label>Cidade</label>
 						<div>
-							<input class="full" type="text" name="cidade">
+							<input class="full" type="text" name="cidade" ng-model="form.aluno.cidade">
 						</div>
 					</div>
 					<div class="section">
 						<label>UF</label>
 						<div>
-							<input class="xxsmall uf" type="text" name="uf">
+							<input class="xxsmall uf" type="text" name="uf" ng-model="form.aluno.uf">
 						</div>
 					</div>
 					<div class="section">
 						<label>CEP</label>
 						<div>
-							<input class="xsmall cep" type="text" name="cep">
+							<input class="xsmall cep" type="text" name="cep" ng-model="form.aluno.cep">
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone Fixo</label>
 						<div>
-							<input class="small fone" type="text" name="telfixo">
+							<input class="small fone" type="text" name="telfixo" ng-model="form.aluno.telfixo">
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone Celular</label>
 						<div>
-							<input class="small fone" type="text" name="telcel">
+							<input class="small fone" type="text" name="telcel" ng-model="form.aluno.telcel">
 						</div>
 					</div>
 					<div class="section">
 						<label>Pessoa Referência</label>
 						<div>
-							<input class="full" type="text" name="pessoaref">
+							<input class="full" type="text" name="pessoaref" ng-model="form.aluno.pessoaref">
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone Referência</label>
 						<div>
-							<input class="small fone" type="text" name="telref">
+							<input class="small fone" type="text" name="telref" ng-model="form.aluno.telref">
 						</div>
 					</div>
 					<div class="section">
 						<label>Plano de Saúde</label>
 						<div>
-							<input class="medium" type="text" name="planoSaude">
+							<input class="medium" type="text" name="planoSaude" ng-model="form.aluno.planoSaude">
 						</div>
 					</div>
 					<div class="section">
 						<label>Atestado Médico</label>
 						<div>
 							<div class="checksquared">
-								<input id="check-1" type="checkbox" value="action" name="atestadoMedico">
+								<input id="check-1" type="checkbox" value="action" name="atestadoMedico" ng-model="form.aluno.atestadoMedico">
 								<label title="Sim" for="check-1"></label>
 							</div>
 						</div>
@@ -130,7 +130,7 @@
 					<div class="section">
 						<label>Plano</label>
 						<div>
-							<select class="selectBox" name="plano">
+							<select class="selectBox" name="plano" ng-model="form.aluno.plano">
 								<option value="62">Semestral 2x</option>
 								<option value="63">Semestral 3x</option>
 								<option value="64">Semestral 4x</option>
@@ -142,7 +142,7 @@
 						<label>Horario Econômico</label>
 						<div>
 							<div class="checksquared">
-								<input id="check-1" type="checkbox" value="action" name="horarioeconomico">
+								<input id="check-1" type="checkbox" value="action" name="horarioeconomico" ng-model="form.aluno.horarioEconomico">
 								<label title="Sim" for="check-1"></label>
 							</div>
 						</div>
@@ -150,7 +150,7 @@
 					<div class="section">
 						<label>Forma de Pagamento</label>
 						<div>
-							<select class="selectBox" name="formaPagamento">
+							<select class="selectBox" name="formaPagamento" ng-model="form.aluno.formaPagamento">
 								<option value=""></option>
 								<option value="1">Cartão de Crédito</option>
 								<option value="2">Cartão de Débito</option>
@@ -162,7 +162,7 @@
 					<div class="section">
 						<label>Desconto</label>
 						<div>
-							<select class="selectBox" name="desconto">
+							<select class="selectBox" name="desconto" ng-model="form.aluno.desconto">
 								<option value="25">Bolsa 25</option>
 								<option value="50">Bolsa 50</option>
 								<option value="75">Bolsa 75</option>
@@ -173,13 +173,13 @@
 					<div class="section">
 						<label>Valor Total</label>
 						<div>
-							<i class="moeda"></i><input type="text" class="small" name="valorTotal" />
+							<i class="moeda"></i><input type="text" class="small" name="valorTotal" ng-model="form.aluno.valorTotal"/>
 						</div>
 					</div>
 					<div class="section">
 						<label>Status</label>
 						<div>
-							<select class="selectBox" name="status">
+							<select class="selectBox" name="status" ng-model="form.aluno.status">
 								<option value="1">Ativo</option>
 								<option value="2">Inativo</option>
 								<option value="3">Trancado</option>

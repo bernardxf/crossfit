@@ -5,7 +5,8 @@ include 'sql.php';
 $methodToCall = $_POST['methodToCall'];
 
 if ($methodToCall == 'loadData'){
-    $rows = DB::get_rows(DB::query('SELECT * FROM aluno ORDER BY idAluno ASC'));
+    $rows = DB::get_rows(DB::query('SELECT * FROM aluno'));
+
     echo json_encode($rows);
 }
 
@@ -42,7 +43,7 @@ if ($methodToCall == 'save'){
         
         DB::query('INSERT INTO aluno (nome, dataNasc, rg, cpf, estadoCivil, email, logradouro, complemento, bairro, cidade, uf, cep, telefoneFixo, telefoneCelular, pessoaReferencia, telefoneReferencia, planoSaude, atestadoMedico, plano, formaPagamento, desconto, valorTotal, status, dataCad, dataAlt) 
                     VALUES (%s, %d, %d, %d, %s, %s, %s, %s, %s, %s, %s, %s, %d, %d, %s, %d, %d, %d, %d, %s, %d, %d, %d, %s, %s)', 
-                    $nome, $dataNasc, $rg, $cpf, $estadoCivil, $email, $logradouro, $complemento, $bairro, $cidade, $uf, $cep, $telfixo, $telcel, $pessoaref, $telref, $planoSaude, $atestadoMedico, $plano, $formaPagamento, $desconto, $valorTotal, $status, $dataAtual, $dataAtual;
+                    $nome, $dataNasc, $rg, $cpf, $estadoCivil, $email, $logradouro, $complemento, $bairro, $cidade, $uf, $cep, $telfixo, $telcel, $pessoaref, $telref, $planoSaude, $atestadoMedico, $plano, $formaPagamento, $desconto, $valorTotal, $status, $dataAtual, $dataAtual);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
