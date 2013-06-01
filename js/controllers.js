@@ -6,11 +6,20 @@ myApp.controller('myController',function($scope){
 	$scope.dataset = {},
 	$scope.visualType = 'grid',
 	$scope.form = {},
-	$scope.loadData = function(className){
+	$scope.selData = {},
+	$scope.loadData = function(className, callback){
 		Application.loadData(className, function(){
-			$scope.dataset[className] = (JSON.parse(Application.dataset[className]));
+			$scope.dataset[className] = JSON.parse(Application.dataset[className]);
+			if (callback) callback();
 			$scope.$apply();
 		});			
+	},
+
+	$scope.loadSelects = function(className, callback){
+		Application.loadSelectsData(className, function(){
+			$scope.selData[className] =  JSON.parse(Application.selectsData[className])	;
+			if (callback) callback();
+		});
 	},
 
 	$scope.newRow = function(className){
@@ -55,11 +64,14 @@ myApp.controller('myController',function($scope){
 	},
 
 	$scope.openWindow = function(className, pageTitle){
-		$scope.template = className+".html";
-		$scope.pageTitle = pageTitle;
-		$scope.loadData(className);
+		$scope.loadSelects(className, $scope.loadData(className, $scope.callWindow(className, pageTitle)));
 	},
  
+ 	$scope.callWindow = function(className, pageTitle){
+ 		$scope.template = className+".html";
+		$scope.pageTitle = pageTitle;
+ 	},
+
 	$scope.callMethod = function(className, methodToCall, responseHandler){
 		var form = $("#"+className).parents("form");
 		var dataset = Application.getDataset(form);
@@ -73,6 +85,10 @@ myApp.controller('myController',function($scope){
 
 	$scope.toggle = function(type){
 		$scope.visualType = type;
+	},
+
+	$scope.pesquisa = function(className){
+		console.log($scope.form);
 	}
 
 });

@@ -51,4 +51,8 @@ if($methodToCall == 'delete'){
     $response['message'] = 'Excluido com sucesso!';
     echo json_encode($response);
 }
+
+if($methodToCall == 'loadSelects'){
+    echo json_encode(array());
+}
 ?>

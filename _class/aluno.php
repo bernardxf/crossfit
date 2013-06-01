@@ -12,12 +12,12 @@ if ($methodToCall == 'loadData'){
 
 if ($methodToCall == 'save'){
     
-    $id = $_POST['dataset']['idAluno'];
+    $id = $_POST['dataset']['id_aluno'];
     $nome = $_POST['dataset']['nome'];
-    $dataNasc = $_POST['dataset']['dataNasc'];
+    $data_nasc = $_POST['dataset']['data_nasc'];
     $rg = $_POST['dataset']['rg'];
     $cpf = $_POST['dataset']['cpf'];
-    $estadoCivil = $_POST['dataset']['estadoCivil'];
+    $estado_civil = $_POST['dataset']['estado_civil'];
     $email = $_POST['dataset']['email'];
     $logradouro = $_POST['dataset']['logradouro'];
     $complemento = $_POST['dataset']['complemento'];
@@ -29,21 +29,23 @@ if ($methodToCall == 'save'){
     $telcel = $_POST['dataset']['telcel'];
     $pessoaref = $_POST['dataset']['pessoaref'];
     $telref = $_POST['dataset']['telref'];
-    $planosaude = $_POST['dataset']['planosaude'];
-    $atestadoMedico = $_POST['dataset']['atestadoMedico'];
+    $plano_saude = $_POST['dataset']['plano_saude'];
+    $atestado_medico = $_POST['dataset']['atestado_medico'];
     $plano = $_POST['dataset']['plano'];
-    $formaPagamento = $_POST['dataset']['formaPagamento'];
+    $forma_pagamento = $_POST['dataset']['forma_pagamento'];
     $desconto = $_POST['dataset']['desconto'];
-    $valorTotal = $_POST['dataset']['valorTotal'];
+    $valor_total = $_POST['dataset']['valor_total'];
     $status = $_POST['dataset']['status'];
     $dataAtual = DATE('Y/m/d');
     $state = $_POST['dataset']['_STATE'];
 
     if($state == 'I')  {
         
-        DB::query('INSERT INTO aluno (nome, dataNasc, rg, cpf, estadoCivil, email, logradouro, complemento, bairro, cidade, uf, cep, telefoneFixo, telefoneCelular, pessoaReferencia, telefoneReferencia, planoSaude, atestadoMedico, plano, formaPagamento, desconto, valorTotal, status, dataCad, dataAlt) 
+        DB::query('INSERT INTO aluno (nome, data_nasc, rg, cpf, estado_civil, email, logradouro, complemento, bairro, 
+            cidade, uf, cep, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, plano, forma_pagamento, desconto, valor_total, status, data_cad, data_alt) 
                     VALUES (%s, %d, %d, %d, %s, %s, %s, %s, %s, %s, %s, %s, %d, %d, %s, %d, %d, %d, %d, %s, %d, %d, %d, %s, %s)', 
-                    $nome, $dataNasc, $rg, $cpf, $estadoCivil, $email, $logradouro, $complemento, $bairro, $cidade, $uf, $cep, $telfixo, $telcel, $pessoaref, $telref, $planoSaude, $atestadoMedico, $plano, $formaPagamento, $desconto, $valorTotal, $status, $dataAtual, $dataAtual);
+                    $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $logradouro, $complemento, $bairro, $cidade, $uf, 
+                    $cep, $telfixo, $telcel, $pessoaref, $telref, $plano_saude, $atestado_medico, $plano, $forma_pagamento, $desconto, $valor_total, $status, $dataAtual, $dataAtual);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -51,11 +53,11 @@ if ($methodToCall == 'save'){
 
     } else if($state == 'U') {
         
-        DB::query('UPDATE aluno SET nome = %s, dataNasc = %d, rg = %d, cpf = %d, estadoCivil = %s, email = %s, logradouro = %s, complemento = %s,
-        bairro = %s, cidade = %s, uf = %s, cep = %s, telefoneFixo = %d, telefoneCelular = %d, pessoaReferencia = %s, telefoneReferencia = %d,
-        planoSaude = %d, atestadoMedico = %d, plano = %d, formaPagamento = %s, desconto = %d, valorTotal = %d, status = %d, dataAlt = %s WHERE idAluno = %d', 
-            $nome, $dataNasc, $rg, $cpf, $estadoCivil, $email, $logradouro, $complemento, $bairro, $cidade, $uf, $cep, $telfixo, $telcel, $pessoaref, 
-            $telref, $planoSaude, $atestadoMedico, $plano, $formaPagamento, $desconto, $valorTotal, $status, $dataAtual, $id);
+        DB::query('UPDATE aluno SET nome = %s, data_nasc = %d, rg = %d, cpf = %d, estado_civil = %s, email = %s, logradouro = %s, complemento = %s,
+        bairro = %s, cidade = %s, uf = %s, tel_fixo = %d, tel_celular = %d, pessoa_ref = %s, tel_ref = %d,
+        plano_saude = %d, atestado_medico = %d, id_plano_fk = %d, forma_pagamento = %s, id_desconto_fk = %d, valor_total = %d, status = %d, data_alt = %s WHERE id_aluno = %d', 
+            $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $logradouro, $complemento, $bairro, $cidade, $uf, $telfixo, $telcel, $pessoaref, 
+            $telref, $plano_saude, $atestado_medico, $plano, $forma_pagamento, $desconto, $valor_total, $status, $dataAtual, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -77,6 +79,14 @@ if($methodToCall == 'delete'){
     $response['type'] = 'success';
     $response['message'] = 'Excluido com sucesso!';
     echo json_encode($response);
+}
+
+if($methodToCall == 'loadSelects'){
+    $plano = DB::get_rows(DB::query('SELECT id_plano, nome from plano'));
+    $desconto = DB::get_rows(DB::query('SELECT id_desconto, nome from desconto'));
+    $selects = array('plano' => $plano, 'desconto' => $desconto);
+
+    echo json_encode($selects);
 }
 
 ?>

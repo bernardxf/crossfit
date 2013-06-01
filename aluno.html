@@ -19,7 +19,7 @@
 					<div class="section">
 						<label>Data Nascimento</label>
 						<div>
-							<input class="xsmall data" type="text" name="dataNasc" size="10" ng-model="form.aluno.dataNasc">
+							<input class="xsmall data" type="text" name="dataNasc" size="10" ng-model="form.aluno.data_nasc">
 						</div>
 					</div>
 					<div class="section">
@@ -37,7 +37,7 @@
 					<div class="section">
 						<label>Estado Civil</label>
 						<div>
-							<select class="selectBox" name="estadoCivil" ng-model="form.aluno.estadoCivil">
+							<select class="selectBox" name="estadoCivil" ng-model="form.aluno.estado_civil">
 								<option value=""></option>
 								<option value="solteiro">Solteiro</option>
 								<option value="casado">Casado</option>
@@ -91,38 +91,38 @@
 					<div class="section">
 						<label>Telefone Fixo</label>
 						<div>
-							<input class="small fone" type="text" name="telfixo" ng-model="form.aluno.telfixo">
+							<input class="small fone" type="text" name="telfixo" ng-model="form.aluno.tel_fixo">
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone Celular</label>
 						<div>
-							<input class="small fone" type="text" name="telcel" ng-model="form.aluno.telcel">
+							<input class="small fone" type="text" name="telcel" ng-model="form.aluno.tel_celular">
 						</div>
 					</div>
 					<div class="section">
 						<label>Pessoa Referência</label>
 						<div>
-							<input class="full" type="text" name="pessoaref" ng-model="form.aluno.pessoaref">
+							<input class="full" type="text" name="pessoa_ref" ng-model="form.aluno.pessoa_ref">
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone Referência</label>
 						<div>
-							<input class="small fone" type="text" name="telref" ng-model="form.aluno.telref">
+							<input class="small fone" type="text" name="telref" ng-model="form.aluno.tel_ref">
 						</div>
 					</div>
 					<div class="section">
 						<label>Plano de Saúde</label>
 						<div>
-							<input class="medium" type="text" name="planoSaude" ng-model="form.aluno.planoSaude">
+							<input class="medium" type="text" name="planoSaude" ng-model="form.aluno.plano_saude">
 						</div>
 					</div>
 					<div class="section">
 						<label>Atestado Médico</label>
 						<div>
 							<div class="checksquared">
-								<input id="check-1" type="checkbox" value="action" name="atestadoMedico" ng-model="form.aluno.atestadoMedico">
+								<input id="check-1" type="checkbox" value="action" name="atestadoMedico" ng-model="form.aluno.atestado_medico">
 								<label title="Sim" for="check-1"></label>
 							</div>
 						</div>
@@ -130,11 +130,8 @@
 					<div class="section">
 						<label>Plano</label>
 						<div>
-							<select class="selectBox" name="plano" ng-model="form.aluno.plano">
-								<option value="62">Semestral 2x</option>
-								<option value="63">Semestral 3x</option>
-								<option value="64">Semestral 4x</option>
-								<option value="65">Semestral 5x</option>
+							<select class="small selectBox" style="width: 198px" ng-model="form.aluno.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.aluno.plano">
+								<option value="">--Selecione um plano--</option>
 							</select>
 						</div>
 					</div>
@@ -142,7 +139,7 @@
 						<label>Horario Econômico</label>
 						<div>
 							<div class="checksquared">
-								<input id="check-1" type="checkbox" value="action" name="horarioeconomico" ng-model="form.aluno.horarioEconomico">
+								<input id="check-1" type="checkbox" value="action" name="horarioeconomico" ng-model="form.aluno.horario_economico">
 								<label title="Sim" for="check-1"></label>
 							</div>
 						</div>
@@ -150,7 +147,7 @@
 					<div class="section">
 						<label>Forma de Pagamento</label>
 						<div>
-							<select class="selectBox" name="formaPagamento" ng-model="form.aluno.formaPagamento">
+							<select class="selectBox" name="formaPagamento" ng-model="form.aluno.forma_pagamento">
 								<option value=""></option>
 								<option value="1">Cartão de Crédito</option>
 								<option value="2">Cartão de Débito</option>
@@ -162,18 +159,15 @@
 					<div class="section">
 						<label>Desconto</label>
 						<div>
-							<select class="selectBox" name="desconto" ng-model="form.aluno.desconto">
-								<option value="25">Bolsa 25</option>
-								<option value="50">Bolsa 50</option>
-								<option value="75">Bolsa 75</option>
-								<option value="100">Bolsa 100</option>
+							<select class="small selectBox" style="width: 198px" ng-model="form.aluno.id_desconto_fk" ng-options="desc.id_desconto as desc.nome for desc in selData.aluno.desconto">
+							<option value="">--Selecione uma opção--</option>
 							</select>
 						</div>
 					</div>
 					<div class="section">
 						<label>Valor Total</label>
 						<div>
-							<i class="moeda"></i><input type="text" class="small" name="valorTotal" ng-model="form.aluno.valorTotal"/>
+							<i class="moeda"></i><input type="text" class="small" name="valorTotal" ng-model="form.aluno.valor_total"/>
 						</div>
 					</div>
 					<div class="section">
@@ -207,18 +201,14 @@
 					<div class="section">
 						<label>Nome</label>
 						<div>
-							<input class="full" type="text" name="nome">
+							<input class="full" type="text" name="nome" ng-model="form.pesquisaAluno.nome">
 						</div>
 					</div>
 					<div class="section">
 						<label>Plano</label>
 						<div>
-							<select class="small selectBox" style="width: 198px">
-								<option value=""></option>
-								<option value="1">Mensal 2x</option>
-								<option value="2">Trimestral 2x</option>
-								<option value="3">Semestral 2x</option>
-								<option value="4">Anual 2x</option>
+							<select class="small selectBox" style="width: 198px" ng-model="form.pesquisaAluno.plano" ng-options="plano.id_plano as plano.nome for plano in selData.aluno.plano">
+								<option value="">--Selecione um plano--</option>
 							</select>
 						</div>
 					</div>
@@ -233,7 +223,7 @@
 					</div>
 					<div class="section last">
 						<div>
-						<a class="btn btn-success" rel="1" title="Saving">Buscar</a>
+						<a class="btn btn-success" rel="1" title="Saving" ng-click="pesquisa('aluno');">Buscar</a>
 						<a class="btn">Cancelar</a>
 						</div>
 					</div>
@@ -259,8 +249,8 @@
 						<tr ng-repeat="aluno in dataset.aluno">
 							<td>{{aluno.nome}}</td>
 							<td>{{aluno.email}}</td>
-							<td>{{aluno.telefoneCelular}}</td>
-							<td>{{aluno.plano}}</td>
+							<td>{{aluno.tel_celular}}</td>
+							<td>{{aluno.id_plano_fk}}</td>
 							<td>
 								<a ng-click="edit('aluno',$index);"><img src="images/icon/icon_edit.png"></a>
 								<a ng-click="delete('aluno',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>

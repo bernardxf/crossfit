@@ -38,9 +38,7 @@ $.fn.serializeObject = function()
 
 var Application = {
     dataset : {},
-    openWindow : function(windowName){
-        $('#container').load(windowName+".php");
-    },
+    selectsData : {},
 	callMethod : function(callerId, methodToCall){
 		var form = $("#"+callerId).parents("form");
 		var dataset = Application.getDataset(form);
@@ -70,6 +68,14 @@ var Application = {
         Application.request(className, 'loadData', undefined, function(response){
             Application.dataset[className] = response;
             if (callback){
+                callback();
+            }
+        });
+    },
+    loadSelectsData: function(className, callback){
+        Application.request(className, 'loadSelects', undefined, function(response){
+            Application.selectsData[className] = response;
+            if(callback){
                 callback();
             }
         });

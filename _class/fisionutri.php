@@ -47,7 +47,7 @@ if ($methodToCall == 'save'){
 
 if($methodToCall == 'delete'){
     $id_fisionutri = $_POST['dataset']['id_fisionutri'];
-    DB::query('DELETE from plano where id_fisionutri = %d',$id_fisionutri);
+    DB::query('DELETE from fisionutri where id_fisionutri = %d',$id_fisionutri);
 
     $response['type'] = 'success';
     $response['message'] = 'Excluido com sucesso!';
