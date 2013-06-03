@@ -1,4 +1,18 @@
 var myApp = angular.module('myApp',[]);
+
+myApp.filter('translateValue', function(){
+	return function(input, selData, className){
+		var translated = '';
+		angular.forEach(selData, function(value){
+			if(value['id_'+className] == input){
+				translated = value['nome'];
+			}
+		});
+		
+		return translated;
+	}
+});
+
 myApp.controller('myController',function($scope){
 	$scope.logged = false;
 	$scope.template = 'login.html',

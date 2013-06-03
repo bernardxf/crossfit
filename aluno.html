@@ -250,7 +250,7 @@
 							<td>{{aluno.nome}}</td>
 							<td>{{aluno.email}}</td>
 							<td>{{aluno.tel_celular}}</td>
-							<td>{{aluno.id_plano_fk}}</td>
+							<td>{{aluno.id_plano_fk | translateValue:selData.aluno.plano:'plano'}}</td>
 							<td>
 								<a ng-click="edit('aluno',$index);"><img src="images/icon/icon_edit.png"></a>
 								<a ng-click="delete('aluno',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
