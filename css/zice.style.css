@@ -820,8 +820,9 @@ input[type=password].error {
 color:#cccccc;
  line-height: 28px;
 }
-}
+
 /*select box */
+select {width: 192px !important;}
 select[multiple] {
 	padding: 6px;
 	border: solid 1px #dddddd;

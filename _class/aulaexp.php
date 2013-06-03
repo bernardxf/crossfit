@@ -5,7 +5,7 @@ include 'sql.php';
 $methodToCall = $_POST['methodToCall'];
 
 if ($methodToCall == 'loadData'){
-    $rows = DB::get_rows(DB::query('SELECT * FROM aulaexp ORDER BY id_aulaexp ASC'));
+    $rows = DB::get_rows(DB::query('SELECT id_aulaexp, nome, DATE_FORMAT(data, "%d/%m/%Y") as data, telefone, confirmado, presente FROM aulaexp ORDER BY id_aulaexp ASC'));
     echo json_encode($rows);
 }
 
@@ -19,9 +19,12 @@ if ($methodToCall == 'save'){
     $presente = $_POST['dataset']['presente'];
     $state = $_POST['dataset']['_STATE'];
 
+    $exp_data = explode('/', $data);
+    $data = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
+
     if($state == 'I')  {
 
-        DB::query('INSERT INTO aulaexp (nome, data, telefone, confirmado, presente) VALUES (%s, %d, %s, %d, %d)', $nome, $data, $telefone, $confirmado, $presente);
+        DB::query('INSERT INTO aulaexp (nome, data, telefone, confirmado, presente) VALUES (%s, %s, %s, %d, %d)', $nome, $data, $telefone, $confirmado, $presente);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -29,7 +32,7 @@ if ($methodToCall == 'save'){
 
     } else if ($state == 'U') {
 
-        DB::query('UPDATE aulaexp SET nome = %s, data = %d, telefone = %s, confirmado = %d, presente = %d WHERE id_aulaexp = %d', $nome, $data, $telefone, $confirmado, $presente, $id);
+        DB::query('UPDATE aulaexp SET nome = %s, data = %s, telefone = %s, confirmado = %d, presente = %d WHERE id_aulaexp = %d', $nome, $data, $telefone, $confirmado, $presente, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';

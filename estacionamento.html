@@ -31,17 +31,14 @@
 					<div class="section">
 						<label>Placa</label>
 						<div>
-							<input class="medium placa" type="text" name="placa" ng-model="form.estacionamento.placa">
+							<input class="medium" ui-mask="'aaa-9999'" type="text" name="placa" ng-model="form.estacionamento.placa">
 						</div>
 					</div>
 					<div class="section">
 						<label>Plano</label>
 						<div>
-							<select class="selectBox" name="plano"  ng-model="form.estacionamento.plano">
-								<option value="e2">Estacionamento 2x</option>
-								<option value="e3">Estacionamento 3x</option>
-								<option value="e4">Estacionamento 4x</option>
-								<option value="e5">Estacionamento 5x</option>
+							<select class="small" ng-model="form.estacionamento.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.estacionamento.plano">
+								<option value="">--Selecione um plano--</option>
 							</select>
 						</div>
 					</div>
@@ -71,7 +68,7 @@
 					<div class="section">
 						<label>Placa</label>
 						<div>
-							<input class="full" type="text" name="placa">
+							<input class="full" ui-mask="'aaa-9999'" type="text" name="placa" ng-model="form.estacionamento.placa">
 						</div>
 					</div>
 					<div class="section last">

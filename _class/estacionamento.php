@@ -53,4 +53,11 @@ if($methodToCall == 'delete'){
     echo json_encode($response);
 }
 
+if($methodToCall == 'loadSelects'){
+    $plano = DB::get_rows(DB::query('SELECT id_plano, nome from plano'));
+    $selects = array('plano' => $plano);
+
+    echo json_encode($selects);
+}
+
 ?>

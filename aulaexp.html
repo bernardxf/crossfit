@@ -19,13 +19,13 @@
 					<div class="section">
 						<label>Data Aula</label>
 						<div>
-							<input class="medium data" type="text" name="data" size="10" ng-model="form.aulaexp.data">
+							<input class="medium data" type="text" ui-mask="'99/99/9999'" name="data" ng-model="form.aulaexp.data">
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone</label>
 						<div>
-							<input class="large fone" type="text" name="telefone" ng-model="form.aulaexp.telefone">
+							<input class="large fone" type="text" name="telefone" ui-mask="'(99) 9999-9999'" ng-model="form.aulaexp.telefone">
 						</div>
 					</div>
 					<div class="section">
@@ -72,7 +72,7 @@
 					<div class="section">
 						<label>Data Aula</label>
 						<div>
-							<input class="medium data" type="text" name="data" size="10">
+							<input class="medium" ui-mask="'99/99/9999'" type="text" name="data" ng-model="form.aulaexp.data">
 						</div>
 					</div>
 					<div class="section last">
