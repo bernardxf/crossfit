@@ -22,17 +22,19 @@ myApp.controller('myController',function($scope){
 	$scope.form = {},
 	$scope.selData = {},
 	$scope.loadData = function(className, callback){
-		Application.loadData(className, function(){
-			$scope.dataset[className] = JSON.parse(Application.dataset[className]);
+		var dataset = $scope.form[className];
+		$scope.callMethod(className, 'loadData', dataset, function(response){
+			$scope.dataset[className] = JSON.parse(response);
 			if (callback) callback();
 			$scope.$apply();
-		});			
+		});
 	},
 
 	$scope.loadSelects = function(className, callback){
-		Application.loadSelectsData(className, function(){
-			$scope.selData[className] =  JSON.parse(Application.selectsData[className])	;
+		$scope.callMethod(className, 'loadSelects', null, function(response){
+			$scope.selData[className] =  JSON.parse(response);
 			if (callback) callback();
+			$scope.$apply();
 		});
 	},
 
@@ -86,10 +88,7 @@ myApp.controller('myController',function($scope){
 		$scope.pageTitle = pageTitle;
  	},
 
-	$scope.callMethod = function(className, methodToCall, responseHandler){
-		var form = $("#"+className).parents("form");
-		var dataset = Application.getDataset(form);
-
+	$scope.callMethod = function(className, methodToCall, dataset, responseHandler){
 		Application.request(className, methodToCall, dataset, responseHandler);
 	},
 
@@ -99,10 +98,6 @@ myApp.controller('myController',function($scope){
 
 	$scope.toggle = function(type){
 		$scope.visualType = type;
-	},
-
-	$scope.pesquisa = function(className){
-		console.log($scope.form);
 	}
 
 });
@@ -120,6 +115,17 @@ myApp.controller('loginController', function($scope){
 			} else {
 				alertMessage('error','Usuário ou senha incorretos!');
 			}
+		});
+	}
+});
+
+myApp.controller('pesquisaController', function($scope){
+	$scope.pesquisaForm = {},
+	$scope.pesquisa = function(className){
+		var dataset = $scope.pesquisaForm[className];
+		$scope.callMethod(className, 'pesquisa', dataset, function(response){
+			$scope.dataset[className] = JSON.parse(response);
+			$scope.$apply();
 		});
 	}
 });
