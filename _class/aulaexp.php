@@ -2,10 +2,16 @@
 
 include 'sql.php';
 
+$SELECT = 'SELECT id_aulaexp, nome, DATE_FORMAT(data, "%d/%m/%Y") as data, telefone, confirmado, presente FROM aulaexp ORDER BY id_aulaexp ASC';
+
+$INSERT = 'INSERT INTO aulaexp (nome, data, telefone, confirmado, presente) VALUES (%s, %s, %s, %d, %d)';
+
+$UPDATE = 'UPDATE aulaexp SET nome = %s, data = %s, telefone = %s, confirmado = %d, presente = %d WHERE id_aulaexp = %d';
+
 $methodToCall = $_POST['methodToCall'];
 
 if ($methodToCall == 'loadData'){
-    $rows = DB::get_rows(DB::query('SELECT id_aulaexp, nome, DATE_FORMAT(data, "%d/%m/%Y") as data, telefone, confirmado, presente FROM aulaexp ORDER BY id_aulaexp ASC'));
+    $rows = DB::get_rows(DB::query($SELECT));
     echo json_encode($rows);
 }
 
@@ -24,7 +30,7 @@ if ($methodToCall == 'save'){
 
     if($state == 'I')  {
 
-        DB::query('INSERT INTO aulaexp (nome, data, telefone, confirmado, presente) VALUES (%s, %s, %s, %d, %d)', $nome, $data, $telefone, $confirmado, $presente);
+        DB::query($INSERT, $nome, $data, $telefone, $confirmado, $presente);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -32,7 +38,7 @@ if ($methodToCall == 'save'){
 
     } else if ($state == 'U') {
 
-        DB::query('UPDATE aulaexp SET nome = %s, data = %s, telefone = %s, confirmado = %d, presente = %d WHERE id_aulaexp = %d', $nome, $data, $telefone, $confirmado, $presente, $id);
+        DB::query($UPDATE, $nome, $data, $telefone, $confirmado, $presente, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -55,4 +61,20 @@ if($methodToCall == 'delete'){
     $response['message'] = 'Excluido com sucesso!';
     echo json_encode($response);
 }
+
+if($methodToCall == 'pesquisa'){
+    $dataset = $_POST['dataset'];
+
+    $pesquisa = $SELECT;
+
+    foreach ($dataset as $key => $value) {
+        if ($value != 'null') {
+            $pesquisa .= " AND $key like '$value%'";    
+        }
+    }
+
+    $rows = DB::get_rows(DB::query($pesquisa));
+    echo json_encode($rows);
+}
+
 ?>

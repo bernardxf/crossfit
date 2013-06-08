@@ -2,10 +2,16 @@
 
 include 'sql.php';
 
+$SELECT = 'SELECT id_estacionamento, id_plano_fk, modelo, cor, placa, id_aluno_fk FROM estacionamento ORDER BY id_estacionamento ASC';
+
+$INSERT = 'INSERT INTO estacionameto (id_aluno_fk, modelo, cor, placa, id_plano_fk) VALUES (%s, %s, %s, %s, %d)';
+
+$UPDATE = 'UPDATE estacionameto SET id_aluno_fk = %d, modelo = %s, cor = %s, placa = %s, id_plano_fk = %d WHERE id_estacionamento = %d';
+
 $methodToCall = $_POST['methodToCall'];
 
 if ($methodToCall == 'loadData'){
-    $rows = DB::get_rows(DB::query('SELECT * FROM estacionameto ORDER BY id_estacionamento ASC'));
+    $rows = DB::get_rows(DB::query($SELECT));
     echo json_encode($rows);
 }
 
@@ -21,7 +27,7 @@ if ($methodToCall == 'save'){
 
     if($state == 'I'){
         
-        DB::query('INSERT INTO estacionameto (id_aluno_fk, modelo, cor, placa, id_plano_fk) VALUES (%s, %s, %s, %s, %d)', $aluno, $modelo, $cor, $placa, $plano);
+        DB::query($INSERT, $aluno, $modelo, $cor, $placa, $plano);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -29,7 +35,7 @@ if ($methodToCall == 'save'){
 
     } else if($state == 'U'){
 
-        DB::query('UPDATE estacionameto SET id_aluno_fk = %s, modelo = %s, cor = %s, placa = %s, id_plano_fk = %d WHERE id_estacionamento = %d', $aluno, $modelo, $cor, $placa, $plano, $id);
+        DB::query($UPDATE, $aluno, $modelo, $cor, $placa, $plano, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -58,6 +64,21 @@ if($methodToCall == 'loadSelects'){
     $selects = array('plano' => $plano);
 
     echo json_encode($selects);
+}
+
+if($methodToCall == 'pesquisa'){
+    $dataset = $_POST['dataset'];
+
+    $pesquisa = $SELECT;
+
+    foreach ($dataset as $key => $value) {
+        if ($value != 'null') {
+            $pesquisa .= " AND $key like '$value%'";    
+        }
+    }
+
+    $rows = DB::get_rows(DB::query($pesquisa));
+    echo json_encode($rows);
 }
 
 ?>
