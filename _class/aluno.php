@@ -4,7 +4,7 @@ include 'sql.php';
 
 $SELECT = 'SELECT id_aluno, nome, DATE_FORMAT(data_nasc, "%d/%m/%Y") as data_nasc, rg, cpf, estado_civil, email, cep, logradouro, complemento, bairro, 
            cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, forma_pagamento, id_desconto_fk, valor_total, status, 
-            DATE_FORMAT(data_cad, "%d/%m/%Y") as data_cad, DATE_FORMAT(data_alt, "%d/%m/%Y") as data_alt FROM aluno ORDER BY nome ASC WHERE 1 = 1';
+            DATE_FORMAT(data_cad, "%d/%m/%Y") as data_cad, DATE_FORMAT(data_alt, "%d/%m/%Y") as data_alt FROM aluno WHERE 1 = 1';
 
 $INSERT = 'INSERT INTO aluno (nome, data_nasc, rg, cpf, estado_civil, email, cep, logradouro, complemento, bairro, 
             cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, forma_pagamento, id_desconto_fk, valor_total, status, data_cad, data_alt) 
@@ -17,7 +17,8 @@ $UPDATE = 'UPDATE aluno SET nome = %s, data_nasc = %s, rg = %d, cpf = %d, estado
 $methodToCall = $_POST['methodToCall'];
 
 if ($methodToCall == 'loadData'){
-    $rows = DB::get_rows(DB::query($SELECT));
+    $query = $SELECT." ORDER BY nome ASC";
+    $rows = DB::get_rows(DB::query($query));
     echo json_encode($rows);
 }
 
