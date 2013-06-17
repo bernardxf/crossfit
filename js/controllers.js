@@ -80,6 +80,7 @@ myApp.controller('myController',function($scope){
 	},
 
 	$scope.openWindow = function(className, pageTitle){
+		$scope.toggle('grid');
 		$scope.loadSelects(className, $scope.loadData(className, $scope.callWindow(className, pageTitle)));
 	},
  
@@ -119,7 +120,7 @@ myApp.controller('loginController', function($scope){
 	}
 });
 
-myApp.controller('pesquisaController', function($scope){
+myApp.controller('alunoController', function($scope){
 	$scope.pesquisaForm = {},
 	$scope.pesquisa = function(className){
 		var dataset = $scope.pesquisaForm[className];
@@ -127,6 +128,39 @@ myApp.controller('pesquisaController', function($scope){
 			$scope.dataset[className] = JSON.parse(response);
 			$scope.$apply();
 		});
+	}
+});
+
+myApp.controller('presencaController', function($scope){
+	$scope.pesquisaForm = {},
+	$scope.pesquisaDataset = {},
+	$scope.alunosPresente = [];
+	$scope.form = { 'alunos' : $scope.alunosPresente};
+	$scope.pesquisaAluno = function(className){
+		var dataset = $scope.pesquisaForm['aluno'];
+		$scope.callMethod(className, 'pesquisaAluno', dataset, function(response){
+			$scope.pesquisaDataset[className] = JSON.parse(response);
+			$scope.$apply();
+		});	
+	},
+	$scope.pesquisaPresenca = function(className){
+		var dataset = $scope.pesquisaForm['presenca'];
+		$scope.callMethod(className, 'pesquisaPresenca', dataset, function(response){
+			$scope.pesquisaDataset[className] = JSON.parse(response);
+			$scope.$apply();
+		});	
+	},
+	$scope.addAlunoPresente = function(aluno){
+		if ($.inArray(aluno, $scope.alunosPresente) == -1 && $scope.alunosPresente.length < 20) {
+			$scope.alunosPresente.push(aluno);	
+		}
+	},
+	$scope.removeAlunoPresente = function(indexAluno){
+		$scope.alunosPresente.splice(indexAluno,1);
+	},
+	$scope.salvaAlunosPresentes = function(){
+		$scope.callMethod('presenca', 'save', $scope.form);
+		$scope.toggle('grid');
 	}
 });
 

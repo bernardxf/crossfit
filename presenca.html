@@ -2,7 +2,7 @@
     <li><a href="#" title="Adicionar" ng-click="newRow('presenca');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
     <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
 </ul>	
-<div ng-switch on="visualType">
+<div ng-switch on="visualType" ng-controller="presencaController">
 	<div class="row-fluid" ng-switch-when="form">
 		<div class="widget span4 clearfix">
 			<div class="widget-header">
@@ -13,8 +13,8 @@
 					<div class="section last">
 						<label>Aluno</label>
 						<div>
-							<input class="full" type="text" name="nome">
-							<a class="btn btn-success" rel="1" title="Saving">Buscar</a>
+							<input class="full" type="text" name="nome" ng-model="pesquisaForm.aluno.nomeAluno">
+							<a class="btn btn-success" rel="1" title="Saving" ng-click="pesquisaAluno('presenca');">Buscar</a>
 						</div>
 					</div>
 					<table class="table table-bordered table-striped">
@@ -25,17 +25,9 @@
 							</tr>
 						</thead>
 						<tbody align="center">
-							<tr>
-								<td>João Luiz Machado</td>
-								<td><a href="javascript:;" class="edit"><img src="images/icon/color_18/directional_right.png"></a></td>
-							</tr>
-							<tr>
-								<td>João Henrique Machado</td>
-								<td><a href="javascript:;" class="edit"><img src="images/icon/color_18/directional_right.png"></a></td>
-							</tr>
-							<tr>
-								<td>João Paulo Silva</td>
-								<td><a href="javascript:;" class="edit"><img src="images/icon/color_18/directional_right.png"></a></td>
+							<tr ng-repeat="presenca in pesquisaDataset.presenca">	
+								<td>{{presenca.nome}}</td>
+								<td><img src="images/icon/color_18/directional_right.png" ng-click="addAlunoPresente(presenca);"></a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -51,14 +43,14 @@
 					<div class="section">
 						<label>Data</label>
 						<div>
-							<input class="full" type="text" name="data" />
+							<input class="full" type="text" name="data" ng-model="form.data"/>
 							<!-- <input class="full" ui-mask="'99/99/9999'" type="text" name="data" ng-model="form.presenca.data" /> -->
 						</div>
 					</div>
 					<div class="section">
 						<label>Horário</label>
 	                    <div>
-	                        <select class="full" name="horario">
+	                        <select class="full" name="horario" ng-model="form.horario">
 	                            <option value="630">6:30</option>
 	                            <option value="700">7:00</option>
 	                            <option value="730">7:30</option>
@@ -75,31 +67,12 @@
 	                        </select>
 	                    </div>
 					</div>
-					<ol class="rectangle-list">
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
+					<ol class="rectangle-list" ng-repeat="aluno in alunosPresente">
+						<li>{{aluno.nome}}<a class="ico color cross" ng-click="removeAlunoPresente($index);"></a></li>
 					</ol>
 					<div class="section last">
 						<div>
-							<a class="btn btn-success" rel="1" title="Saving" ng-click="save('presenca');">Salvar</a>
+							<a class="btn btn-success" rel="1" title="Saving" ng-click="salvaAlunosPresentes();">Salvar</a>
 							<a class="btn">Cancelar</a>
 						</div>
 					</div>
@@ -117,7 +90,7 @@
 					<div class="section">
 	                    <label>Horário</label>
 	                    <div>
-	                        <select class="" name="horario">
+	                        <select class="" name="horario" ng-model="pesquisaForm.presenca.horario">
 	                            <option value="630">6:30</option>
 	                            <option value="700">7:00</option>
 	                            <option value="730">7:30</option>
@@ -137,7 +110,7 @@
 					<div class="section">
 						<label>Data</label>
 						<div>
-							<input class="full" type="text" name="data" />
+							<input class="full" type="text" name="data" ng-model="pesquisaForm.presenca.data"/>
 							<!-- <input class="full" ui-mask="'99/99/9999'" type="text" name="data" ng-model="form.presenca.data" /> -->
 						</div>
 					</div>
@@ -157,25 +130,6 @@
 			<div class="widget-content">
 				<form>
 					<ol class="rectangle-list">
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
 						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
 					</ol>
 					<div class="section last">

@@ -2,7 +2,7 @@
     <li><a href="#" title="Adicionar" ng-click="newRow('aluno');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
     <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
 </ul>
-<div ng-switch on="visualType">
+<div ng-switch on="visualType" ng-controller="alunoController">
 	<div class="row-fluid" ng-switch-when="form">
 		<div class="widget span12 clearfix">
 			<div class="widget-header">
@@ -192,7 +192,7 @@
 		</div>
 	</div>
 	<div class="row-fluid" ng-switch-when="grid">
-		<div class="widget span4 clearfix" ng-controller="pesquisaController">
+		<div class="widget span4 clearfix">
 			<div class="widget-header">
 				<span>Pesquisar</span>
 			</div>

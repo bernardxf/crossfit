@@ -55,6 +55,8 @@ var Application = {
 			methodToCall : methodToCall
 		};
 
+        if (!responseHandler) responseHandler = Application.defaultResponseHandler;
+
 		$.post("_class/"+className+".php", params, function(response){
             responseHandler(response);
             if(callback)callback();
