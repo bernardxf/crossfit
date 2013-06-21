@@ -19,26 +19,25 @@
 					<div class="section">
 						<label>Data Nascimento</label>
 						<div>
-							<input class="xsmall data" type="text" name="dataNasc" size="10" ui-mask="'99/99/9999'" ng-model="form.aluno.data_nasc">
+							<input class="xsmall data" type="text" name="data_nasc" ng-model="form.aluno.data_nasc" ui-date>
 						</div>
 					</div>
 					<div class="section">
 						<label>RG</label>
 						<div>
-							<input class="xsmall" type="text" name="rg" ng-model="form.aluno.rg"/>
+							<input class="xsmall" type="text" name="rg" ng-model="form.aluno.rg" ui-rg/>
 						</div>
 					</div>
 					<div class="section">
 						<label>CPF</label>
 						<div>
-							<input class="small cpf" type="text" name="cpf" ng-model="form.aluno.cpf"/>
+							<input class="small cpf" type="text" name="cpf" ng-model="form.aluno.cpf" ui-cpf/>
 						</div>
 					</div>
 					<div class="section">
 						<label>Estado Civil</label>
 						<div>
 							<select class="selectBox" name="estadoCivil" ng-model="form.aluno.estado_civil">
-								<option value=""></option>
 								<option value="solteiro">Solteiro</option>
 								<option value="casado">Casado</option>
 								<option value="divorciado">Divorciado</option>
@@ -91,13 +90,13 @@
 					<div class="section">
 						<label>Telefone Fixo</label>
 						<div>
-							<input class="small fone" type="text" name="telfixo" ng-model="form.aluno.tel_fixo">
+							<input class="small fone" type="text" name="telfixo" ng-model="form.aluno.tel_fixo" ui-phone>
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone Celular</label>
 						<div>
-							<input class="small fone" type="text" name="telcel" ng-model="form.aluno.tel_celular">
+							<input class="small fone" type="text" name="telcel" ng-model="form.aluno.tel_celular" ui-phone>
 						</div>
 					</div>
 					<div class="section">
@@ -109,7 +108,7 @@
 					<div class="section">
 						<label>Telefone Referência</label>
 						<div>
-							<input class="small fone" type="text" name="telref" ng-model="form.aluno.tel_ref">
+							<input class="small fone" type="text" name="telref" ng-model="form.aluno.tel_ref" ui-phone>
 						</div>
 					</div>
 					<div class="section">
@@ -148,7 +147,6 @@
 						<label>Forma de Pagamento</label>
 						<div>
 							<select class="selectBox" name="formaPagamento" ng-model="form.aluno.forma_pagamento">
-								<option value=""></option>
 								<option value="1">Cartão de Crédito</option>
 								<option value="2">Cartão de Débito</option>
 								<option value="3">Cheque</option>

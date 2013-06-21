@@ -45,12 +45,11 @@ myApp.controller('myController',function($scope){
 	}
 
 	$scope.edit = function(className, index){
-		$scope.toggle('form');
-
-		var data = $scope.dataset[className][index];
+		var data = angular.copy($scope.dataset[className][index]);
 		data['_STATE'] = 'U';
 
 		$scope.form[className] = data;
+		$scope.toggle('form');
 	},
 
 	$scope.delete = function(className, index){
@@ -164,39 +163,57 @@ myApp.controller('presencaController', function($scope){
 	}
 });
 
-/* Masked Input */
-myApp.directive('uiMask', function() {
-    return {
-        require: 'ngModel',
-        scope: {
-            uiMask: '='
-        },
-        link: function($scope, element, attrs, controller) {
-            controller.$render = function() {
-                var value = controller.$viewValue || '';
-                //console.log('Rendering value: ', value);
-                element.val(value);
-                return element.mask($scope.uiMask);
-            };
-            controller.$parsers.push(function(value) {
-                var isValid;
-                //console.log('parsing', value);
-                isValid = element.data('mask-isvalid');
-                //console.log('isvalid', isValid);
-                controller.$setValidity('mask', isValid);
-                if (isValid) {
-                    console.log('returning',element.mask());
-                    return element.mask();
-                } else {
-                    return null;
-                }
-            });
-            return element.bind('keyup', function() {
-                //console.log('change');
-                return $scope.$apply(function() {
-                    return controller.$setViewValue(element.mask());
-                });
-            });
-        }
-    };
+myApp.directive('uiDate', function() {
+	return {
+		require: '?ngModel',
+		link: function($scope, element, attrs, controller) {
+			controller.$render = function(){
+				var value = controller.$viewValue || '';
+				element.val(value);
+				element.mask("99/99/9999");
+			};
+		}
+	};
+});
+
+myApp.directive('uiCpf', function() {
+	return {
+		require: '?ngModel',
+		link: function($scope, element, attrs, controller) {
+			controller.$render = function(){
+				var value = controller.$viewValue || '';
+				element.val(value);
+				element.mask("999.999.999-99");
+			};
+			
+		}
+	};
+});
+
+myApp.directive('uiRg', function() {
+	return {
+		require: '?ngModel',
+		link: function($scope, element, attrs, controller) {
+			controller.$render = function(){
+				var value = controller.$viewValue || '';
+				element.val(value);
+				element.mask("99.999.999");
+			};
+			
+		}
+	};
+});
+
+myApp.directive('uiPhone', function() {
+	return {
+		require: '?ngModel',
+		link: function($scope, element, attrs, controller) {
+			controller.$render = function(){
+				var value = controller.$viewValue || '';
+				element.val(value);
+				element.mask("(99)9999-9999");
+			};
+			
+		}
+	};
 });
