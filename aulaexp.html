@@ -19,13 +19,13 @@
 					<div class="section">
 						<label>Data Aula</label>
 						<div>
-							<input class="medium data" type="text" ui-mask="'99/99/9999'" name="data" ng-model="form.aulaexp.data">
+							<input class="medium data" type="text" ui-mask="'99/99/9999'" name="data" ng-model="form.aulaexp.data" ui-date>
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone</label>
 						<div>
-							<input class="large fone" type="text" name="telefone" ui-mask="'(99) 9999-9999'" ng-model="form.aulaexp.telefone">
+							<input class="large fone" type="text" name="telefone" ui-mask="'(99) 9999-9999'" ng-model="form.aulaexp.telefone" ui-phone>
 						</div>
 					</div>
 					<div class="section">
@@ -57,7 +57,7 @@
 		</div>
 	</div>
 	<div class="row-fluid" ng-switch-when="grid">
-		<div class="widget span4 clearfix" ng-controller="pesquisaController">
+		<div class="widget span4 clearfix">
 			<div class="widget-header">
 				<span>Pesquisar</span>
 			</div>
@@ -66,18 +66,18 @@
 					<div class="section">
 						<label>Nome</label>
 						<div>
-							<input class="full" type="text" name="nome" ng-model="pesquisaForm.aulaexp.nome">
+							<input class="full" type="text" name="nome" ng-model="pesquisaForm.nome">
 						</div>
 					</div>
 					<div class="section">
 						<label>Data Aula</label>
 						<div>
-							<input class="medium" ui-mask="'99/99/9999'" type="text" name="data" ng-model="pesquisaForm.aulaexp.data">
+							<input class="medium" type="text" name="data" ng-model="pesquisaForm.data" ui-date>
 						</div>
 					</div>
 					<div class="section last">
 						<div>
-							<a class="btn btn-success" title="Buscar" ng-click="pesquisa('aulaexp');">Buscar</a>
+							<a class="btn btn-success" title="Buscar" ng-click="pesquisa();">Buscar</a>
 							<a class="btn">Cancelar</a>
 						</div>
 					</div>

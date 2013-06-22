@@ -131,8 +131,8 @@ myApp.controller('alunoController', function($scope){
 });
 
 myApp.controller('presencaController', function($scope){
-	$scope.pesquisaForm = {},
-	$scope.pesquisaDataset = {},
+	$scope.pesquisaForm = {};
+	$scope.pesquisaDataset = {};
 	$scope.alunosPresente = [];
 	$scope.form = { 'alunos' : $scope.alunosPresente};
 	$scope.pesquisaAluno = function(className){
@@ -141,26 +141,40 @@ myApp.controller('presencaController', function($scope){
 			$scope.pesquisaDataset[className] = JSON.parse(response);
 			$scope.$apply();
 		});	
-	},
+	};
 	$scope.pesquisaPresenca = function(className){
 		var dataset = $scope.pesquisaForm['presenca'];
 		$scope.callMethod(className, 'pesquisaPresenca', dataset, function(response){
 			$scope.pesquisaDataset[className] = JSON.parse(response);
 			$scope.$apply();
 		});	
-	},
+	};
 	$scope.addAlunoPresente = function(aluno){
 		if ($.inArray(aluno, $scope.alunosPresente) == -1 && $scope.alunosPresente.length < 20) {
 			$scope.alunosPresente.push(aluno);	
 		}
-	},
+	};
 	$scope.removeAlunoPresente = function(indexAluno){
 		$scope.alunosPresente.splice(indexAluno,1);
-	},
+	};
 	$scope.salvaAlunosPresentes = function(){
 		$scope.callMethod('presenca', 'save', $scope.form);
 		$scope.toggle('grid');
-	}
+	};
+});
+
+myApp.controller('aulaExpController', function($scope){
+	$scope.aulaExpDataset = {};
+	$scope.pesquisaForm = {};
+	$scope.form = {};
+	$scope.pesquisa = function(){
+
+	};
+	$scope.save = function(){
+		$scope.callMethod('aulaexp', 'save', $scope.form);
+		$scope.toggle('grid');
+	};
+
 });
 
 myApp.directive('uiDate', function() {
@@ -168,9 +182,11 @@ myApp.directive('uiDate', function() {
 		require: '?ngModel',
 		link: function($scope, element, attrs, controller) {
 			controller.$render = function(){
+				$.mask.definitions['d'] = '[0-3]';
+				$.mask.definitions['m'] = '[0-1]';
 				var value = controller.$viewValue || '';
 				element.val(value);
-				element.mask("99/99/9999");
+				element.mask("d9/m9/9999");
 			};
 		}
 	};
@@ -205,6 +221,21 @@ myApp.directive('uiRg', function() {
 });
 
 myApp.directive('uiPhone', function() {
+	return {
+		require: '?ngModel',
+		link: function($scope, element, attrs, controller) {
+			controller.$render = function(){
+				var value = controller.$viewValue || '';
+				$.mask.definitions['z'] = '[a-zA-Z]';
+				element.val(value);
+				element.mask("zzz-9999");
+			};
+			
+		}
+	};
+});
+
+myApp.directive('uiPlaca', function() {
 	return {
 		require: '?ngModel',
 		link: function($scope, element, attrs, controller) {

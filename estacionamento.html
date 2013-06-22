@@ -53,7 +53,7 @@
 		</div>
 	</div>
 	<div class="row-fluid" ng-switch-when="grid">
-		<div class="widget span4 clearfix" ng-controller="pesquisaController">
+		<div class="widget span4 clearfix">
 			<div class="widget-header">
 				<span>Pesquisar</span>
 			</div>
@@ -62,18 +62,18 @@
 					<div class="section">
 						<label>Nome</label>
 						<div>
-							<input class="full" type="text" name="nome" ng-model="pesquisaForm.estacionamento.nome">
+							<input class="full" type="text" name="nome" ng-model="pesquisaForm.nome">
 						</div>
 					</div> 
 					<div class="section">
 						<label>Placa</label>
 						<div>
-							<input class="medium" ui-mask="'aaa-9999'" type="text" name="placa" ng-model="pesquisaForm.estacionamento.placa">
+							<input class="medium" type="text" name="placa" ng-model="pesquisaForm.placa" ui-placa>
 						</div>
 					</div>
 					<div class="section last">
 						<div>
-						<a class="btn btn-success" title="Buscar" ng-click="pesquisa('estacionamento');">Buscar</a>
+						<a class="btn btn-success" title="Buscar" ng-click="pesquisa();">Buscar</a>
 						<a class="btn">Cancelar</a>
 						</div>
 					</div>
