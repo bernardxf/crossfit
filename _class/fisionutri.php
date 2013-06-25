@@ -2,7 +2,7 @@
 
 include 'sql.php';
 
-$SELECT = 'SELECT id_fisionutri, nome, DATE_FORMAT(data, "%d/%m/%Y") as data, telefone, tipo, servico, valor FROM fisionutri ORDER BY id_fisionutri ASC';
+$SELECT = 'SELECT id_fisionutri, nome, DATE_FORMAT(data, "%d/%m/%Y") as data, telefone, tipo, servico, valor FROM fisionutri WHERE 1=1';
 
 $INSERT = 'INSERT INTO fisionutri (nome, data, telefone, tipo, servico, valor) VALUES (%s,%d,%s,%d,%s,%d)';
 
@@ -25,6 +25,9 @@ if ($methodToCall == 'save'){
 	$servico = $_POST['dataset']['servico'];
 	$valor = strval($_POST['dataset']['valor']);
     $state = $_POST['dataset']['_STATE'];
+
+    $exp_data = explode('/', $data);   
+    $data = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
 
     if($state == 'I')  {
         
@@ -67,7 +70,22 @@ if($methodToCall == 'pesquisa'){
 
     foreach ($dataset as $key => $value) {
         if ($value != 'null') {
-            $pesquisa .= " AND $key like '$value%'";    
+            if($key == 'data'){ 
+                $data_ini = $dataset['data']['data_ini'];
+                $data_fim = $dataset['data']['data_fim'];
+                if (!$data_ini) continue;
+                
+                $exp_data = explode('/', $data_ini);   
+                $data_ini = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
+                
+                $exp_data = explode('/', $data_fim);   
+                $data_fim = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
+
+                $pesquisa .= " AND data between '$data_ini' AND '$data_fim'";    
+            } else {
+                $pesquisa .= " AND $key = $value";    
+            }
+            
         }
     }
 

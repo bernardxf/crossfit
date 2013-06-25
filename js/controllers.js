@@ -177,6 +177,18 @@ myApp.controller('aulaExpController', function($scope){
 
 });
 
+myApp.controller('fisionutriController', function($scope){
+	$scope.pesquisaForm = {};
+	$scope.pesquisaDataset = {};
+	$scope.pesquisa = function(){
+		var dataset = $scope.pesquisaForm;
+		$scope.callMethod('fisionutri', 'pesquisa', dataset, function(response){
+			$scope.pesquisaDataset = JSON.parse(response);
+			$scope.$apply();
+		});	
+	};
+});
+
 myApp.directive('uiDate', function() {
 	return {
 		require: '?ngModel',
@@ -186,8 +198,19 @@ myApp.directive('uiDate', function() {
 				$.mask.definitions['m'] = '[0-1]';
 				var value = controller.$viewValue || '';
 				element.val(value);
-				element.mask("d9/m9/9999");
+				element.mask("d9/m9/9999", { completed : function(){
+					var value = this.val();
+					controller.$setViewValue(value);
+				}});
 			};
+			return element.bind('keyup', function() {
+                return $scope.$apply(function() {
+                	if(element.mask().length == 0){
+                		return controller.$setViewValue(element.mask());	
+                	}
+                	
+                });
+            });
 		}
 	};
 });
@@ -199,9 +222,19 @@ myApp.directive('uiCpf', function() {
 			controller.$render = function(){
 				var value = controller.$viewValue || '';
 				element.val(value);
-				element.mask("999.999.999-99");
+				element.mask("999.999.999-99", { completed : function(){
+					var value = this.val();
+					controller.$setViewValue(value);
+				}});
 			};
-			
+			return element.bind('keyup', function() {
+                return $scope.$apply(function() {
+                	if(element.mask().length == 0){
+                		return controller.$setViewValue(element.mask());	
+                	}
+                	
+                });
+            });
 		}
 	};
 });
@@ -213,24 +246,19 @@ myApp.directive('uiRg', function() {
 			controller.$render = function(){
 				var value = controller.$viewValue || '';
 				element.val(value);
-				element.mask("99.999.999");
+				element.mask("99.999.999", { completed : function(){
+					var value = this.val();
+					controller.$setViewValue(value);
+				}});
 			};
-			
-		}
-	};
-});
-
-myApp.directive('uiPhone', function() {
-	return {
-		require: '?ngModel',
-		link: function($scope, element, attrs, controller) {
-			controller.$render = function(){
-				var value = controller.$viewValue || '';
-				$.mask.definitions['z'] = '[a-zA-Z]';
-				element.val(value);
-				element.mask("zzz-9999");
-			};
-			
+			return element.bind('keyup', function() {
+                return $scope.$apply(function() {
+                	if(element.mask().length == 0){
+                		return controller.$setViewValue(element.mask());	
+                	}
+                	
+                });
+            });
 		}
 	};
 });
@@ -241,10 +269,45 @@ myApp.directive('uiPlaca', function() {
 		link: function($scope, element, attrs, controller) {
 			controller.$render = function(){
 				var value = controller.$viewValue || '';
+				$.mask.definitions['z'] = '[a-zA-Z]';
 				element.val(value);
-				element.mask("(99)9999-9999");
+				element.mask("zzz-9999", { completed : function(){
+					var value = this.val();
+					controller.$setViewValue(value);
+				}});
 			};
-			
+			return element.bind('keyup', function() {
+                return $scope.$apply(function() {
+                	if(element.mask().length == 0){
+                		return controller.$setViewValue(element.mask());	
+                	}
+                	
+                });
+            });
+		}
+	};
+});
+
+myApp.directive('uiPhone', function() {
+	return {
+		require: '?ngModel',
+		link: function($scope, element, attrs, controller) {
+			controller.$render = function(){
+				var value = controller.$viewValue || '';
+				element.val(value);
+				element.mask("(99)9999-9999", { completed : function(){
+					var value = this.val();
+					controller.$setViewValue(value);
+				}});
+			};
+			return element.bind('keyup', function() {
+                return $scope.$apply(function() {
+                	if(element.mask().length == 0){
+                		return controller.$setViewValue(element.mask());	
+                	}
+                	
+                });
+            });
 		}
 	};
 });

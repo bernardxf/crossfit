@@ -19,13 +19,13 @@
 					<div class="section">
 						<label>Data</label>
 						<div>
-							<input class="xsmall" ui-mask="'99/99/9999'" type="text" name="data" ng-model="form.fisionutri.data"/>
+							<input class="xsmall" type="text" name="data" ng-model="form.fisionutri.data" ui-date/>
 						</div>
 					</div>
 					<div class="section">
 						<label>Telefone</label>
 						<div>
-							<input class="small" ui-mask="'(99) 9999-9999'" type="text" name="telefone" ng-model="form.fisionutri.telefone">
+							<input class="small" type="text" name="telefone" ng-model="form.fisionutri.telefone" ui-phone>
 						</div>
 					</div>
 					<div class="section">
@@ -63,7 +63,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row-fluid" ng-switch-when="grid">
+	<div class="row-fluid" ng-switch-when="grid" ng-controller="fisionutriController">
 		<div class="widget span4 clearfix">
 			<div class="widget-header">
 				<span>Pesquisar</span>
@@ -73,9 +73,9 @@
 					<div class="section">
 						<label>Data</label>
 						<div>
-							<input class="medium" type="text" name="dataini" ng-model="pesquisaForm.data_ini" ui-date>
+							<input class="medium" type="text" name="dataini" ng-model="pesquisaForm.data.data_ini" ui-date>
 							<br/> a <br/>
-							<input class="medium" type="text" name="datafim" ng-model="pesquisaForm.data_fim" ui-date>
+							<input class="medium" type="text" name="datafim" ng-model="pesquisaForm.data.data_fim" ui-date>
 						</div>
 					</div>
 					<div class="section">
@@ -116,7 +116,7 @@
 						</tr>
 					</thead>
 					<tbody align="center">
-						<tr ng-repeat="fisionutri in dataset.fisionutri">
+						<tr ng-repeat="fisionutri in pesquisaDataset">
 							<td>{{fisionutri.nome}}</td>
 							<td>{{fisionutri.data}}</td>
 							<td>{{fisionutri.tipo}}</td>
