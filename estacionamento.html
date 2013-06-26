@@ -2,7 +2,7 @@
     <li><a href="#" title="Adicionar" ng-click="newRow('estacionamento');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
     <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
 </ul>	
-<div ng-switch on="visualType">
+<div ng-switch on="visualType" ng-controller="estacionamentoController">
 	<div class="row-fluid" ng-switch-when="form">
 		<div class="widget span12 clearfix">
 			<div class="widget-header">
@@ -13,7 +13,9 @@
 					<div class="section">
 						<label>Aluno</label>
 						<div>
-							<input class="full" type="text" name="aluno" ng-model="form.estacionamento.aluno">
+							<select class="small" ng-model="form.estacionamento.id_aluno_fk" ng-options="aluno.id_aluno as aluno.nome for aluno in selData.estacionamento.aluno">
+								<option value="">--Selecione um aluno--</option>
+							</select>
 						</div>
 					</div>
 					<div class="section">
@@ -60,10 +62,10 @@
 			<div class="widget-content">
 				<form>
 					<div class="section">
-						<label>Nome</label>
-						<div>
-							<input class="full" type="text" name="nome" ng-model="pesquisaForm.nome">
-						</div>
+						<label>Aluno</label>
+						<select class="small" ng-model="pesquisaForm.id_aluno_fk" ng-options="aluno.id_aluno as aluno.nome for aluno in selData.estacionamento.aluno">
+							<option value="">--Selecione um aluno--</option>
+						</select>
 					</div> 
 					<div class="section">
 						<label>Placa</label>
@@ -97,12 +99,12 @@
 						</tr>
 					</thead>
 					<tbody align="center">
-						<tr ng-repeat="estacionamento in dataset.estacionamento">
-							<td>{{estacionamento.id_aluno_fk}}</td>
+						<tr ng-repeat="estacionamento in pesquisaDataset">
+							<td>{{estacionamento.id_aluno_fk | translateValue:selData.estacionamento.aluno:'aluno'}}</td>
 							<td>{{estacionamento.modelo}}</td>
 							<td>{{estacionamento.cor}}</td>
 							<td>{{estacionamento.placa}}</td>
-							<td>{{estacionamento.id_plano_fk}}</td>
+							<td>{{estacionamento.id_plano_fk  | translateValue:selData.estacionamento.plano:'plano'}}</td>
 							<td>
 								<a ng-click="edit('estacionamento',$index);"><img src="images/icon/icon_edit.png"></a>
 								<a ng-click="delete('estacionamento',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>

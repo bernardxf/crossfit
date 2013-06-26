@@ -2,27 +2,28 @@
 
 include 'sql.php';
 
-$SELECT = 'SELECT id_estacionamento, id_plano_fk, modelo, cor, placa, id_aluno_fk FROM estacionamento ORDER BY id_estacionamento ASC';
+$SELECT = 'SELECT id_estacionamento, id_plano_fk, modelo, cor, placa, id_aluno_fk FROM estacionamento WHERE 1 = 1';
 
-$INSERT = 'INSERT INTO estacionameto (id_aluno_fk, modelo, cor, placa, id_plano_fk) VALUES (%s, %s, %s, %s, %d)';
+$INSERT = 'INSERT INTO estacionamento (id_aluno_fk, modelo, cor, placa, id_plano_fk) VALUES (%s, %s, %s, %s, %d)';
 
-$UPDATE = 'UPDATE estacionameto SET id_aluno_fk = %d, modelo = %s, cor = %s, placa = %s, id_plano_fk = %d WHERE id_estacionamento = %d';
+$UPDATE = 'UPDATE estacionamento SET id_aluno_fk = %d, modelo = %s, cor = %s, placa = %s, id_plano_fk = %d WHERE id_estacionamento = %d';
 
 $methodToCall = $_POST['methodToCall'];
 
 if ($methodToCall == 'loadData'){
-    $rows = DB::get_rows(DB::query($SELECT));
+    $query = $SELECT." ORDER BY id_estacionamento ASC";
+    $rows = DB::get_rows(DB::query($query));
     echo json_encode($rows);
 }
 
 if ($methodToCall == 'save'){
 
     $id = $_POST['dataset']['id_estacionamento'];
-    $aluno = $_POST['dataset']['aluno'];
+    $aluno = $_POST['dataset']['id_aluno_fk'];
     $modelo = $_POST['dataset']['modelo'];
     $cor = $_POST['dataset']['cor'];
     $placa = $_POST['dataset']['placa'];
-    $plano = $_POST['dataset']['plano'];
+    $plano = $_POST['dataset']['id_plano_fk'];
     $state = $_POST['dataset']['_STATE'];
 
     if($state == 'I'){
@@ -61,7 +62,8 @@ if($methodToCall == 'delete'){
 
 if($methodToCall == 'loadSelects'){
     $plano = DB::get_rows(DB::query('SELECT id_plano, nome from plano'));
-    $selects = array('plano' => $plano);
+    $aluno = DB::get_rows(DB::query('SELECT id_aluno, nome from aluno'));
+    $selects = array('plano' => $plano, 'aluno' => $aluno);
 
     echo json_encode($selects);
 }

@@ -189,6 +189,18 @@ myApp.controller('fisionutriController', function($scope){
 	};
 });
 
+myApp.controller('estacionamentoController', function($scope){
+	$scope.pesquisaForm = {};
+	$scope.pesquisaDataset = {};
+	$scope.pesquisa = function(){
+		var dataset = $scope.pesquisaForm;
+		$scope.callMethod('estacionamento', 'pesquisa', dataset, function(response){
+			$scope.pesquisaDataset = JSON.parse(response);
+			$scope.$apply();
+		});		
+	};
+});
+
 myApp.directive('uiDate', function() {
 	return {
 		require: '?ngModel',
