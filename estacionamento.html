@@ -1,8 +1,9 @@
+<div ng-controller="estacionamentoController">
 <ul id="shortcut">
-    <li><a href="#" title="Adicionar" ng-click="newRow('estacionamento');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+    <li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
     <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
 </ul>	
-<div ng-switch on="visualType" ng-controller="estacionamentoController">
+<div ng-switch on="visualType" >
 	<div class="row-fluid" ng-switch-when="form">
 		<div class="widget span12 clearfix">
 			<div class="widget-header">
@@ -13,7 +14,7 @@
 					<div class="section">
 						<label>Aluno</label>
 						<div>
-							<select class="small" ng-model="form.estacionamento.id_aluno_fk" ng-options="aluno.id_aluno as aluno.nome for aluno in selData.estacionamento.aluno">
+							<select class="small" ng-model="form.id_aluno_fk" ng-options="aluno.id_aluno as aluno.nome for aluno in selData.estacionamento.aluno">
 								<option value="">--Selecione um aluno--</option>
 							</select>
 						</div>
@@ -21,25 +22,25 @@
 					<div class="section">
 						<label>Modelo</label>
 						<div>
-							<input class="full" type="text" name="modelo" ng-model="form.estacionamento.modelo">
+							<input class="full" type="text" name="modelo" ng-model="form.modelo">
 						</div>
 					</div>
 					<div class="section">
 						<label>Cor</label>
 						<div>
-							<input class="full" type="text" name="cor" ng-model="form.estacionamento.cor">
+							<input class="full" type="text" name="cor" ng-model="form.cor">
 						</div>
 					</div>
 					<div class="section">
 						<label>Placa</label>
 						<div>
-							<input class="medium" type="text" name="placa" ng-model="form.estacionamento.placa" ui-placa>
+							<input class="medium" type="text" name="placa" ng-model="form.placa" ui-placa>
 						</div>
 					</div>
 					<div class="section">
 						<label>Plano</label>
 						<div>
-							<select class="small" ng-model="form.estacionamento.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.estacionamento.plano">
+							<select class="small" ng-model="form.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.estacionamento.plano">
 								<option value="">--Selecione um plano--</option>
 							</select>
 						</div>
@@ -106,8 +107,8 @@
 							<td>{{estacionamento.placa}}</td>
 							<td>{{estacionamento.id_plano_fk  | translateValue:selData.estacionamento.plano:'plano'}}</td>
 							<td>
-								<a ng-click="edit('estacionamento',$index);"><img src="images/icon/icon_edit.png"></a>
-								<a ng-click="delete('estacionamento',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+								<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
+								<a ng-click="deleteRow($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
 							</td>
 						</tr>
 					</tbody>
@@ -115,4 +116,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>

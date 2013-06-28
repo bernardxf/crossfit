@@ -52,6 +52,22 @@ myApp.controller('myController',function($scope){
 		$scope.toggle('form');
 	},
 
+	$scope.deleteRow = function(className, dataset, callback){
+		bootbox.dialog("Deseja realmente excluir?", [{
+			"label" : "Sim",
+			"class" : "btn-success",
+			"callback": function() {
+				var data = dataset;
+				data['_STATE'] = 'D';
+
+				Application.deleteRow(className, data, callback);
+
+			}
+		}, {
+			"label" : "Cancelar"
+		}]);
+	},
+
 	$scope.delete = function(className, index){
 		bootbox.dialog("Deseja realmente excluir?", [{
 			"label" : "Sim",
@@ -60,9 +76,7 @@ myApp.controller('myController',function($scope){
 				var data = $scope.dataset[className][index];
 				data['_STATE'] = 'D';
 
-				Application.deleteRow(className, data, function(){
-					$scope.loadData(className);
-				});
+				Application.deleteRow(className, data);
 
 			}
 		}, {
@@ -70,10 +84,12 @@ myApp.controller('myController',function($scope){
 		}]);
 	},
 
-	$scope.save = function(className){
-		var dataset = $scope.form[className];
+	$scope.save = function(className, dataset, callback){
+		var dataset = dataset ? dataset : $scope.form[className];
 		Application.saveRow(className, dataset, function(){
 			$scope.loadData(className);
+			//@todo remover o loadData
+			if(callback) callback();
 		});
 		$scope.toggle('grid');
 	},
@@ -192,12 +208,37 @@ myApp.controller('fisionutriController', function($scope){
 myApp.controller('estacionamentoController', function($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
+	$scope.form = {};
 	$scope.pesquisa = function(){
 		var dataset = $scope.pesquisaForm;
 		$scope.callMethod('estacionamento', 'pesquisa', dataset, function(response){
 			$scope.pesquisaDataset = JSON.parse(response);
 			$scope.$apply();
 		});		
+	};
+	$scope.save = function(){
+		$scope.$parent.save('estacionamento', $scope.form, function(){
+			$scope.pesquisa();
+			console.log('pesquisa after save');
+		});
+		
+	};
+	$scope.newRow = function(){
+		var dataset = {'_STATE':'I'};
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.edit = function(index){
+		var dataset = angular.copy($scope.pesquisaDataset[index]);
+		dataset['_STATE'] = 'U';
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.deleteRow = function(index){
+		var dataset = $scope.pesquisaDataset[index];
+		$scope.$parent.deleteRow('estacionamento', dataset, function(){
+			$scope.pesquisa();
+		});
 	};
 });
 
