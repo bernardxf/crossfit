@@ -219,7 +219,6 @@ myApp.controller('estacionamentoController', function($scope){
 	$scope.save = function(){
 		$scope.$parent.save('estacionamento', $scope.form, function(){
 			$scope.pesquisa();
-			console.log('pesquisa after save');
 		});
 		
 	};
