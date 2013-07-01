@@ -196,12 +196,36 @@ myApp.controller('aulaExpController', function($scope){
 myApp.controller('fisionutriController', function($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
+	$scope.form = {};
 	$scope.pesquisa = function(){
 		var dataset = $scope.pesquisaForm;
 		$scope.callMethod('fisionutri', 'pesquisa', dataset, function(response){
 			$scope.pesquisaDataset = JSON.parse(response);
 			$scope.$apply();
-		});	
+		});		
+	};
+	$scope.save = function(){
+		$scope.$parent.save('fisionutri', $scope.form, function(){
+			$scope.pesquisa();
+		});
+		
+	};
+	$scope.newRow = function(){
+		var dataset = {'_STATE':'I'};
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.edit = function(index){
+		var dataset = angular.copy($scope.pesquisaDataset[index]);
+		dataset['_STATE'] = 'U';
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.deleteRow = function(index){
+		var dataset = $scope.pesquisaDataset[index];
+		$scope.$parent.deleteRow('fisionutri', dataset, function(){
+			$scope.pesquisa();
+		});
 	};
 });
 
