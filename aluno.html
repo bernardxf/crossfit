@@ -1,262 +1,264 @@
-<ul id="shortcut">
-    <li><a href="#" title="Adicionar" ng-click="newRow('aluno');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
-    <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
-</ul>
-<div ng-switch on="visualType" ng-controller="alunoController">
-	<div class="row-fluid" ng-switch-when="form">
-		<div class="widget span12 clearfix">
-			<div class="widget-header">
-				<span>Cadastrar</span>
-			</div>
-			<div class="widget-content">
-				<form id="aluno_form" class="form">
-					<div class="section">
-						<label>Nome</label>
-						<div>
-							<input class="full" type="text" name="nome" ng-model="form.aluno.nome">
-						</div>
-					</div>
-					<div class="section">
-						<label>Data Nascimento</label>
-						<div>
-							<input class="xsmall data" type="text" name="data_nasc" ng-model="form.aluno.data_nasc" ui-date>
-						</div>
-					</div>
-					<div class="section">
-						<label>RG</label>
-						<div>
-							<input class="xsmall" type="text" name="rg" ng-model="form.aluno.rg" ui-rg/>
-						</div>
-					</div>
-					<div class="section">
-						<label>CPF</label>
-						<div>
-							<input class="small cpf" type="text" name="cpf" ng-model="form.aluno.cpf" ui-cpf/>
-						</div>
-					</div>
-					<div class="section">
-						<label>Estado Civil</label>
-						<div>
-							<select class="selectBox" name="estadoCivil" ng-model="form.aluno.estado_civil">
-								<option value="solteiro">Solteiro</option>
-								<option value="casado">Casado</option>
-								<option value="divorciado">Divorciado</option>
-								<option value="viuvo">Viúvo</option>
-							</select>
-						</div>
-					</div>
-					<div class="section">
-						<label>E-mail</label>
-						<div>
-							<input class="large" type="text" name="email" ng-model="form.aluno.email">
-						</div>
-					</div>
-					<div class="section">
-						<label>Logradouro</label>
-						<div>
-							<input class="full" type="text" name="logradouro" ng-model="form.aluno.logradouro">
-						</div>
-					</div>
-					<div class="section">
-						<label>Complemento</label>
-						<div>
-							<input class="small" type="text" name="complemento" ng-model="form.aluno.complemento">
-						</div>
-					</div>
-					<div class="section">
-						<label>Bairro</label>
-						<div>
-							<input class="full" type="text" name="bairro" ng-model="form.aluno.bairro">
-						</div>
-					</div>
-					<div class="section">
-						<label>Cidade</label>
-						<div>
-							<input class="full" type="text" name="cidade" ng-model="form.aluno.cidade">
-						</div>
-					</div>
-					<div class="section">
-						<label>UF</label>
-						<div>
-							<input class="xxsmall uf" type="text" name="uf" ng-model="form.aluno.uf">
-						</div>
-					</div>
-					<div class="section">
-						<label>CEP</label>
-						<div>
-							<input class="xsmall cep" type="text" name="cep" ng-model="form.aluno.cep">
-						</div>
-					</div>
-					<div class="section">
-						<label>Telefone Fixo</label>
-						<div>
-							<input class="small fone" type="text" name="telfixo" ng-model="form.aluno.tel_fixo" ui-phone>
-						</div>
-					</div>
-					<div class="section">
-						<label>Telefone Celular</label>
-						<div>
-							<input class="small fone" type="text" name="telcel" ng-model="form.aluno.tel_celular" ui-phone>
-						</div>
-					</div>
-					<div class="section">
-						<label>Pessoa Referência</label>
-						<div>
-							<input class="full" type="text" name="pessoa_ref" ng-model="form.aluno.pessoa_ref">
-						</div>
-					</div>
-					<div class="section">
-						<label>Telefone Referência</label>
-						<div>
-							<input class="small fone" type="text" name="telref" ng-model="form.aluno.tel_ref" ui-phone>
-						</div>
-					</div>
-					<div class="section">
-						<label>Plano de Saúde</label>
-						<div>
-							<input class="medium" type="text" name="planoSaude" ng-model="form.aluno.plano_saude">
-						</div>
-					</div>
-					<div class="section">
-						<label>Atestado Médico</label>
-						<div>
-							<div class="checksquared">
-								<input id="check-1" type="checkbox" value="action" name="atestadoMedico" ng-model="form.aluno.atestado_medico">
-								<label title="Sim" for="check-1"></label>
+<div ng-controller="alunoController">
+	<ul id="shortcut">
+	<li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+		<li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
+	</ul>
+	<div ng-switch on="visualType">
+		<div class="row-fluid" ng-switch-when="form">
+			<div class="widget span12 clearfix">
+				<div class="widget-header">
+					<span>Cadastrar</span>
+				</div>
+				<div class="widget-content">
+					<form id="aluno_form" class="form">
+						<div class="section">
+							<label>Nome</label>
+							<div>
+								<input class="full" type="text" name="nome" ng-model="form.nome">
 							</div>
 						</div>
-					</div>
-					<div class="section">
-						<label>Plano</label>
-						<div>
-							<select class="small selectBox" style="width: 198px" ng-model="form.aluno.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.aluno.plano">
-								<option value="">--Selecione um plano--</option>
-							</select>
-						</div>
-					</div>
-					<div class="section">
-						<label>Horario Econômico</label>
-						<div>
-							<div class="checksquared">
-								<input id="check-1" type="checkbox" value="action" name="horarioeconomico" ng-model="form.aluno.horario_economico">
-								<label title="Sim" for="check-1"></label>
+						<div class="section">
+							<label>Data Nascimento</label>
+							<div>
+								<input class="xsmall data" type="text" name="data_nasc" ng-model="form.data_nasc" ui-date>
 							</div>
 						</div>
-					</div>
-					<div class="section">
-						<label>Forma de Pagamento</label>
-						<div>
-							<select class="selectBox" name="formaPagamento" ng-model="form.aluno.forma_pagamento">
-								<option value="1">Cartão de Crédito</option>
-								<option value="2">Cartão de Débito</option>
-								<option value="3">Cheque</option>
-								<option value="4">Dinheiro</option>
-							</select>
+						<div class="section">
+							<label>RG</label>
+							<div>
+								<input class="xsmall" type="text" name="rg" ng-model="form.rg" ui-rg/>
+							</div>
 						</div>
-					</div>
-					<div class="section">
-						<label>Desconto</label>
-						<div>
-							<select class="small selectBox" style="width: 198px" ng-model="form.aluno.id_desconto_fk" ng-options="desc.id_desconto as desc.nome for desc in selData.aluno.desconto">
-							<option value="">--Selecione uma opção--</option>
-							</select>
+						<div class="section">
+							<label>CPF</label>
+							<div>
+								<input class="small cpf" type="text" name="cpf" ng-model="form.cpf" ui-cpf/>
+							</div>
 						</div>
-					</div>
-					<div class="section">
-						<label>Valor Total</label>
-						<div>
-							<i class="moeda"></i><input type="text" class="small" name="valorTotal" ng-model="form.aluno.valor_total"/>
+						<div class="section">
+							<label>Estado Civil</label>
+							<div>
+								<select class="selectBox" name="estadoCivil" ng-model="form.estado_civil">
+									<option value="solteiro">Solteiro</option>
+									<option value="casado">Casado</option>
+									<option value="divorciado">Divorciado</option>
+									<option value="viuvo">Viúvo</option>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="section">
-						<label>Status</label>
-						<div>
-							<select class="selectBox" name="status" ng-model="form.aluno.status">
-								<option value="1">Ativo</option>
-								<option value="2">Inativo</option>
-								<option value="3">Trancado</option>
-							</select>
+						<div class="section">
+							<label>E-mail</label>
+							<div>
+								<input class="large" type="text" name="email" ng-model="form.email">
+							</div>
 						</div>
-					</div>
-					<div class="section last">
-						<div>
-							<a id="btnCadastrarDesconto" class="btn btn-success" title="Salvar" ng-click ="save('aluno');">Salvar</a>
-							<input type="reset" class="btn" value="Cancelar">
-							<a class="btn" title="Imprimir Contrato"><i class="icon-file"></i> Imprimir Contrato</a>
+						<div class="section">
+							<label>Logradouro</label>
+							<div>
+								<input class="full" type="text" name="logradouro" ng-model="form.logradouro">
+							</div>
 						</div>
-					</div>
-				</form>
+						<div class="section">
+							<label>Complemento</label>
+							<div>
+								<input class="small" type="text" name="complemento" ng-model="form.complemento">
+							</div>
+						</div>
+						<div class="section">
+							<label>Bairro</label>
+							<div>
+								<input class="full" type="text" name="bairro" ng-model="form.bairro">
+							</div>
+						</div>
+						<div class="section">
+							<label>Cidade</label>
+							<div>
+								<input class="full" type="text" name="cidade" ng-model="form.cidade">
+							</div>
+						</div>
+						<div class="section">
+							<label>UF</label>
+							<div>
+								<input class="xxsmall uf" type="text" name="uf" ng-model="form.uf">
+							</div>
+						</div>
+						<div class="section">
+							<label>CEP</label>
+							<div>
+								<input class="xsmall cep" type="text" name="cep" ng-model="form.cep">
+							</div>
+						</div>
+						<div class="section">
+							<label>Telefone Fixo</label>
+							<div>
+								<input class="small fone" type="text" name="telfixo" ng-model="form.tel_fixo" ui-phone>
+							</div>
+						</div>
+						<div class="section">
+							<label>Telefone Celular</label>
+							<div>
+								<input class="small fone" type="text" name="telcel" ng-model="form.tel_celular" ui-phone>
+							</div>
+						</div>
+						<div class="section">
+							<label>Pessoa Referência</label>
+							<div>
+								<input class="full" type="text" name="pessoa_ref" ng-model="form.pessoa_ref">
+							</div>
+						</div>
+						<div class="section">
+							<label>Telefone Referência</label>
+							<div>
+								<input class="small fone" type="text" name="telref" ng-model="form.tel_ref" ui-phone>
+							</div>
+						</div>
+						<div class="section">
+							<label>Plano de Saúde</label>
+							<div>
+								<input class="medium" type="text" name="planoSaude" ng-model="form.plano_saude">
+							</div>
+						</div>
+						<div class="section">
+							<label>Atestado Médico</label>
+							<div>
+								<div class="checksquared">
+									<input id="check-1" type="checkbox" value="action" name="atestadoMedico" ng-model="form.atestado_medico">
+									<label title="Sim" for="check-1"></label>
+								</div>
+							</div>
+						</div>
+						<div class="section">
+							<label>Plano</label>
+							<div>
+								<select class="small selectBox" style="width: 198px" ng-model="form.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.plano">
+									<option value="">--Selecione um plano--</option>
+								</select>
+							</div>
+						</div>
+						<div class="section">
+							<label>Horario Econômico</label>
+							<div>
+								<div class="checksquared">
+									<input id="check-1" type="checkbox" value="action" name="horarioeconomico" ng-model="form.horario_economico">
+									<label title="Sim" for="check-1"></label>
+								</div>
+							</div>
+						</div>
+						<div class="section">
+							<label>Forma de Pagamento</label>
+							<div>
+								<select class="selectBox" name="formaPagamento" ng-model="form.forma_pagamento">
+									<option value="1">Cartão de Crédito</option>
+									<option value="2">Cartão de Débito</option>
+									<option value="3">Cheque</option>
+									<option value="4">Dinheiro</option>
+								</select>
+							</div>
+						</div>
+						<div class="section">
+							<label>Desconto</label>
+							<div>
+								<select class="small selectBox" style="width: 198px" ng-model="form.id_desconto_fk" ng-options="desc.id_desconto as desc.nome for desc in selData.desconto">
+									<option value="">--Selecione uma opção--</option>
+								</select>
+							</div>
+						</div>
+						<div class="section">
+							<label>Valor Total</label>
+							<div>
+								<i class="moeda"></i><input type="text" class="small" name="valorTotal" ng-model="form.valor_total"/>
+							</div>
+						</div>
+						<div class="section">
+							<label>Status</label>
+							<div>
+								<select class="selectBox" name="status" ng-model="form.status">
+									<option value="1">Ativo</option>
+									<option value="2">Inativo</option>
+									<option value="3">Trancado</option>
+								</select>
+							</div>
+						</div>
+						<div class="section last">
+							<div>
+								<a id="btnCadastrarDesconto" class="btn btn-success" title="Salvar" ng-click ="save();">Salvar</a>
+								<input type="reset" class="btn" value="Cancelar">
+								<a class="btn" title="Imprimir Contrato"><i class="icon-file"></i> Imprimir Contrato</a>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row-fluid" ng-switch-when="grid">
-		<div class="widget span4 clearfix">
-			<div class="widget-header">
-				<span>Pesquisar</span>
-			</div>
-			<div class="widget-content">
-				<form>
-					<div class="section">
-						<label>Nome</label>
-						<div>
-							<input class="full" type="text" name="nome" ng-model="pesquisaForm.aluno.nome">
-						</div>
-					</div>
-					<div class="section">
-						<label>Plano</label>
-						<div>
-							<select class="small selectBox" style="width: 198px" ng-model="pesquisaForm.aluno.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.aluno.plano">
-								<option value="">--Selecione um plano--</option>
-							</select>
-						</div>
-					</div>
-					<div class="section">
-						<label>Horario Econômico</label>
-						<div>
-							<div class="checksquared">
-								<input id="check-1" type="checkbox" value="action" name="horarioeconomico" ng-model="pesquisaForm.aluno.horarioeconimico">
-								<label title="Sim" for="check-1"></label>
+		<div class="row-fluid" ng-switch-when="grid">
+			<div class="widget span4 clearfix">
+				<div class="widget-header">
+					<span>Pesquisar</span>
+				</div>
+				<div class="widget-content">
+					<form>
+						<div class="section">
+							<label>Nome</label>
+							<div>
+								<input class="full" type="text" name="nome" ng-model="pesquisaForm.nome">
 							</div>
 						</div>
-					</div>
-					<div class="section last">
-						<div>
-						<a class="btn btn-success" rel="1" title="Buscar" ng-click="pesquisa('aluno');">Buscar</a>
-						<a class="btn">Cancelar</a>
+						<div class="section">
+							<label>Plano</label>
+							<div>
+								<select class="small selectBox" style="width: 198px" ng-model="pesquisaForm.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.plano">
+									<option value="">--Selecione um plano--</option>
+								</select>
+							</div>
 						</div>
-					</div>
-				</form>
+						<div class="section">
+							<label>Horario Econômico</label>
+							<div>
+								<div class="checksquared">
+									<input id="check-1" type="checkbox" value="action" name="horarioeconomico" ng-model="pesquisaForm.horarioeconimico">
+									<label title="Sim" for="check-1"></label>
+								</div>
+							</div>
+						</div>
+						<div class="section last">
+							<div>
+								<a class="btn btn-success" rel="1" title="Buscar" ng-click="pesquisa('aluno');">Buscar</a>
+								<a class="btn">Cancelar</a>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="widget span8 clearfix">
-			<div class="widget-header">
-				<span>Resultado Buscas</span>
-			</div>
-			<div class="widget-content">
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>Nome</th>
-							<th>E-mail</th>
-							<th>Telefone Celular</th>
-							<th>Plano</th>
-							<th>Ação</th>
-						</tr>
-					</thead>
-					<tbody align="center">
-						<tr ng-repeat="aluno in dataset.aluno">
-							<td>{{aluno.nome}}</td>
-							<td>{{aluno.email}}</td>
-							<td>{{aluno.tel_celular}}</td>
-							<td>{{aluno.id_plano_fk | translateValue:selData.aluno.plano:'plano'}}</td>
-							<td>
-								<a ng-click="edit('aluno',$index);"><img src="images/icon/icon_edit.png"></a>
-								<a ng-click="delete('aluno',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
-								<a href="javascript:;" class="print" title="Imprimir Contrato"><img src="images/icon/color_18/print2.png"></a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="widget span8 clearfix">
+				<div class="widget-header">
+					<span>Resultado Buscas</span>
+				</div>
+				<div class="widget-content">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>E-mail</th>
+								<th>Telefone Celular</th>
+								<th>Plano</th>
+								<th>Ação</th>
+							</tr>
+						</thead>
+						<tbody align="center">
+							<tr ng-repeat="aluno in pesquisaDataset">
+								<td>{{aluno.nome}}</td>
+								<td>{{aluno.email}}</td>
+								<td>{{aluno.tel_celular}}</td>
+								<td>{{aluno.id_plano_fk | translateValue:selData.plano:'plano'}}</td>
+								<td>
+									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
+									<a ng-click="delete($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+									<a href="javascript:;" class="print" title="Imprimir Contrato"><img src="images/icon/color_18/print2.png"></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
