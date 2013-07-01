@@ -2,7 +2,7 @@
 
 include 'sql.php';
 
-$SELECT = 'SELECT id_aulaexp, nome, DATE_FORMAT(data, "%d/%m/%Y") as data, telefone, confirmado, presente FROM aulaexp ORDER BY id_aulaexp ASC';
+$SELECT = 'SELECT id_aulaexp, nome, DATE_FORMAT(data, "%d/%m/%Y") as data, telefone, confirmado, presente FROM aulaexp WHERE 1 = 1';
 
 $INSERT = 'INSERT INTO aulaexp (nome, data, telefone, confirmado, presente) VALUES (%s, %s, %s, %d, %d)';
 
