@@ -1,5 +1,6 @@
+<div ng-controller="planoController">
 <ul id="shortcut">
-    <li><a href="#" title="Adicionar" ng-click="newRow('plano');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+    <li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
     <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
 </ul>	
 <div ng-switch on="visualType">
@@ -13,13 +14,13 @@
 					<div class="section">
 						<label>Nome</label>
 						<div>
-							<input class="full" type="text" name="nome" ng-model="form.plano.nome">
+							<input class="full" type="text" name="nome" ng-model="form.nome">
 						</div>
 					</div>
 					<div class="section">
 						<label>Tipo</label>
 						<div>
-							<select class="small selectBox" name="tipo" ng-model="form.plano.tipo">
+							<select class="small selectBox" name="tipo" ng-model="form.tipo">
 								<option></option>
 								<option value="1">Mensal</option>
 								<option value="2">Trimestral</option>
@@ -31,12 +32,12 @@
 					<div class="section">
 						<label>Valor</label>
 						<div>
-							<i class="moeda"></i><input type="text" ui-mask="'999.999.999,99'" class="medium" name="valor" ng-model="form.plano.valor" />
+							<i class="moeda"></i><input type="text" class="medium" name="valor" ng-model="form.valor" />
 						</div>
 					</div>
 					<div class="section last">
 						<div>
-							<a id="btnSalvar" class="btn btn-success" title="Salvar" ng-click ="save('plano');">Salvar</a>
+							<a id="btnSalvar" class="btn btn-success" title="Salvar" ng-click ="save();">Salvar</a>
 							<input type="reset" class="btn" value="Cancelar">
 						</div>
 					</div>
@@ -60,13 +61,13 @@
 						</tr>
 					</thead>
 					<tbody align="center">
-						<tr ng-repeat="plano in dataset.plano">
+						<tr ng-repeat="plano in pesquisaDataset">
 							<td>{{plano.nome}}</td>
 							<td>{{plano.tipo}}</td>
 							<td>{{plano.valor}}</td>
 							<td>
-								<a ng-click="edit('plano',$index);"><img src="images/icon/icon_edit.png"></a>
-								<a ng-click="delete('plano',$index);"><img src="images/icon/icon_delete.png"></a>
+								<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
+								<a ng-click="delete($index);"><img src="images/icon/icon_delete.png"></a>
 							</td>
 						</tr>
 					</tbody>
@@ -74,4 +75,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>

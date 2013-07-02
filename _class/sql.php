@@ -40,7 +40,7 @@ class DB {
 
             $query = @vsprintf($query, $args);
         }
-
+// echo $query;
         return mysql_query($query);
     }
 

@@ -2,10 +2,19 @@
 
 include 'sql.php';
 
+$SELECT = 'SELECT * FROM plano';
+
+$INSERT = 'INSERT INTO plano (nome, tipo, valor) VALUES (%s,%s,%d)';
+
+$UPDATE = 'UPDATE plano SET nome = %s, tipo = %s, valor = %d WHERE id_plano = %d';
+
+$DELETE = 'DELETE from plano where id_plano = %d';
+
+
 $methodToCall = $_POST['methodToCall'];
 
 if ($methodToCall == 'loadData'){
-    $rows = DB::get_rows(DB::query('SELECT * FROM plano ORDER BY id_plano ASC'));
+    $rows = DB::get_rows(DB::query($SELECT." ORDER BY id_plano ASC"));
 
     echo json_encode($rows);
 }
@@ -20,7 +29,7 @@ if ($methodToCall == 'save'){
 
     if($state == 'I')  {
 
-         DB::query('INSERT INTO plano (nome, tipo, valor) VALUES (%s,%s,%d)', $nome, $tipo, $valor);
+         DB::query($INSERT, $nome, $tipo, $valor);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -28,7 +37,7 @@ if ($methodToCall == 'save'){
 
     } else if($state == 'U') {
        
-        DB::query('UPDATE plano SET nome = %s, tipo = %s, valor = %d WHERE id_plano = %d', $nome, $tipo, $valor, $id);
+        DB::query($UPDATE, $nome, $tipo, $valor, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -45,7 +54,7 @@ if ($methodToCall == 'save'){
 
 if($methodToCall == 'delete'){
     $id_plano = $_POST['dataset']['id_plano'];
-    DB::query('DELETE from plano where id_plano = %d',$id_plano);
+    DB::query($DELETE, $id_plano);
 
     $response['type'] = 'success';
     $response['message'] = 'Excluido com sucesso!';

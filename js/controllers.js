@@ -25,7 +25,7 @@ myApp.controller('myController',function($scope){
 		var dataset = $scope.form[className];
 		$scope.callMethod(className, 'loadData', dataset, function(response){
 			$scope.dataset[className] = JSON.parse(response);
-			if (callback) callback();
+			if (callback) callback(JSON.parse(response));
 			$scope.$apply();
 		});
 	},
@@ -98,11 +98,11 @@ myApp.controller('myController',function($scope){
 		$scope.toggle('grid');
 		$scope.loadSelects(className, $scope.loadData(className, $scope.callWindow(className, pageTitle)));
 	},
- 
- 	$scope.callWindow = function(className, pageTitle){
- 		$scope.template = className+".html";
+	
+	$scope.callWindow = function(className, pageTitle){
+		$scope.template = className+".html";
 		$scope.pageTitle = pageTitle;
- 	},
+	},
 
 	$scope.callMethod = function(className, methodToCall, dataset, responseHandler){
 		Application.request(className, methodToCall, dataset, responseHandler);
@@ -277,6 +277,43 @@ myApp.controller('fisionutriController', function($scope){
 	};
 });
 
+myApp.controller('planoController', function($scope){
+	$scope.pesquisaForm = {};
+	$scope.pesquisaDataset = {};
+	$scope.form = {};
+	$scope.pesquisa = function(){
+		$scope.loadData('plano', function(data){
+			$scope.pesquisaDataset = data;
+		});
+	};
+	$scope.save = function(){
+		$scope.$parent.save('plano', $scope.form, function(){
+			$scope.pesquisa();
+		});
+		
+	};
+	$scope.newRow = function(){
+		var dataset = {'_STATE':'I'};
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.edit = function(index){
+		var dataset = angular.copy($scope.pesquisaDataset[index]);
+		dataset['_STATE'] = 'U';
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.deleteRow = function(index){
+		var dataset = $scope.pesquisaDataset[index];
+		$scope.$parent.deleteRow('plano', dataset, function(){
+			$scope.pesquisa();
+		});
+	};
+	$scope.loadData('plano', function(data){
+		$scope.pesquisaDataset = data;
+	});
+});
+
 myApp.controller('estacionamentoController', function($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
@@ -328,13 +365,13 @@ myApp.directive('uiDate', function() {
 				}});
 			};
 			return element.bind('keyup', function() {
-                return $scope.$apply(function() {
-                	if(element.mask().length == 0){
-                		return controller.$setViewValue(element.mask());	
-                	}
-                	
-                });
-            });
+				return $scope.$apply(function() {
+					if(element.mask().length == 0){
+						return controller.$setViewValue(element.mask());	
+					}
+					
+				});
+			});
 		}
 	};
 });
@@ -352,13 +389,13 @@ myApp.directive('uiCpf', function() {
 				}});
 			};
 			return element.bind('keyup', function() {
-                return $scope.$apply(function() {
-                	if(element.mask().length == 0){
-                		return controller.$setViewValue(element.mask());	
-                	}
-                	
-                });
-            });
+				return $scope.$apply(function() {
+					if(element.mask().length == 0){
+						return controller.$setViewValue(element.mask());	
+					}
+					
+				});
+			});
 		}
 	};
 });
@@ -376,13 +413,13 @@ myApp.directive('uiRg', function() {
 				}});
 			};
 			return element.bind('keyup', function() {
-                return $scope.$apply(function() {
-                	if(element.mask().length == 0){
-                		return controller.$setViewValue(element.mask());	
-                	}
-                	
-                });
-            });
+				return $scope.$apply(function() {
+					if(element.mask().length == 0){
+						return controller.$setViewValue(element.mask());	
+					}
+					
+				});
+			});
 		}
 	};
 });
@@ -401,13 +438,13 @@ myApp.directive('uiPlaca', function() {
 				}});
 			};
 			return element.bind('keyup', function() {
-                return $scope.$apply(function() {
-                	if(element.mask().length == 0){
-                		return controller.$setViewValue(element.mask());	
-                	}
-                	
-                });
-            });
+				return $scope.$apply(function() {
+					if(element.mask().length == 0){
+						return controller.$setViewValue(element.mask());	
+					}
+					
+				});
+			});
 		}
 	};
 });
@@ -425,13 +462,13 @@ myApp.directive('uiPhone', function() {
 				}});
 			};
 			return element.bind('keyup', function() {
-                return $scope.$apply(function() {
-                	if(element.mask().length == 0){
-                		return controller.$setViewValue(element.mask());	
-                	}
-                	
-                });
-            });
+				return $scope.$apply(function() {
+					if(element.mask().length == 0){
+						return controller.$setViewValue(element.mask());	
+					}
+					
+				});
+			});
 		}
 	};
 });
