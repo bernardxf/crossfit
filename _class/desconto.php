@@ -2,10 +2,18 @@
 
 include 'sql.php';
 
+$SELECT = 'SELECT * FROM desconto';
+
+$INSERT = 'INSERT INTO desconto (nome, porc_desc) VALUES (%s,%d)';
+
+$UPDATE = 'UPDATE desconto SET nome = %s, porc_desc = %d WHERE id_desconto = %d';
+
+$DELETE = 'DELETE from desconto where id_desconto = %d';
+
 $methodToCall = $_POST['methodToCall'];
 
 if ($methodToCall == 'loadData'){
-    $rows = DB::get_rows(DB::query('SELECT * FROM desconto ORDER BY id_desconto ASC'));
+    $rows = DB::get_rows(DB::query($SELECT.' ORDER BY id_desconto ASC'));
     echo json_encode($rows);
 }
 
@@ -18,7 +26,7 @@ if ($methodToCall == 'save'){
 
     if($state == 'I'){
 
-        DB::query('INSERT INTO desconto (nome, porc_desc) VALUES (%s,%d)', $nome, $porc_desc);
+        DB::query($INSERT, $nome, $porc_desc);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -26,7 +34,7 @@ if ($methodToCall == 'save'){
 
     } else if($state == 'U'){
 
-        DB::query('UPDATE desconto SET nome = %s, porc_desc = %d WHERE id_desconto = %d', $nome, $porc_desc, $id);
+        DB::query($UPDATE, $nome, $porc_desc, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -43,7 +51,7 @@ if ($methodToCall == 'save'){
 
 if($methodToCall == 'delete'){
     $id_desconto = $_POST['dataset']['id_desconto'];
-    DB::query('DELETE from desconto where id_desconto = %d',$id_desconto);
+    DB::query($DELETE, $id_desconto);
 
     $response['type'] = 'success';
     $response['message'] = 'Excluido com sucesso!';

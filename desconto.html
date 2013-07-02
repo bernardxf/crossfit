@@ -1,5 +1,6 @@
+<div ng-controller="descontoController">
 <ul id="shortcut">
-    <li><a href="#" title="Adicionar" ng-click="newRow('desconto');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+    <li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
     <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
 </ul>	
 <div ng-switch on="visualType">
@@ -13,18 +14,18 @@
 					<div class="section">
 						<label>Nome</label>
 						<div>
-							<input class="full" type="text" name="nome" ng-model="form.desconto.nome">
+							<input class="full" type="text" name="nome" ng-model="form.nome">
 						</div>
 					</div>
 					<div class="section">
 						<label>% de Desconto</label>
 						<div>
-							<input class="full" type="text" name="porc_desc" ng-model="form.desconto.porc_desc">
+							<input class="full" type="text" name="porc_desc" ng-model="form.porc_desc">
 						</div>
 					</div>
 					<div class="section last">
 						<div>
-							<a id="btnCadastrarDesconto" class="btn btn-success" title="Salvar" ng-click ="save('desconto');">Salvar</a>
+							<a id="btnCadastrarDesconto" class="btn btn-success" title="Salvar" ng-click ="save();">Salvar</a>
 							<input type="reset" class="btn" value="Cancelar">
 						</div>
 					</div>
@@ -47,12 +48,12 @@
 						</tr>
 					</thead>
 					<tbody align="center">
-						<tr ng-repeat="desconto in dataset.desconto">
+						<tr ng-repeat="desconto in pesquisaDataset">
 		            		<td>{{desconto.nome}}</td>
 		            		<td>{{desconto.porc_desc}}</td>
 		            		<td>
-		            			<a ng-click="edit('desconto',$index);"><img src="images/icon/icon_edit.png"></a>
-								<a ng-click="delete('desconto',$index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+		            			<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
+								<a ng-click="deleteRow($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
 		            		</td>
 	            		</tr>
 					</tbody>
@@ -60,4 +61,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>

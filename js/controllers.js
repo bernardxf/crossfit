@@ -98,7 +98,7 @@ myApp.controller('myController',function($scope){
 		$scope.toggle('grid');
 		$scope.loadSelects(className, $scope.loadData(className, $scope.callWindow(className, pageTitle)));
 	},
-	
+
 	$scope.callWindow = function(className, pageTitle){
 		$scope.template = className+".html";
 		$scope.pageTitle = pageTitle;
@@ -314,6 +314,43 @@ myApp.controller('planoController', function($scope){
 	});
 });
 
+myApp.controller('descontoController', function($scope){
+	$scope.pesquisaForm = {};
+	$scope.pesquisaDataset = {};
+	$scope.form = {};
+	$scope.pesquisa = function(){
+		$scope.loadData('desconto', function(data){
+			$scope.pesquisaDataset = data;
+		});
+	};
+	$scope.save = function(){
+		$scope.$parent.save('desconto', $scope.form, function(){
+			$scope.pesquisa();
+		});
+		
+	};
+	$scope.newRow = function(){
+		var dataset = {'_STATE':'I'};
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.edit = function(index){
+		var dataset = angular.copy($scope.pesquisaDataset[index]);
+		dataset['_STATE'] = 'U';
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.deleteRow = function(index){
+		var dataset = $scope.pesquisaDataset[index];
+		$scope.$parent.deleteRow('desconto', dataset, function(){
+			$scope.pesquisa();
+		});
+	};
+	$scope.loadData('desconto', function(data){
+		$scope.pesquisaDataset = data;
+	});
+});
+
 myApp.controller('estacionamentoController', function($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
@@ -369,7 +406,7 @@ myApp.directive('uiDate', function() {
 					if(element.mask().length == 0){
 						return controller.$setViewValue(element.mask());	
 					}
-					
+
 				});
 			});
 		}
@@ -393,7 +430,7 @@ myApp.directive('uiCpf', function() {
 					if(element.mask().length == 0){
 						return controller.$setViewValue(element.mask());	
 					}
-					
+
 				});
 			});
 		}
@@ -417,7 +454,7 @@ myApp.directive('uiRg', function() {
 					if(element.mask().length == 0){
 						return controller.$setViewValue(element.mask());	
 					}
-					
+
 				});
 			});
 		}
@@ -442,7 +479,7 @@ myApp.directive('uiPlaca', function() {
 					if(element.mask().length == 0){
 						return controller.$setViewValue(element.mask());	
 					}
-					
+
 				});
 			});
 		}
@@ -466,7 +503,7 @@ myApp.directive('uiPhone', function() {
 					if(element.mask().length == 0){
 						return controller.$setViewValue(element.mask());	
 					}
-					
+
 				});
 			});
 		}
