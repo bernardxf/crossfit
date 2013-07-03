@@ -2,8 +2,6 @@
 @import url("buttons.css");
 @import url("icon.css");
 @import url("ui-custom.css");
-@import url("timepicker.css");
-@import url("../components/editor/jquery.cleditor.css");
 html {
 	margin:0;
 	padding:0;

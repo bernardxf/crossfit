@@ -1,27 +1,3 @@
-$(document).ready(function(){	
-
-	// Maskedinput 
-    $.mask.definitions['~'] = "[+-]";
-    $(".data").mask("99/99/9999");
-    $(".fone").mask("(99) 9999-9999");
-    $(".cpf").mask("999.999.999-99");
-    $(".cep").mask("99999-999");
-    $(".uf").mask("aa");
-    $(".placa").mask("aaa-9999");
-
-    /* Botões Adicionar e Listar */
-    $('div.listar').hide();
-    $('a.btn_add').click(function(){
-    	$('div.listar').hide();
-    	$('div.adicionar').hide();
-    });
-    $('a.btn_list').click(function(){
-    	$('div.adicionar').hide();
-    	$('div.listar').hide();
-    });
-
-});	
-
 $(function() {		
 		
 	  //Close_windows
