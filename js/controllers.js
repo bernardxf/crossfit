@@ -96,7 +96,7 @@ myApp.controller('myController',function($scope){
 
 	$scope.openWindow = function(className, pageTitle){
 		$scope.toggle('grid');
-		$scope.loadSelects(className, $scope.loadData(className, $scope.callWindow(className, pageTitle)));
+		$scope.loadSelects(className, $scope.callWindow(className, pageTitle));
 	},
 
 	$scope.callWindow = function(className, pageTitle){
