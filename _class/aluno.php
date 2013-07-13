@@ -3,16 +3,16 @@
 include 'sql.php';
 
 $SELECT = 'SELECT id_aluno, nome, DATE_FORMAT(data_nasc, "%d/%m/%Y") as data_nasc, rg, cpf, estado_civil, email, cep, logradouro, complemento, bairro, 
-           cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, forma_pagamento, id_desconto_fk, valor_total, status, 
+           cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, forma_pagamento, id_desconto_fk, valor_total, aluno_status, 
             DATE_FORMAT(data_cad, "%d/%m/%Y") as data_cad, DATE_FORMAT(data_alt, "%d/%m/%Y") as data_alt FROM aluno WHERE 1 = 1';
 
 $INSERT = 'INSERT INTO aluno (nome, data_nasc, rg, cpf, estado_civil, email, cep, logradouro, complemento, bairro, 
-            cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, forma_pagamento, id_desconto_fk, valor_total, status, data_cad, data_alt) 
+            cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, forma_pagamento, id_desconto_fk, valor_total, aluno_status, data_cad, data_alt) 
                     VALUES (%s, %s, %d, %d, %s, %s, %s, %s, %s, %s, %s, %d, %s, %s, %d, %d, %d, %d, %s, %d, %d, %d, %s, %s)';
 
 $UPDATE = 'UPDATE aluno SET nome = %s, data_nasc = %s, rg = %d, cpf = %d, estado_civil = %s, email = %s, cep = %s, logradouro = %s, complemento = %s,
         bairro = %s, cidade = %s, uf = %s, tel_fixo = %d, tel_celular = %d, pessoa_ref = %s, tel_ref = %d,
-        plano_saude = %d, atestado_medico = %d, horario_economico = %d, id_plano_fk = %d, forma_pagamento = %s, id_desconto_fk = %d, valor_total = %d, status = %d, data_alt = %s WHERE id_aluno = %d';
+        plano_saude = %d, atestado_medico = %d, horario_economico = %d, id_plano_fk = %d, forma_pagamento = %s, id_desconto_fk = %d, valor_total = %d, aluno_status = %d, data_alt = %s WHERE id_aluno = %d';
 
 $methodToCall = $_POST['methodToCall'];
 
@@ -48,7 +48,7 @@ if ($methodToCall == 'save'){
     $forma_pagamento = $_POST['dataset']['forma_pagamento'];
     $desconto = $_POST['dataset']['id_desconto_fk'];
     $valor_total = $_POST['dataset']['valor_total'];
-    $status = $_POST['dataset']['status'];
+    $aluno_status = $_POST['dataset']['aluno_status'];
     $dataAtual = DATE('Y-m-d');
     $state = $_POST['dataset']['_STATE'];
 
@@ -58,7 +58,7 @@ if ($methodToCall == 'save'){
     if($state == 'I')  {
         
         DB::query($INSERT, $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, 
-                    $telfixo, $telcel, $pessoaref, $telref, $plano_saude, $atestado_medico, $horario_economico,  $plano, $forma_pagamento, $desconto, $valor_total, $status, $dataAtual, $dataAtual);
+                    $telfixo, $telcel, $pessoaref, $telref, $plano_saude, $atestado_medico, $horario_economico,  $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $dataAtual);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -68,7 +68,7 @@ if ($methodToCall == 'save'){
 
         DB::query($UPDATE, 
             $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, $telfixo, $telcel, $pessoaref, 
-            $telref, $plano_saude, $atestado_medico, $horario_economico, $plano, $forma_pagamento, $desconto, $valor_total, $status, $dataAtual, $id);
+            $telref, $plano_saude, $atestado_medico, $horario_economico, $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';

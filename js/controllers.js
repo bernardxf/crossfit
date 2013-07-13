@@ -417,6 +417,7 @@ myApp.directive('uiCpf', function() {
 	return {
 		require: '?ngModel',
 		link: function($scope, element, attrs, controller) {
+			console.log(element);
 			controller.$render = function(){
 				var value = controller.$viewValue || '';
 				element.val(value);
