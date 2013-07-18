@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="row-fluid" ng-controller="relalunoController">
 	<div class="widget span5 clearfix">
 		<div class="widget-header">
 			<span>Pesquisar</span>
@@ -8,14 +8,14 @@
                 <div class="section">
                     <label>Nome</label>
                     <div>
-                        <input class="full" type="text" name="nome"> 
+                        <input class="full" type="text" name="nome" ng-model="chartForm.nome"> 
                     </div>
                 </div>
                 <div class="section">
                     <label>Data</label>
                     <div>
-                        <input class="medium" ui-mask="'99/99/9999'" type="text" name="dataini"> a 
-                        <input class="medium" ui-mask="'99/99/9999'" type="text" name="datafim">
+                        <input class="medium" type="text" name="dataini" ng-model="chartForm.dataini" ui-date> a 
+                        <input class="medium" type="text" name="datafim" ng-model="chartForm.datafim" ui-date>
                     </div>
                 </div>
                 <div class="section last">
@@ -29,27 +29,10 @@
 	</div>
 	<div class="widget span7 clearfix">
         <div class="widget-header">
-            <span>Aluno</span>
+            <span>{{pageTitle}}</span>
         </div>
-        <div class="widget-content">
-            <table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Plano</th>
-						<th>Aulas/Abril</th>
-						<th>Aulas/Data</th>
-					</tr>
-				</thead>
-				<tbody align="center">
-					<tr ng-repeat="relaluno in dataset.relaluno">
-						<td>{{relaluno.nome}}</td>
-						<td>{{relaluno.plano}}</td>
-						<td>{{relaluno.mesAtual}}</td>
-						<td>{{relaluno.data}}</td>
-					</tr>
-				</tbody>
-			</table>    
+        <div class="widget-content" ng-init="loadChart();">
+            <canvas height="450" width="880" id="canvas"></canvas>           
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="row-fluid" ng-controller="relaulaController">
 	<div class="widget span5 clearfix">
 		<div class="widget-header">
 			<span>Pesquisar</span>
@@ -6,30 +6,10 @@
 		<div class="widget-content">
             <form id="relaula_form">
                 <div class="section">
-                    <label>Horário</label>
-                    <div>
-                        <select class="small selectBox" style="width: 245px">
-                            <option value="630">6:30</option>
-                            <option value="700">7:00</option>
-                            <option value="730">7:30</option>
-                            <option value="800">8:30</option>
-                            <option value="1200">12:00</option>
-                            <option value="1400">14:00</option>
-                            <option value="1500">15:00</option>
-                            <option value="1600">16:00</option>
-                            <option value="1700">17:00</option>
-                            <option value="1800">18:00</option>
-                            <option value="1900">19:00</option>
-                            <option value="2000">20:00</option>
-                            <option value="2100">21:00</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="section">
                     <label>Data</label>
                     <div>
-                        <input class="medium data" type="text" name="dataini" size="10"> a 
-                        <input class="medium data" type="text" name="datafim" size="10">
+                        <input class="medium" type="text" name="dataini" size="10" ng-model="chartForm.dataini" ui-date> a 
+                        <input class="medium" type="text" name="datafim" size="10" ng-model="chartForm.datafim" ui-date>
                     </div>
                 </div>
                 <div class="section last">
@@ -43,50 +23,10 @@
 	</div>
 	<div class="widget span7 clearfix">
         <div class="widget-header">
-            <span>Gráfico</span>
+            <span>{{pageTitle}}</span>
         </div>
-        <div class="widget-content">
-            <table class="chart-bar"> 
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th style="color : #4d90fe;">19:00 hrs</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><th>1</th><td>20</td></tr>
-                    <tr><th>2</th><td>20</td></tr>
-                    <tr><th>3</th><td>15</td></tr>
-                    <tr><th>4</th><td>20</td></tr>
-                    <tr><th>5</th><td>18</td></tr>
-                    <tr><th>6</th><td>20</td></tr>
-                    <tr><th>7</th><td>20</td></tr>
-                    <tr><th>8</th><td>12</td></tr>
-                    <tr><th>9</th><td>20</td></tr>
-                    <tr><th>10</th><td>20</td></tr>
-                    <tr><th>11</th><td>16</td></tr>
-                    <tr><th>12</th><td>20</td></tr>
-                    <tr><th>13</th><td>20</td></tr>
-                    <tr><th>14</th><td>15</td></tr>
-                    <tr><th>15</th><td>16</td></tr>
-                    <tr><th>16</th><td>17</td></tr>
-                    <tr><th>17</th><td>18</td></tr>
-                    <tr><th>18</th><td>20</td></tr>
-                    <tr><th>19</th><td>20</td></tr>
-                    <tr><th>20</th><td>20</td></tr>
-                    <tr><th>21</th><td>11</td></tr>
-                    <tr><th>22</th><td>20</td></tr>
-                    <tr><th>23</th><td>20</td></tr>
-                    <tr><th>24</th><td>10</td></tr>
-                    <tr><th>25</th><td>20</td></tr>
-                    <tr><th>26</th><td>20</td></tr>
-                    <tr><th>27</th><td>12</td></tr>
-                    <tr><th>28</th><td>20</td></tr>
-                    <tr><th>29</th><td>20</td></tr>
-                    <tr><th>30</th><td>13</td></tr>
-                    <tr><th>31</th><td>20</td></tr>
-                </tbody>
-            </table>    
+        <div class="widget-content" ng-init="loadChart();">
+            <canvas height="450" width="880" id="canvas"></canvas>   
         </div>
     </div>
 </div>

@@ -96,7 +96,7 @@ myApp.controller('myController',function($scope){
 
 	$scope.openWindow = function(className, pageTitle){
 		$scope.toggle('grid');
-		$scope.loadSelects(className, $scope.callWindow(className, pageTitle));
+		$scope.callWindow(className, pageTitle);
 	},
 
 	$scope.callWindow = function(className, pageTitle){
@@ -128,6 +128,7 @@ myApp.controller('loginController', function($scope){
 			if(response == true){
 				$scope.setLogged(true);
 				$scope.openWindow('dashboard', 'Crossfit Dashboard');
+				$scope.$apply();
 			} else {
 				alertMessage('error','Usuário ou senha incorretos!');
 			}
@@ -139,6 +140,13 @@ myApp.controller('alunoController', function($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
 	$scope.form = {};
+	$scope.selectData = {};
+	$scope.loadSelects = function(){
+		$scope.callMethod('aluno', 'loadSelects', null, function(response){
+			$scope.selectData = JSON.parse(response);
+			$scope.$apply();
+		});		
+	};
 	$scope.pesquisa = function(){
 		var dataset = $scope.pesquisaForm;
 		$scope.callMethod('aluno', 'pesquisa', dataset, function(response){
@@ -150,7 +158,6 @@ myApp.controller('alunoController', function($scope){
 		$scope.$parent.save('aluno', $scope.form, function(){
 			$scope.pesquisa();
 		});
-		
 	};
 	$scope.newRow = function(){
 		var dataset = {'_STATE':'I'};
@@ -387,6 +394,79 @@ myApp.controller('estacionamentoController', function($scope){
 	};
 });
 
+myApp.controller('relaulaController', function ($scope) {
+	$scope.pesquisaDataset = {};
+	$scope.pesquisaForm = {};
+	$scope.pesquisa = function(){
+		var dataset = $scope.pesquisaForm;
+		$scope.callMethod('relaula', 'pesquisa', function(data){
+			$scope.pesquisaDataset = JSON.parse(data);
+			$scope.loadChart();
+		});
+	};
+	$scope.loadChart = function(){
+		
+        var lineChartData = {
+            labels : ["January","February","March","April","May","June","July"],
+            datasets : [
+                {
+                    fillColor : "rgba(220,220,220,0.5)",
+                    strokeColor : "rgba(220,220,220,1)",
+                    pointColor : "rgba(220,220,220,1)",
+                    pointStrokeColor : "#fff",
+                    data : [65,59,90,81,56,55,40]
+                },
+                {
+                    fillColor : "rgba(151,187,205,0.5)",
+                    strokeColor : "rgba(151,187,205,1)",
+                    pointColor : "rgba(151,187,205,1)",
+                    pointStrokeColor : "#fff",
+                    data : [28,48,40,19,96,27,100]
+                }
+            ]
+        }
+
+    	var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+	};
+});
+
+myApp.controller('relalunoController', function ($scope) {
+	$scope.pesquisaDataset = {};
+	$scope.pesquisaForm = {};
+	$scope.pesquisa = function(){
+		var dataset = $scope.pesquisaForm;
+		$scope.callMethod('relaluno', 'pesquisa', function(data){
+			$scope.pesquisaDataset = JSON.parse(data);
+			$scope.loadChart();
+		});
+	};
+	$scope.loadChart = function(){
+		
+        var lineChartData = {
+            labels : ["January","February","March","April","May","June","July"],
+            datasets : [
+                {
+                    fillColor : "rgba(220,220,220,0.5)",
+                    strokeColor : "rgba(220,220,220,1)",
+                    pointColor : "rgba(220,220,220,1)",
+                    pointStrokeColor : "#fff",
+                    data : [65,59,90,81,56,55,40]
+                },
+                {
+                    fillColor : "rgba(151,187,205,0.5)",
+                    strokeColor : "rgba(151,187,205,1)",
+                    pointColor : "rgba(151,187,205,1)",
+                    pointStrokeColor : "#fff",
+                    data : [28,48,40,19,96,27,100]
+                }
+            ]
+            
+        }
+
+    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+	};
+});
+
 myApp.directive('uiDate', function() {
 	return {
 		require: '?ngModel',
@@ -417,7 +497,6 @@ myApp.directive('uiCpf', function() {
 	return {
 		require: '?ngModel',
 		link: function($scope, element, attrs, controller) {
-			console.log(element);
 			controller.$render = function(){
 				var value = controller.$viewValue || '';
 				element.val(value);
