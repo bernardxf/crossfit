@@ -1,4 +1,4 @@
-<div class="row-fluid" ng-controller="relalunoController">
+<div class="row-fluid" ng-controller="relalunoController" ng-init="loadSelects();">
 	<div class="widget span5 clearfix">
 		<div class="widget-header">
 			<span>Pesquisar</span>
@@ -8,7 +8,10 @@
                 <div class="section">
                     <label>Nome</label>
                     <div>
-                        <input class="full" type="text" name="nome" ng-model="chartForm.nome"> 
+                        <select class="small selectBox" style="width: 250px" ng-model="chartForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+                            <option value=""></option>
+                            <option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="section">
@@ -20,14 +23,14 @@
                 </div>
                 <div class="section last">
                     <div>
-                    <a class="btn btn-success" rel="1" title="Pesquisar">Pesquisar</a>
-                    <a class="btn">Cancelar</a>
+                        <a class="btn btn-success" rel="1" title="Pesquisar">Pesquisar</a>
+                        <a class="btn">Cancelar</a>
                     </div>
                 </div>
             </form>
-		</div>
-	</div>
-	<div class="widget span7 clearfix">
+        </div>
+    </div>
+    <div class="widget span7 clearfix">
         <div class="widget-header">
             <span>{{pageTitle}}</span>
         </div>

@@ -1,0 +1,13 @@
+[18-Jul-2013 13:36:27 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 4
+[18-Jul-2013 13:36:45 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 4
+[18-Jul-2013 13:36:55 America/Sao_Paulo] PHP Notice:  Undefined index: methodToCall in /home/joao/Projetos/www/crossfit/_class/aluno.php on line 17
+[18-Jul-2013 13:36:55 America/Sao_Paulo] PHP Stack trace:
+[18-Jul-2013 13:36:55 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/aluno.php:0
+[18-Jul-2013 13:37:00 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 4
+[18-Jul-2013 13:37:22 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 4
+[19-Jul-2013 13:11:59 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 4
+[19-Jul-2013 13:15:14 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 4
+[19-Jul-2013 13:18:02 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 5
+[19-Jul-2013 13:18:20 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 5
+[19-Jul-2013 13:18:49 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 5
+[19-Jul-2013 13:19:20 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '$methodToCall' (T_VARIABLE) in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 5

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',[]);
+var myApp = angular.module('myApp',['ui.select2']);
 
 myApp.filter('translateValue', function(){
 	return function(input, selData, className){
@@ -21,6 +21,9 @@ myApp.controller('myController',function($scope){
 	$scope.visualType = 'grid',
 	$scope.form = {},
 	$scope.selData = {},
+    $scope.select2Options = {
+        allowClear:true
+    };
 	$scope.loadData = function(className, callback){
 		var dataset = $scope.form[className];
 		$scope.callMethod(className, 'loadData', dataset, function(response){
@@ -433,6 +436,13 @@ myApp.controller('relaulaController', function ($scope) {
 myApp.controller('relalunoController', function ($scope) {
 	$scope.pesquisaDataset = {};
 	$scope.pesquisaForm = {};
+	$scope.selectData = {};
+	$scope.loadSelects = function(){
+		$scope.callMethod('relaluno', 'loadSelects', null, function(response){
+			$scope.selectData = JSON.parse(response);
+			$scope.$apply();
+		});		
+	};
 	$scope.pesquisa = function(){
 		var dataset = $scope.pesquisaForm;
 		$scope.callMethod('relaluno', 'pesquisa', function(data){
