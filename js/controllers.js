@@ -21,9 +21,9 @@ myApp.controller('myController',function($scope){
 	$scope.visualType = 'grid',
 	$scope.form = {},
 	$scope.selData = {},
-    $scope.select2Options = {
-        allowClear:true
-    };
+	$scope.select2Options = {
+		allowClear:true
+	};
 	$scope.loadData = function(className, callback){
 		var dataset = $scope.form[className];
 		$scope.callMethod(className, 'loadData', dataset, function(response){
@@ -402,35 +402,43 @@ myApp.controller('relaulaController', function ($scope) {
 	$scope.pesquisaForm = {};
 	$scope.pesquisa = function(){
 		var dataset = $scope.pesquisaForm;
-		$scope.callMethod('relaula', 'pesquisa', function(data){
+		$scope.callMethod('relaula', 'pesquisa', dataset, function(data){
 			$scope.pesquisaDataset = JSON.parse(data);
 			$scope.loadChart();
 		});
 	};
 	$scope.loadChart = function(){
-		
-        var lineChartData = {
-            labels : ["January","February","March","April","May","June","July"],
-            datasets : [
-                {
-                    fillColor : "rgba(220,220,220,0.5)",
-                    strokeColor : "rgba(220,220,220,1)",
-                    pointColor : "rgba(220,220,220,1)",
-                    pointStrokeColor : "#fff",
-                    data : [65,59,90,81,56,55,40]
-                },
-                {
-                    fillColor : "rgba(151,187,205,0.5)",
-                    strokeColor : "rgba(151,187,205,1)",
-                    pointColor : "rgba(151,187,205,1)",
-                    pointStrokeColor : "#fff",
-                    data : [28,48,40,19,96,27,100]
-                }
-            ]
-        }
+		var dataValues = $scope.processData("num_presentes");
+		var labelValues = $scope.processLabel("data");
+		var lineChartData = {
+			labels : labelValues,
+			datasets : [
+			{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,1)",
+				pointColor : "rgba(151,187,205,1)",
+				pointStrokeColor : "#fff",
+				data : dataValues
+			}
+			]
+		}
 
-    	var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+		var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(lineChartData);
 	};
+	$scope.processData = function(key){
+		var values = new Array();
+		angular.forEach($scope.pesquisaDataset, function(item){
+			values.push(parseInt(item[key]));
+		});
+		return values;
+	};
+	$scope.processLabel = function(key){
+		var values = new Array();
+		angular.forEach($scope.pesquisaDataset, function(item){
+			values.push(item[key]);
+		});
+		return values;	
+	}
 });
 
 myApp.controller('relalunoController', function ($scope) {
@@ -452,28 +460,28 @@ myApp.controller('relalunoController', function ($scope) {
 	};
 	$scope.loadChart = function(){
 		
-        var lineChartData = {
-            labels : ["January","February","March","April","May","June","July"],
-            datasets : [
-                {
-                    fillColor : "rgba(220,220,220,0.5)",
-                    strokeColor : "rgba(220,220,220,1)",
-                    pointColor : "rgba(220,220,220,1)",
-                    pointStrokeColor : "#fff",
-                    data : [65,59,90,81,56,55,40]
-                },
-                {
-                    fillColor : "rgba(151,187,205,0.5)",
-                    strokeColor : "rgba(151,187,205,1)",
-                    pointColor : "rgba(151,187,205,1)",
-                    pointStrokeColor : "#fff",
-                    data : [28,48,40,19,96,27,100]
-                }
-            ]
-            
-        }
+		var lineChartData = {
+			labels : ["January","February","March","April","May","June","July"],
+			datasets : [
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				data : [65,59,90,81,56,55,40]
+			},
+			{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,1)",
+				pointColor : "rgba(151,187,205,1)",
+				pointStrokeColor : "#fff",
+				data : [28,48,40,19,96,27,100]
+			}
+			]
 
-    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+		}
+
+		var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
 	};
 });
 
