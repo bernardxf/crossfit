@@ -67,8 +67,8 @@
 	                        </select>
 	                    </div>
 					</div>
-					<ol class="rectangle-list" ng-repeat="aluno in alunosPresente">
-						<li>{{aluno.nome}}<a class="ico color cross" ng-click="removeAlunoPresente($index);"></a></li>
+					<ol class="rectangle-list">
+						<li ng-repeat="aluno in alunosPresente">{{aluno.nome}}<a class="ico color cross" ng-click="removeAlunoPresente($index);"></a></li>
 					</ol>
 					<div class="section last">
 						<div>

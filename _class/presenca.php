@@ -52,7 +52,10 @@ if($methodToCall == 'pesquisaAluno'){
 
 		echo json_encode($rows);	
 	} else {
-		echo json_encode(array());
+		$query = "SELECT * from aluno";
+		$rows = DB::get_rows(DB::query($query));
+		
+		echo json_encode($rows);	
 	}
 	
 }
