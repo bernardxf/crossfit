@@ -1,144 +1,119 @@
-<ul id="shortcut">
-    <li><a href="#" title="Adicionar" ng-click="newRow('presenca');"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
-    <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
-</ul>	
-<div ng-switch on="visualType" ng-controller="presencaController">
-	<div class="row-fluid" ng-switch-when="form">
-		<div class="widget span4 clearfix">
-			<div class="widget-header">
-				<span>Buscar</span>
-			</div>
-			<div class="widget-content">
-				<form>
-					<div class="section last">
-						<label>Aluno</label>
-						<div>
-							<input class="full" type="text" name="nome" ng-model="pesquisaForm.aluno.nomeAluno">
-							<a class="btn btn-success" rel="1" title="Saving" ng-click="pesquisaAluno('presenca');">Buscar</a>
+<div ng-controller="presencaController">
+	<ul id="shortcut">
+		<li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+		<li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
+	</ul>	
+	<div ng-switch on="visualType" >
+		<div class="row-fluid" ng-switch-when="form">
+			<div class="widget span4 clearfix">
+				<div class="widget-header">
+					<span>Buscar</span>
+				</div>
+				<div class="widget-content">
+					<form>
+						<div class="section last">
+							<label>Aluno</label>
+							<div>
+								<input class="full" type="text" name="nome" ng-model="pesquisaForm.aluno.nomeAluno">
+								<a class="btn btn-success" rel="1" ng-click="pesquisaAluno();">Buscar</a>
+							</div>
 						</div>
-					</div>
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Presente</th>
+								</tr>
+							</thead>
+							<tbody align="center">
+								<tr ng-repeat="aluno in pesquisaDataset.aluno">	
+									<td>{{aluno.nome}}</td>
+									<td><img src="images/icon/color_18/directional_right.png" ng-click="addAlunoPresente(aluno);"></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="widget span8 clearfix">
+				<div class="widget-header">
+					<span>Alunos</span>
+				</div>
+				<div class="widget-content">
+					<form>
+						<div class="section">
+							<label>Data</label>
+							<div>
+								<input class="full" type="text" name="data" ng-model="formAula.data" ui-date/>
+							</div>
+						</div>
+						<div class="section">
+							<label>Horário</label>
+							<div>
+								<input class="full" type="text" name="horario" ng-model="formAula.horario" ui-hour/>
+							</div>
+						</div>
+						<ol class="rectangle-list">
+							<li ng-repeat="aluno in alunosPresente">{{aluno.nome}}<a class="ico color cross" ng-click="removeAlunoPresente($index);"></a></li>
+						</ol>
+						<div class="section last">
+							<div>
+								<a class="btn btn-success" rel="1" title="Saving" ng-click="salvaAlunosPresentes();">Salvar</a>
+								<a class="btn">Cancelar</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="row-fluid" ng-switch-when="grid">
+			<div class="widget span4 clearfix">
+				<div class="widget-header">
+					<span>Pesquisar</span>
+				</div>
+				<div class="widget-content">
+					<form>
+						<div class="section">
+							<label>Data</label>
+							<div>
+								<input class="full" type="text" name="data" ng-model="pesquisaForm.presenca.data" ui-date/>
+							</div>
+						</div>
+						<div class="section last">
+							<div>
+								<a class="btn btn-success" rel="1" title="Pesquisar" ng-click="pesquisaAula();">Pesquisar</a>
+								<a class="btn">Cancelar</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="widget span8 clearfix">
+				<div class="widget-header">
+					<span>Alunos</span>
+				</div>
+				<div class="widget-content">
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Nome</th>
-								<th>Presente</th>
+								<th>Data</th>
+								<th>Horario</th>
+								<th>Num. Presentes</th>
+								<th>Ação</th>
 							</tr>
 						</thead>
 						<tbody align="center">
-							<tr ng-repeat="presenca in pesquisaDataset.presenca">	
-								<td>{{presenca.nome}}</td>
-								<td><img src="images/icon/color_18/directional_right.png" ng-click="addAlunoPresente(presenca);"></a></td>
+							<tr ng-repeat="aula in pesquisaDataset.aula.aula_dia">
+								<td>{{aula.data}}</td>
+								<td>{{aula.horario}}</td>
+								<td>{{aula.alunos_aula}}</td>
+								<td>
+									<a ng-click="editAlunosPresentes($index);"><img src="images/icon/icon_edit.png"></a>
+								</td>
 							</tr>
 						</tbody>
 					</table>
-				</form>
-			</div>
-		</div>
-		<div class="widget span8 clearfix">
-			<div class="widget-header">
-				<span>Alunos</span>
-			</div>
-			<div class="widget-content">
-				<form>
-					<div class="section">
-						<label>Data</label>
-						<div>
-							<input class="full" type="text" name="data" ng-model="form.data"/>
-							<!-- <input class="full" ui-mask="'99/99/9999'" type="text" name="data" ng-model="form.presenca.data" /> -->
-						</div>
-					</div>
-					<div class="section">
-						<label>Horário</label>
-	                    <div>
-	                        <select class="full" name="horario" ng-model="form.horario">
-	                            <option value="630">6:30</option>
-	                            <option value="700">7:00</option>
-	                            <option value="730">7:30</option>
-	                            <option value="800">8:30</option>
-	                            <option value="1200">12:00</option>
-	                            <option value="1400">14:00</option>
-	                            <option value="1500">15:00</option>
-	                            <option value="1600">16:00</option>
-	                            <option value="1700">17:00</option>
-	                            <option value="1800">18:00</option>
-	                            <option value="1900">19:00</option>
-	                            <option value="2000">20:00</option>
-	                            <option value="2100">21:00</option>
-	                        </select>
-	                    </div>
-					</div>
-					<ol class="rectangle-list">
-						<li ng-repeat="aluno in alunosPresente">{{aluno.nome}}<a class="ico color cross" ng-click="removeAlunoPresente($index);"></a></li>
-					</ol>
-					<div class="section last">
-						<div>
-							<a class="btn btn-success" rel="1" title="Saving" ng-click="salvaAlunosPresentes();">Salvar</a>
-							<a class="btn">Cancelar</a>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<div class="row-fluid" ng-switch-when="grid">
-		<div class="widget span4 clearfix">
-			<div class="widget-header">
-				<span>Pesquisar</span>
-			</div>
-			<div class="widget-content">
-				<form>
-					<div class="section">
-	                    <label>Horário</label>
-	                    <div>
-	                        <select class="" name="horario" ng-model="pesquisaForm.presenca.horario">
-	                            <option value="630">6:30</option>
-	                            <option value="700">7:00</option>
-	                            <option value="730">7:30</option>
-	                            <option value="800">8:30</option>
-	                            <option value="1200">12:00</option>
-	                            <option value="1400">14:00</option>
-	                            <option value="1500">15:00</option>
-	                            <option value="1600">16:00</option>
-	                            <option value="1700">17:00</option>
-	                            <option value="1800">18:00</option>
-	                            <option value="1900">19:00</option>
-	                            <option value="2000">20:00</option>
-	                            <option value="2100">21:00</option>
-	                        </select>
-	                    </div>
-	                </div>
-					<div class="section">
-						<label>Data</label>
-						<div>
-							<input class="full" type="text" name="data" ng-model="pesquisaForm.presenca.data"/>
-							<!-- <input class="full" ui-mask="'99/99/9999'" type="text" name="data" ng-model="form.presenca.data" /> -->
-						</div>
-					</div>
-					<div class="section last">
-						<div>
-							<a class="btn btn-success" rel="1" title="Pesquisar">Pesquisar</a>
-							<a class="btn">Cancelar</a>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="widget span8 clearfix">
-			<div class="widget-header">
-				<span>Alunos</span>
-			</div>
-			<div class="widget-content">
-				<form>
-					<ol class="rectangle-list">
-						<li>Bernard Faria <a href="javascript:;" class="ico color cross"></a></li>
-					</ol>
-					<div class="section last">
-						<div>
-							<a class="btn">Editar</a>
-							<a class="btn">Excluir</a>
-						</div>
-					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>

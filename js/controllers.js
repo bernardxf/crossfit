@@ -130,7 +130,7 @@ myApp.controller('loginController', function($scope){
 		Application.request('login', 'valida', dataset, function(response){
 			if(response == true){
 				$scope.setLogged(true);
-				$scope.openWindow('dashboard', 'Crossfit Dashboard');
+				$scope.openWindow('dashboard', '');
 				$scope.$apply();
 			} else {
 				alertMessage('error','Usuário ou senha incorretos!');
@@ -181,38 +181,61 @@ myApp.controller('alunoController', function($scope){
 	};
 });
 
-myApp.controller('presencaController', function($scope){
-	$scope.pesquisaForm = {};
+myApp.controller('presencaController', ["$scope", "$filter", function($scope,$filter){
+	$scope.today = $filter('date')(new Date(),'dd/MM/yyyy');
+	$scope.pesquisaForm = {"presenca" : {"data" : '05/08/2013'}};
 	$scope.pesquisaDataset = {};
 	$scope.alunosPresente = [];
-	$scope.form = { 'alunos' : $scope.alunosPresente};
-	$scope.pesquisaAluno = function(className){
+	$scope.formAula = {};
+	$scope.alunosRemovidos = [];
+	$scope.pesquisaAluno = function(){
 		var dataset = $scope.pesquisaForm['aluno'];
-		$scope.callMethod(className, 'pesquisaAluno', dataset, function(response){
-			$scope.pesquisaDataset[className] = JSON.parse(response);
+		$scope.callMethod('presenca', 'pesquisaAluno', dataset, function(response){
+			$scope.pesquisaDataset['aluno'] = JSON.parse(response);
 			$scope.$apply();
 		});	
 	};
-	$scope.pesquisaPresenca = function(className){
+	$scope.pesquisaAula = function(){
 		var dataset = $scope.pesquisaForm['presenca'];
-		$scope.callMethod(className, 'pesquisaPresenca', dataset, function(response){
-			$scope.pesquisaDataset[className] = JSON.parse(response);
+		$scope.callMethod('presenca', 'pesquisaAula', dataset, function(response){
+			$scope.pesquisaDataset['aula'] = JSON.parse(response);
 			$scope.$apply();
 		});	
+	};
+	$scope.newRow = function(){
+		$scope.formAula = {"data" : $scope.today, '_STATE' : 'I'};
+		$scope.alunosPresente = [];
+		$scope.toggle('form');
 	};
 	$scope.addAlunoPresente = function(aluno){
 		if ($.inArray(aluno, $scope.alunosPresente) == -1 && $scope.alunosPresente.length < 20) {
 			$scope.alunosPresente.push(aluno);	
 		}
 	};
+	$scope.editAlunosPresentes = function(index){
+		$scope.alunosRemovidos = [];
+		var id_aula_fk = $scope.pesquisaDataset.aula.aula_dia[index]['id_aula_fk'];
+		var alunos = $scope.pesquisaDataset.aula.alunos_aula.filter(function(item){
+			return item['id_aula_fk'] == id_aula_fk;
+		});
+		$scope.alunosPresente = angular.copy(alunos);
+		$scope.formAula = angular.copy($scope.pesquisaDataset.aula.aula_dia[index]);
+		$scope.formAula['_STATE'] = 'U';
+		$scope.toggle('form');
+	};
 	$scope.removeAlunoPresente = function(indexAluno){
-		$scope.alunosPresente.splice(indexAluno,1);
+		var aluno = $scope.alunosPresente.splice(indexAluno,1)[0];
+		$scope.alunosRemovidos.push(aluno);
 	};
 	$scope.salvaAlunosPresentes = function(){
-		$scope.callMethod('presenca', 'save', $scope.form);
-		$scope.toggle('grid');
+		var dataset = {"aula" : $scope.formAula, "aluno_aula" : $scope.alunosPresente, 'alunos_removidos' : $scope.alunosRemovidos};
+		$scope.callMethod('presenca', 'save', dataset, function(){{
+			$scope.pesquisaAula();
+			$scope.toggle('grid');
+		}});
+
 	};
-});
+}]);
 
 myApp.controller('aulaExpController', function($scope){
 	$scope.pesquisaForm = {};
@@ -458,31 +481,6 @@ myApp.controller('relalunoController', function ($scope) {
 			$scope.loadChart();
 		});
 	};
-	$scope.loadChart = function(){
-		
-		var lineChartData = {
-			labels : ["January","February","March","April","May","June","July"],
-			datasets : [
-			{
-				fillColor : "rgba(220,220,220,0.5)",
-				strokeColor : "rgba(220,220,220,1)",
-				pointColor : "rgba(220,220,220,1)",
-				pointStrokeColor : "#fff",
-				data : [65,59,90,81,56,55,40]
-			},
-			{
-				fillColor : "rgba(151,187,205,0.5)",
-				strokeColor : "rgba(151,187,205,1)",
-				pointColor : "rgba(151,187,205,1)",
-				pointStrokeColor : "#fff",
-				data : [28,48,40,19,96,27,100]
-			}
-			]
-
-		}
-
-		var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
-	};
 });
 
 myApp.directive('uiDate', function() {
@@ -503,6 +501,36 @@ myApp.directive('uiDate', function() {
 				return $scope.$apply(function() {
 					if(element.mask().length == 0){
 						return controller.$setViewValue(element.mask());	
+					} else {
+						return controller.$setViewValue(element.val());
+					}
+
+				});
+			});
+		}
+	};
+});
+
+myApp.directive('uiHour', function() {
+	return {
+		require: '?ngModel',
+		link: function($scope, element, attrs, controller) {
+			controller.$render = function(){
+				$.mask.definitions['H'] = '[0-5]';
+				$.mask.definitions['S'] = '[0-5]';
+				var value = controller.$viewValue || '';
+				element.val(value);
+				element.mask("H9:S9", { completed : function(){
+					var value = this.val();
+					controller.$setViewValue(value);
+				}});
+			};
+			return element.bind('keyup', function() {
+				return $scope.$apply(function() {
+					if(element.mask().length == 0){
+						return controller.$setViewValue(element.mask());	
+					} else {
+						return controller.$setViewValue(element.val());
 					}
 
 				});
