@@ -59,13 +59,13 @@ if($methodToCall == 'pesquisaAluno'){
 	$nomeAluno = $dataset['nomeAluno'];
 
 	if ($nomeAluno) {
-		$query = "SELECT * from aluno WHERE nome like '".$nomeAluno."%'";
+		$query = "SELECT id_aluno, nome from aluno WHERE nome like '".$nomeAluno."%'";
 		$rows = DB::get_rows(DB::query($query));
 
 
 		echo json_encode($rows);	
 	} else {
-		$query = "SELECT * from aluno";
+		$query = "SELECT id_aluno, nome from aluno";
 		$rows = DB::get_rows(DB::query($query));
 
 		echo json_encode($rows);	
@@ -78,7 +78,7 @@ if($methodToCall == 'pesquisaAula'){
 	$exp_data = explode('/', $data);
 	$data = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
 
-	$SQl = "SELECT aa.id_aula_fk, aa.id_aluno_aula, aa.num_senha, DATE_FORMAT(au.data, '%d/%m/%Y') as data, au.horario, al.nome from alunos_aula aa 
+	$SQl = "SELECT aa.id_aula_fk, aa.id_aluno_aula, al.id_aluno, aa.num_senha, DATE_FORMAT(au.data, '%d/%m/%Y') as data, au.horario, al.nome from alunos_aula aa 
 			join aula au on aa.id_aula_fk = au.id_aula
 			join aluno al on aa.id_aluno_fk = al.id_aluno where data = '".$data."'";
 

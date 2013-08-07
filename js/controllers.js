@@ -208,7 +208,11 @@ myApp.controller('presencaController', ["$scope", "$filter", function($scope,$fi
 		$scope.toggle('form');
 	};
 	$scope.addAlunoPresente = function(aluno){
-		if ($.inArray(aluno, $scope.alunosPresente) == -1 && $scope.alunosPresente.length < 20) {
+		var alunoExiste = $scope.alunosPresente.filter(function(item){
+			return item.id_aluno == aluno.id_aluno;
+		});
+
+		if (alunoExiste.length == 0 && $scope.alunosPresente.length < 20) {
 			$scope.alunosPresente.push(aluno);	
 		}
 	};
