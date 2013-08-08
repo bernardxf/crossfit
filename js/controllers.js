@@ -188,6 +188,7 @@ myApp.controller('presencaController', ["$scope", "$filter", function($scope,$fi
 	$scope.alunosPresente = [];
 	$scope.formAula = {};
 	$scope.alunosRemovidos = [];
+	$scope.editing = false;
 	$scope.pesquisaAluno = function(){
 		var dataset = $scope.pesquisaForm['aluno'];
 		$scope.callMethod('presenca', 'pesquisaAluno', dataset, function(response){
@@ -205,6 +206,7 @@ myApp.controller('presencaController', ["$scope", "$filter", function($scope,$fi
 	$scope.newRow = function(){
 		$scope.formAula = {"data" : $scope.today, '_STATE' : 'I'};
 		$scope.alunosPresente = [];
+		$scope.editing = false;
 		$scope.toggle('form');
 	};
 	$scope.addAlunoPresente = function(aluno){
@@ -217,6 +219,7 @@ myApp.controller('presencaController', ["$scope", "$filter", function($scope,$fi
 		}
 	};
 	$scope.editAlunosPresentes = function(index){
+		$scope.editing = true;
 		$scope.alunosRemovidos = [];
 		var id_aula_fk = $scope.pesquisaDataset.aula.aula_dia[index]['id_aula_fk'];
 		var alunos = $scope.pesquisaDataset.aula.alunos_aula.filter(function(item){
@@ -236,6 +239,7 @@ myApp.controller('presencaController', ["$scope", "$filter", function($scope,$fi
 		$scope.callMethod('presenca', 'save', dataset, function(){{
 			$scope.pesquisaAula();
 			$scope.toggle('grid');
+			$scope.editing = false;
 		}});
 
 	};
