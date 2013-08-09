@@ -1,5 +1,5 @@
 <div class="row-fluid" ng-controller="relalunoController" ng-init="loadSelects();">
-	<div class="widget span5 clearfix">
+	<div class="widget span4 clearfix">
 		<div class="widget-header">
 			<span>Pesquisar</span>
 		</div>
@@ -30,12 +30,29 @@
             </form>
         </div>
     </div>
-    <div class="widget span7 clearfix">
+    <div class="widget span8 clearfix">
         <div class="widget-header">
-            <span>{{pageTitle}}</span>
+            <span>Resultado Buscas</span>
         </div>
-        <div class="widget-content" ng-init="loadChart();">
-            <canvas height="450" width="880" id="canvas"></canvas>           
+        <div class="widget-content">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Plano</th>
+                        <th>Dias</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <!-- <tr ng-repeat="aluno in pesquisaDataset">
+                        <td>{{aluno.nome}}</td>
+                        <td>{{aluno.id_plano_fk | translateValue:selData.plano:'plano'}}</td>
+                        <td>{{aluno.tel_celular}}</td>
+                        <td>ação</td>
+                    </tr> -->
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

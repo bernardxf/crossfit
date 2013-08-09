@@ -12,6 +12,12 @@
                         <input class="medium" type="text" name="datafim" size="10" ng-model="chartForm.datafim" ui-date>
                     </div>
                 </div>
+                <div class="section">
+                    <label>Horário</label>
+                    <div>
+                        <input class="full" type="text" name="horario" ng-model="chartForm.horario" ng-readonly="editing" ui-hour/>
+                    </div>
+                </div>
                 <div class="section last">
                     <div>
                     <a class="btn btn-success" rel="1" title="Pesquisar" ng-click="pesquisa();">Pesquisar</a>
@@ -26,7 +32,7 @@
             <span>{{pageTitle}}</span>
         </div>
         <div class="widget-content">
-            <canvas height="450" width="880" id="canvas"></canvas>   
+            <canvas height="450" id="canvas"></canvas>   
         </div>
     </div>
 </div>
