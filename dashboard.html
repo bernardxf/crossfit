@@ -1,0 +1,23 @@
+<div class="row-fluid" ng-controller="dashboardController" ng-init="loadData();">
+	<div class="widget span6 clearfix">
+		<div class="widget-header">
+			<span>Aniversariantes do mês</span>
+		</div>
+		<div class="widget-content">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr ng-repeat="aniversariante in dashboardData.aniversarios">
+                        <td>{{aniversariante.nome}}</td>
+                        <td>{{aniversariante.data_nasc}}</td>
+                    </tr>
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>

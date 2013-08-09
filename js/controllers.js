@@ -139,6 +139,17 @@ myApp.controller('loginController', function($scope){
 	}
 });
 
+
+myApp.controller('dashboardController', function($scope){
+	$scope.dashboardData = {}
+	$scope.loadData = function(){
+		$scope.callMethod('dashboard', 'loadData', null, function(response){
+			$scope.dashboardData = JSON.parse(response);
+			$scope.$apply();
+		});			
+	}
+});
+
 myApp.controller('alunoController', function($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};

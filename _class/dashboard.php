@@ -1,9 +1,14 @@
 <?php 
+	include 'sql.php';
+
 	$methodToCall = $_POST['methodToCall'];
+	$dataset = $_POST['dataset'];
+
 	if($methodToCall == 'loadData'){
-		echo json_encode(array());
-	}
-	if($methodToCall == 'loadSelects'){
-		echo json_encode(array());
+		$SQL = "SELECT nome, DATE_FORMAT(data_nasc, '%d/%m/%Y') as data_nasc FROM aluno WHERE DATE_FORMAT(data_nasc, '%m') = DATE_FORMAT(SYSDATE(), '%m')";
+	    $aniversarios = DB::get_rows(DB::query($SQL));
+
+	    $result = ['aniversarios' => $aniversarios];
+	    echo json_encode($result);
 	}
 ?>
