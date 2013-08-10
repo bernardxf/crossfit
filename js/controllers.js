@@ -241,6 +241,14 @@ myApp.controller('presencaController', ["$scope", "$filter", function($scope,$fi
 		$scope.formAula['_STATE'] = 'U';
 		$scope.toggle('form');
 	};
+	$scope.cancelarEdicao = function(){
+		console.log('cancelarEdicao');
+		var id_aula_fk = $scope.formAula.id_aula_fk;
+		var alunos = $scope.pesquisaDataset.aula.alunos_aula.filter(function(item){
+			return item['id_aula_fk'] == id_aula_fk;
+		});
+		$scope.alunosPresente = angular.copy(alunos);
+	};
 	$scope.removeAlunoPresente = function(indexAluno){
 		var aluno = $scope.alunosPresente.splice(indexAluno,1)[0];
 		$scope.alunosRemovidos.push(aluno);
