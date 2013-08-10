@@ -8,23 +8,15 @@
                 <div class="section">
                     <label>Nome</label>
                     <div>
-                        <select class="small selectBox" style="width: 250px" ng-model="chartForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+                        <select class="small selectBox" style="width: 250px" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
                             <option value=""></option>
                             <option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
                         </select>
                     </div>
                 </div>
-                <div class="section">
-                    <label>Data</label>
-                    <div>
-                        <input class="medium" type="text" name="dataini" ng-model="chartForm.dataini" ui-date> a 
-                        <input class="medium" type="text" name="datafim" ng-model="chartForm.datafim" ui-date>
-                    </div>
-                </div>
                 <div class="section last">
                     <div>
-                        <a class="btn btn-success" rel="1" title="Pesquisar">Pesquisar</a>
-                        <a class="btn">Cancelar</a>
+                        <a class="btn btn-success" rel="1" title="Pesquisar" ng-click="pesquisa();">Pesquisar</a>
                     </div>
                 </div>
             </form>
@@ -38,19 +30,29 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Nome</th>
+                        <th>Aluno</th>
                         <th>Plano</th>
-                        <th>Dias</th>
-                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody align="center">
-                    <!-- <tr ng-repeat="aluno in pesquisaDataset">
-                        <td>{{aluno.nome}}</td>
-                        <td>{{aluno.id_plano_fk | translateValue:selData.plano:'plano'}}</td>
-                        <td>{{aluno.tel_celular}}</td>
-                        <td>ação</td>
-                    </tr> -->
+                    <tr>
+                        <td>{{pesquisaDataset.aluno[0].aluno}}</td>
+                        <td>{{pesquisaDataset.aluno[0].plano}}</td>
+                    </tr>
+                    <tr>
+                        <thead>
+                            <tr>
+                                <th>Mês</th>
+                                <th>Num. Presenças</th>
+                            </tr>
+                        </thead>
+                        <tbody align="center">
+                            <tr ng-repeat="presenca in pesquisaDataset.presencas">
+                                <td>{{presenca.data}}</td>
+                                <td>{{presenca.num_presencas}}</td>
+                            </tr>
+                        </tbody>
+                    </tr>
                 </tbody>
             </table>
         </div>

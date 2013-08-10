@@ -503,9 +503,9 @@ myApp.controller('relalunoController', function ($scope) {
 	};
 	$scope.pesquisa = function(){
 		var dataset = $scope.pesquisaForm;
-		$scope.callMethod('relaluno', 'pesquisa', function(data){
+		$scope.callMethod('relaluno', 'pesquisa', dataset, function(data){
 			$scope.pesquisaDataset = JSON.parse(data);
-			$scope.loadChart();
+			$scope.$apply();
 		});
 	};
 });
