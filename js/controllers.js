@@ -414,7 +414,15 @@ myApp.controller('descontoController', function($scope){
 myApp.controller('estacionamentoController', function($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
-	$scope.form = {};
+	$scope.formEstacionamento = {};
+	$scope.selectData = {};
+	$scope.loadSelects = function(){
+		$scope.callMethod('estacionamento', 'loadSelects', null, function(response){
+			console.log(response);
+			$scope.selectData = JSON.parse(response);
+			$scope.$apply();
+		});		
+	};
 	$scope.pesquisa = function(){
 		var dataset = $scope.pesquisaForm;
 		$scope.callMethod('estacionamento', 'pesquisa', dataset, function(response){

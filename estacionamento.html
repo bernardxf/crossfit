@@ -1,120 +1,122 @@
-<div ng-controller="estacionamentoController">
-<ul id="shortcut">
-    <li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
-    <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
-</ul>	
-<div ng-switch on="visualType" >
-	<div class="row-fluid" ng-switch-when="form">
-		<div class="widget span12 clearfix">
-			<div class="widget-header">
-				<span>Cadastrar</span>
+<div ng-controller="estacionamentoController" ng-init="loadSelects();">
+	<ul id="shortcut">
+		<li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+		<li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
+	</ul>	
+	<div ng-switch on="visualType" >
+		<div class="row-fluid" ng-switch-when="form">
+			<div class="widget span12 clearfix">
+				<div class="widget-header">
+					<span>Cadastrar</span>
+				</div>
+				<div class="widget-content">
+					<form id="estacionamento_form" class="form">
+						<div class="section">
+							<label>Aluno</label>
+							<div>
+								<select class="small selectBox" style="width: 250px" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+									<option value=""></option>
+									<option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="section">
+							<label>Modelo</label>
+							<div>
+								<input class="full" type="text" name="modelo" ng-model="form.modelo">
+							</div>
+						</div>
+						<div class="section">
+							<label>Cor</label>
+							<div>
+								<input class="full" type="text" name="cor" ng-model="form.cor">
+							</div>
+						</div>
+						<div class="section">
+							<label>Placa</label>
+							<div>
+								<input class="medium" type="text" name="placa" ng-model="form.placa" ui-placa>
+							</div>
+						</div>
+						<div class="section">
+							<label>Plano</label>
+							<div>
+								<select class="small" ng-model="form.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.estacionamento.plano">
+									<option value="">--Selecione um plano--</option>
+								</select>
+							</div>
+						</div>
+						<div class="section last">
+							<div>
+								<a class="btn btn-success" title="Salvar" ng-click="save('estacionamento');">Salvar</a>
+								<input type="reset" class="btn" value="Cancelar">
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
-			<div class="widget-content">
-				<form id="estacionamento_form" class="form">
-					<div class="section">
-						<label>Aluno</label>
-						<div>
-							<select class="small" ng-model="form.id_aluno_fk" ng-options="aluno.id_aluno as aluno.nome for aluno in selData.estacionamento.aluno">
-								<option value="">--Selecione um aluno--</option>
+		</div>
+		<div class="row-fluid" ng-switch-when="grid">
+			<div class="widget span4 clearfix">
+				<div class="widget-header">
+					<span>Pesquisar</span>
+				</div>
+				<div class="widget-content">
+					<form>
+						<div class="section">
+							<label>Aluno</label>
+							<select class="small selectBox" style="width: 250px" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+								<option value=""></option>
+								<option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
 							</select>
+						</div> 
+						<div class="section">
+							<label>Placa</label>
+							<div>
+								<input class="medium" type="text" name="placa" ng-model="pesquisaForm.placa" ui-placa>
+							</div>
 						</div>
-					</div>
-					<div class="section">
-						<label>Modelo</label>
-						<div>
-							<input class="full" type="text" name="modelo" ng-model="form.modelo">
+						<div class="section last">
+							<div>
+								<a class="btn btn-success" title="Buscar" ng-click="pesquisa();">Buscar</a>
+								<a class="btn">Cancelar</a>
+							</div>
 						</div>
-					</div>
-					<div class="section">
-						<label>Cor</label>
-						<div>
-							<input class="full" type="text" name="cor" ng-model="form.cor">
-						</div>
-					</div>
-					<div class="section">
-						<label>Placa</label>
-						<div>
-							<input class="medium" type="text" name="placa" ng-model="form.placa" ui-placa>
-						</div>
-					</div>
-					<div class="section">
-						<label>Plano</label>
-						<div>
-							<select class="small" ng-model="form.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.estacionamento.plano">
-								<option value="">--Selecione um plano--</option>
-							</select>
-						</div>
-					</div>
-					<div class="section last">
-						<div>
-							<a class="btn btn-success" title="Salvar" ng-click="save('estacionamento');">Salvar</a>
-							<input type="reset" class="btn" value="Cancelar">
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
+			</div>
+			<div class="widget span8 clearfix">
+				<div class="widget-header">
+					<span>Resultado da busca</span>
+				</div>
+				<div class="widget-content">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Aluno</th>
+								<th>Modelo</th>
+								<th>Cor</th>
+								<th>Placa</th>
+								<th>Plano</th>
+								<th>Ação</th>
+							</tr>
+						</thead>
+						<tbody align="center">
+							<tr ng-repeat="estacionamento in pesquisaDataset">
+								<td>{{estacionamento.id_aluno_fk | translateValue:selData.estacionamento.aluno:'aluno'}}</td>
+								<td>{{estacionamento.modelo}}</td>
+								<td>{{estacionamento.cor}}</td>
+								<td>{{estacionamento.placa}}</td>
+								<td>{{estacionamento.id_plano_fk  | translateValue:selData.estacionamento.plano:'plano'}}</td>
+								<td>
+									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
+									<a ng-click="deleteRow($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row-fluid" ng-switch-when="grid">
-		<div class="widget span4 clearfix">
-			<div class="widget-header">
-				<span>Pesquisar</span>
-			</div>
-			<div class="widget-content">
-				<form>
-					<div class="section">
-						<label>Aluno</label>
-						<select class="small" ng-model="pesquisaForm.id_aluno_fk" ng-options="aluno.id_aluno as aluno.nome for aluno in selData.estacionamento.aluno">
-							<option value="">--Selecione um aluno--</option>
-						</select>
-					</div> 
-					<div class="section">
-						<label>Placa</label>
-						<div>
-							<input class="medium" type="text" name="placa" ng-model="pesquisaForm.placa" ui-placa>
-						</div>
-					</div>
-					<div class="section last">
-						<div>
-						<a class="btn btn-success" title="Buscar" ng-click="pesquisa();">Buscar</a>
-						<a class="btn">Cancelar</a>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="widget span8 clearfix">
-			<div class="widget-header">
-				<span>Resultado da busca</span>
-			</div>
-			<div class="widget-content">
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>Aluno</th>
-							<th>Modelo</th>
-							<th>Cor</th>
-							<th>Placa</th>
-							<th>Plano</th>
-							<th>Ação</th>
-						</tr>
-					</thead>
-					<tbody align="center">
-						<tr ng-repeat="estacionamento in pesquisaDataset">
-							<td>{{estacionamento.id_aluno_fk | translateValue:selData.estacionamento.aluno:'aluno'}}</td>
-							<td>{{estacionamento.modelo}}</td>
-							<td>{{estacionamento.cor}}</td>
-							<td>{{estacionamento.placa}}</td>
-							<td>{{estacionamento.id_plano_fk  | translateValue:selData.estacionamento.plano:'plano'}}</td>
-							<td>
-								<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
-								<a ng-click="deleteRow($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
 </div>

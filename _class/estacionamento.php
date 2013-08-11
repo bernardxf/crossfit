@@ -14,7 +14,7 @@ if ($methodToCall == 'loadData'){
     $query = $SELECT." ORDER BY id_estacionamento ASC";
     $rows = DB::get_rows(DB::query($query));
     echo json_encode($rows);
-}
+}   
 
 if ($methodToCall == 'save'){
 
