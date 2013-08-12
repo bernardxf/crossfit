@@ -14,6 +14,9 @@ myApp.filter('translateValue', function(){
 });
 
 myApp.controller('myController',function($scope){
+	$scope.application = {
+		"user": null
+	};
 	$scope.logged = false;
 	$scope.template = 'login.html',
 	$scope.pageTitle = 'Sistema Crossfit - Login',
@@ -122,13 +125,12 @@ myApp.controller('myController',function($scope){
 });
 
 myApp.controller('loginController', function($scope){
+	$scope.loginData = {};
 	$scope.valida = function(){
-		var form = $("#login_form");
-		var dataset = form.serializeObject();
-
-
+		var dataset = $scope.loginData;
 		Application.request('login', 'valida', dataset, function(response){
 			if(response == true){
+				$scope.application.user = dataset.username;
 				$scope.setLogged(true);
 				$scope.openWindow('dashboard', '');
 				$scope.$apply();

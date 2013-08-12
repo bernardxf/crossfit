@@ -1,13 +1,13 @@
-<div id="login" class="row-fluid">
+<div id="login" class="row-fluid" ng-controller="loginController">
     <div class="inner clearfix">
         <div class="logo" ><img src="images/logo.png" alt="Logo Crossfit BH" /></div>
         <div class="formLogin">
-            <form name="formLogin" id="login_form" ng-controller="loginController" ng-submit="valida()">
+            <form name="formLogin" id="login_form" ng-submit="valida()">
                 <div class="tip">
-                    <input name="username" type="text"  id="username_id"  title="Usuário"   />
+                    <input name="username" type="text" id="username_id" title="Usuário" ng-model="loginData.username"/>
                 </div>
                 <div class="tip">
-                    <input name="password" type="password" id="password"   title="Senha"  />
+                    <input name="password" type="password" id="password" title="Senha" ng-model="loginData.password"/>
                 </div>
                 <div class="loginButton">
                     <div class=" pull-right" style="margin-right:-8px;">
