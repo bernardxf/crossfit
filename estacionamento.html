@@ -65,10 +65,12 @@
 					<form>
 						<div class="section">
 							<label>Aluno</label>
-							<select class="small selectBox" style="width: 250px" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
-								<option value=""></option>
-								<option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
-							</select>
+							<div>
+								<select class="full selectBox" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+									<option value=""></option>
+									<option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
+								</select>
+							</div>
 						</div> 
 						<div class="section">
 							<label>Placa</label>

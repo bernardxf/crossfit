@@ -820,7 +820,7 @@ color:#cccccc;
 }
 
 /*select box */
-select {width: 192px !important;}
+/* select {width: 192px !important;} */
 select[multiple] {
 	padding: 6px;
 	border: solid 1px #dddddd;
@@ -1058,7 +1058,8 @@ form textarea.largeXL {
 	height:350px;
 }
 form input.full,
-form textarea.full {
+form textarea.full,
+form select.full {
 	width: 95%;
 	max-width:95%
 }

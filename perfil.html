@@ -1,10 +1,10 @@
-<div class="row-fluid">
+<div class="row-fluid" ng-controller="perfilController">
 	<div class="widget span6 clearfix">
 		<div class="widget-header">
 			<span>Trocar Senha</span>
 		</div>
 		<div class="widget-content">
-			<form id="perfil_formTrocarSenha" class="form">
+			<form id="perfil_formTrocarSenha">
 				<div class="section">
 					<label>Senha Atual</label>
 					<div>
@@ -25,7 +25,7 @@
 				</div>
 				<div class="section last">
 					<div>
-						<a class="btn btn-success" title="Salvar" onClick="Application.callMethod(this.id, 'alterarSenha')">Salvar</a>
+						<a class="btn btn-success" title="Salvar" ng-click="alterarSenha();">Salvar</a>
 						<input type="reset" class="btn" value="Cancelar">
 					</div>
 				</div>
@@ -37,7 +37,7 @@
 			<span>Trocar Nome Exibido</span>
 		</div>
 		<div class="widget-content">
-			<form id="perfil_formTrocarNome" class="form">
+			<form id="perfil_formTrocarNome">
 				<div class="section">
 					<label>Nome</label>
 					<div>
@@ -52,7 +52,7 @@
 				</div>
 				<div class="section last">
 					<div>
-						<a id="btnTrocarNome" class="btn btn-success" title="Salvar" onClick="Application.callMethod(this.id, 'alterarNome')">Salvar</a>
+						<a id="btnTrocarNome" class="btn btn-success" title="Salvar" ng-click="alterarNome();">Salvar</a>
 						<input type="reset" class="btn" value="Cancelar">
 					</div>
 				</div>
