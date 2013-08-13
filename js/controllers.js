@@ -1,10 +1,10 @@
 var myApp = angular.module('myApp',['ui.select2']);
 
 myApp.filter('translateValue', function(){
-	return function(input, selData, className){
+	return function(input, selData, key){
 		var translated = '';
 		angular.forEach(selData, function(value){
-			if(value['id_'+className] == input){
+			if(value[key] == input){
 				translated = value['nome'];
 			}
 		});

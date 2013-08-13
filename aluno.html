@@ -1,6 +1,6 @@
 <div ng-controller="alunoController" ng-init="loadSelects();">
 	<ul id="shortcut">
-	<li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+		<li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
 		<li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
 	</ul>
 	<div ng-switch on="visualType">
@@ -130,8 +130,9 @@
 						<div class="section">
 							<label>Plano</label>
 							<div>
-								<select class="small selectBox" style="width: 198px" ng-model="form.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selects.plano">
-									<option value="">--Selecione um plano--</option>
+								<select class="small selectBox" style="width: 250px" ng-model="form.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+									<option value=""></option>
+									<option ng-repeat="plano in selectData.plano" value="{{plano.id_plano}}">{{plano.nome}}</option>
 								</select>
 							</div>
 						</div>
@@ -206,8 +207,9 @@
 						<div class="section">
 							<label>Plano</label>
 							<div>
-								<select class="small selectBox" style="width: 198px" ng-model="pesquisaForm.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selectData.plano">
-									<option value="">--Selecione um plano--</option>
+							<select class="small selectBox" style="width: 250px" ng-model="pesquisaForm.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+									<option value=""></option>
+									<option ng-repeat="plano in selectData.plano" value="{{plano.id_plano}}">{{plano.nome}}</option>
 								</select>
 							</div>
 						</div>
@@ -249,7 +251,7 @@
 								<td>{{aluno.nome}}</td>
 								<td>{{aluno.email}}</td>
 								<td>{{aluno.tel_celular}}</td>
-								<td>{{aluno.id_plano_fk | translateValue:selData.plano:'plano'}}</td>
+								<td>{{aluno.id_plano_fk | translateValue:selectData.plano:'id_plano'}}</td>
 								<td>
 									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
 									<a ng-click="delete($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
