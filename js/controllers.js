@@ -413,7 +413,7 @@ myApp.controller('descontoController', function($scope){
 	});
 });
 
-myApp.controller('estacionamentoController', function($scope){
+myApp.controller('estacionamentoController', function ($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
 	$scope.formEstacionamento = {};
@@ -516,6 +516,32 @@ myApp.controller('relalunoController', function ($scope) {
 		$scope.callMethod('relaluno', 'pesquisa', dataset, function(data){
 			$scope.pesquisaDataset = JSON.parse(data);
 			$scope.$apply();
+		});
+	};
+});
+
+myApp.controller('perfilController', function($scope){
+	$scope.pesquisaForm = {};
+	$scope.pesquisaDataset = {};
+	$scope.form = {};
+	
+	$scope.pesquisa = function(){
+		var dataset = $scope.pesquisaForm;
+		$scope.callMethod('perfil', 'pesquisa', dataset, function(response){
+			$scope.pesquisaDataset = JSON.parse(response);
+			$scope.$apply();
+		});		
+	};
+
+	$scope.alterarSenha = function(){
+		$scope.$parent.alterarSenha('perfil', $scope.form, function(){
+			$scope.pesquisa();
+		});
+	};
+
+	$scope.alterarNome = function(){
+		$scope.$parent.alterarNome('perfil', $scope.form, function(){
+			$scope.pesquisa();
 		});
 	};
 });
