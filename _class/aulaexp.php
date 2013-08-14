@@ -9,6 +9,7 @@ $INSERT = 'INSERT INTO aulaexp (nome, data, telefone, confirmado, presente) VALU
 $UPDATE = 'UPDATE aulaexp SET nome = %s, data = %s, telefone = %s, confirmado = %d, presente = %d WHERE id_aulaexp = %d';
 
 $methodToCall = $_POST['methodToCall'];
+$dataset = $_POST['dataset'];
 
 if ($methodToCall == 'loadData'){
     $rows = DB::get_rows(DB::query($SELECT));
@@ -63,17 +64,13 @@ if($methodToCall == 'delete'){
 }
 
 if($methodToCall == 'pesquisa'){
-    $dataset = $_POST['dataset'];
+    $data = $dataset['data'];
+    $exp_data = explode('/', $data);
+    $data = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
 
-    $pesquisa = $SELECT;
-
-    foreach ($dataset as $key => $value) {
-        if ($value != 'null') {
-            $pesquisa .= " AND $key like '$value%'";    
-        }
-    }
-
-    $rows = DB::get_rows(DB::query($pesquisa));
+    $SQL = "SELECT id_aulaexp, nome, data, telefone, confirmado, presente from aulaexp 
+            where data = '%s'";
+    $rows = DB::get_rows(DB::query($SQL, $data));
     echo json_encode($rows);
 }
 
