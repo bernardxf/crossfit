@@ -120,7 +120,7 @@
 							<tr ng-repeat="fisionutri in pesquisaDataset">
 								<td>{{fisionutri.nome}}</td>
 								<td>{{fisionutri.data}}</td>
-								<td>{{fisionutri.tipo}}</td>
+								<td>{{fisionutri.tipo | translateValue:selectData.tipo:'id_tipo'}}</td>
 								<td>{{fisionutri.valor}}</td>
 								<td>
 									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>

@@ -307,6 +307,9 @@ myApp.controller('fisionutriController', function($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
 	$scope.form = {};
+	$scope.selectData = {
+		"tipo" : [{"id_tipo":1, "nome":"Fisioterapia"},{"id_tipo":2, "nome":"Nutricao"}]
+	};
 	$scope.pesquisa = function(){
 		var dataset = $scope.pesquisaForm;
 		$scope.callMethod('fisionutri', 'pesquisa', dataset, function(response){

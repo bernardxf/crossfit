@@ -40,3 +40,187 @@
 [02-Aug-2013 19:19:40 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaula.php:0
 [02-Aug-2013 19:19:40 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/relaula.php:20
 [02-Aug-2013 19:19:40 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Notice:  Undefined index: dataset in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 67
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 71
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:28:32 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Notice:  Undefined index: dataset in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 67
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 71
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:31:52 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Notice:  Undefined index: dataset in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 67
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 71
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:32:30 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Notice:  Undefined index: dataset in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 67
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 71
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:05 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/joao/Projetos/www/crossfit/_class/fisionutri.php on line 93
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Stack trace:
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
+[16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
