@@ -100,8 +100,8 @@
 								<td>{{aulaexp.nome}}</td>
 								<td>{{aulaexp.data | date:'dd/MM/yyyy'}}</td>
 								<td>{{aulaexp.telefone}}</td>
-								<td>{{aulaexp.confirmado}}</td>
-								<td>{{aulaexp.presente}}</td>
+								<td>{{aulaexp.confirmado | translateValue:selectData.confirmacao:'id_confirmacao'}}</td>
+								<td>{{aulaexp.presente | translateValue:selectData.presente:'id_presente'}}</td>
 								<td>
 									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
 									<a ng-click="delete($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
