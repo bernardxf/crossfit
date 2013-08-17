@@ -427,7 +427,6 @@ myApp.controller('estacionamentoController', function ($scope){
 	$scope.selectData = {};
 	$scope.loadSelects = function(){
 		$scope.callMethod('estacionamento', 'loadSelects', null, function(response){
-			console.log(response);
 			$scope.selectData = JSON.parse(response);
 			$scope.$apply();
 		});		
@@ -453,7 +452,7 @@ myApp.controller('estacionamentoController', function ($scope){
 	$scope.edit = function(index){
 		var dataset = angular.copy($scope.pesquisaDataset[index]);
 		dataset['_STATE'] = 'U';
-		$scope.form = dataset;
+		$scope.formEstacionamento = dataset;
 		$scope.toggle('form');
 	};
 	$scope.deleteRow = function(index){

@@ -14,7 +14,7 @@
 						<div class="section">
 							<label>Aluno</label>
 							<div>
-								<select class="small selectBox" style="width: 250px" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+								<select class="small selectBox" style="width: 250px" ng-model="formEstacionamento.id_aluno_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
 									<option value=""></option>
 									<option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
 								</select>
@@ -23,32 +23,33 @@
 						<div class="section">
 							<label>Modelo</label>
 							<div>
-								<input class="full" type="text" name="modelo" ng-model="form.modelo">
+								<input class="full" type="text" name="modelo" ng-model="formEstacionamento.modelo">
 							</div>
 						</div>
 						<div class="section">
 							<label>Cor</label>
 							<div>
-								<input class="full" type="text" name="cor" ng-model="form.cor">
+								<input class="full" type="text" name="cor" ng-model="formEstacionamento.cor">
 							</div>
 						</div>
 						<div class="section">
 							<label>Placa</label>
 							<div>
-								<input class="medium" type="text" name="placa" ng-model="form.placa" ui-placa>
+								<input class="medium" type="text" name="placa" ng-model="formEstacionamento.placa" ui-placa>
 							</div>
 						</div>
 						<div class="section">
 							<label>Plano</label>
 							<div>
-								<select class="small" ng-model="form.id_plano_fk" ng-options="plano.id_plano as plano.nome for plano in selData.estacionamento.plano">
-									<option value="">--Selecione um plano--</option>
+								<select class="small selectBox" style="width: 250px" ng-model="formEstacionamento.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um plano">
+									<option value=""></option>
+									<option ng-repeat="plano in selectData.plano" value="{{plano.id_plano}}">{{plano.nome}}</option>
 								</select>
 							</div>
 						</div>
 						<div class="section last">
 							<div>
-								<a class="btn btn-success" title="Salvar" ng-click="save('estacionamento');">Salvar</a>
+								<a class="btn btn-success" title="Salvar" ng-click="save();">Salvar</a>
 								<input type="reset" class="btn" value="Cancelar">
 							</div>
 						</div>
@@ -70,12 +71,6 @@
 									<option value=""></option>
 									<option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
 								</select>
-							</div>
-						</div> 
-						<div class="section">
-							<label>Placa</label>
-							<div>
-								<input class="medium" type="text" name="placa" ng-model="pesquisaForm.placa" ui-placa>
 							</div>
 						</div>
 						<div class="section last">
@@ -105,11 +100,11 @@
 						</thead>
 						<tbody align="center">
 							<tr ng-repeat="estacionamento in pesquisaDataset">
-								<td>{{estacionamento.id_aluno_fk | translateValue:selData.estacionamento.aluno:'aluno'}}</td>
+								<td>{{estacionamento.id_aluno_fk | translateValue:selectData.aluno:'id_aluno'}}</td>
 								<td>{{estacionamento.modelo}}</td>
 								<td>{{estacionamento.cor}}</td>
 								<td>{{estacionamento.placa}}</td>
-								<td>{{estacionamento.id_plano_fk  | translateValue:selData.estacionamento.plano:'plano'}}</td>
+								<td>{{estacionamento.id_plano_fk  | translateValue:selectData.plano:'id_plano'}}</td>
 								<td>
 									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
 									<a ng-click="deleteRow($index);" class="delete"><img src="images/icon/icon_delete.png"></a>

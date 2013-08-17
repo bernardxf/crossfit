@@ -9,6 +9,7 @@ $INSERT = 'INSERT INTO estacionamento (id_aluno_fk, modelo, cor, placa, id_plano
 $UPDATE = 'UPDATE estacionamento SET id_aluno_fk = %d, modelo = %s, cor = %s, placa = %s, id_plano_fk = %d WHERE id_estacionamento = %d';
 
 $methodToCall = $_POST['methodToCall'];
+$dataset = $_POST['dataset'];
 
 if ($methodToCall == 'loadData'){
     $query = $SELECT." ORDER BY id_estacionamento ASC";
@@ -69,17 +70,11 @@ if($methodToCall == 'loadSelects'){
 }
 
 if($methodToCall == 'pesquisa'){
-    $dataset = $_POST['dataset'];
+    $id_aluno_fk = $dataset['id_aluno'];
+    
+    $SQL = 'SELECT * FROM estacionamento where id_aluno_fk = %s';
 
-    $pesquisa = $SELECT;
-
-    foreach ($dataset as $key => $value) {
-        if ($value != 'null') {
-            $pesquisa .= " AND $key like '$value%'";    
-        }
-    }
-
-    $rows = DB::get_rows(DB::query($pesquisa));
+    $rows = DB::get_rows(DB::query($SQL,$id_aluno_fk));
     echo json_encode($rows);
 }
 

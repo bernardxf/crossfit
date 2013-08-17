@@ -224,3 +224,51 @@
 [16-Aug-2013 12:34:14 America/Sao_Paulo] PHP Stack trace:
 [16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:0
 [16-Aug-2013 12:34:14 America/Sao_Paulo] PHP   2. json_encode() /home/joao/Projetos/www/crossfit/_class/fisionutri.php:93
+[17-Aug-2013 10:32:56 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[17-Aug-2013 10:32:56 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:32:56 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:32:56 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:82
+[17-Aug-2013 10:32:56 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Notice:  Undefined index: id_estacionamento in /home/joao/Projetos/www/crossfit/_class/estacionamento.php on line 21
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Notice:  Undefined index: id_aluno_fk in /home/joao/Projetos/www/crossfit/_class/estacionamento.php on line 22
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Notice:  Undefined index: modelo in /home/joao/Projetos/www/crossfit/_class/estacionamento.php on line 23
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Notice:  Undefined index: cor in /home/joao/Projetos/www/crossfit/_class/estacionamento.php on line 24
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Notice:  Undefined index: id_plano_fk in /home/joao/Projetos/www/crossfit/_class/estacionamento.php on line 26
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:82
+[17-Aug-2013 10:34:40 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:82
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:82
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:82
+[17-Aug-2013 10:35:37 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[17-Aug-2013 10:35:38 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[17-Aug-2013 10:35:38 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:35:38 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[17-Aug-2013 10:35:38 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:82
+[17-Aug-2013 10:35:38 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[17-Aug-2013 10:37:20 America/Sao_Paulo] PHP Notice:  Undefined index: id_aluno_fk in /home/joao/Projetos/www/crossfit/_class/estacionamento.php on line 73
+[17-Aug-2013 10:37:20 America/Sao_Paulo] PHP Stack trace:
+[17-Aug-2013 10:37:20 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
