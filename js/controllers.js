@@ -120,7 +120,11 @@ myApp.controller('myController',function($scope){
 
 	$scope.toggle = function(type){
 		$scope.visualType = type;
-	}
+	};
+
+	$scope.loggOut = function(){
+		location.reload();
+	};
 
 });
 
