@@ -122,8 +122,10 @@ myApp.controller('myController',function($scope){
 		$scope.visualType = type;
 	};
 
-	$scope.loggOut = function(){
-		location.reload();
+	$scope.logOut = function(){
+		if(confirm('Realmente deseja efetuar logout?')){
+			location.reload();	
+		}		
 	};
 
 });
