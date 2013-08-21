@@ -135,8 +135,8 @@ myApp.controller('loginController', function($scope){
 	$scope.valida = function(){
 		var dataset = $scope.loginData;
 		Application.request('login', 'valida', dataset, function(response){
-			if(response == true){
-				$scope.application.user = dataset.username;
+			if(response){
+				$scope.application.user = JSON.parse(response);
 				$scope.setLogged(true);
 				$scope.openWindow('dashboard', '');
 				$scope.$apply();
@@ -533,28 +533,24 @@ myApp.controller('relalunoController', function ($scope) {
 });
 
 myApp.controller('perfilController', function($scope){
-	$scope.pesquisaForm = {};
-	$scope.pesquisaDataset = {};
-	$scope.form = {};
-	
-	$scope.pesquisa = function(){
-		var dataset = $scope.pesquisaForm;
-		$scope.callMethod('perfil', 'pesquisa', dataset, function(response){
-			$scope.pesquisaDataset = JSON.parse(response);
-			$scope.$apply();
-		});		
+	$scope.formPerfil = {
+		'id_usuario' : $scope.application.user.id_usuario
 	};
 
 	$scope.alterarSenha = function(){
-		$scope.$parent.alterarSenha('perfil', $scope.form, function(){
-			$scope.pesquisa();
-		});
+		var dataset = $scope.formPerfil;
+		$scope.callMethod('perfil', 'alterarSenha', dataset, function(response){
+			var message = JSON.parse(response);
+			alertMessage(message.type,message.message);
+		});	
 	};
 
 	$scope.alterarNome = function(){
-		$scope.$parent.alterarNome('perfil', $scope.form, function(){
-			$scope.pesquisa();
-		});
+		var dataset = $scope.formPerfil;
+		$scope.callMethod('perfil', 'alterarNome', dataset, function(response){
+			var message = JSON.parse(response);
+			alertMessage(message.type,message.message);
+		});	
 	};
 });
 

@@ -18,6 +18,6 @@ if($methodToCall == 'valida'){
 	    echo false;
 	} else {
 		$_SESSION['user'] = $check;
-	    echo true;
+	    echo json_encode($check);
 	}	
 }

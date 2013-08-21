@@ -272,3 +272,37 @@
 [17-Aug-2013 10:37:20 America/Sao_Paulo] PHP Notice:  Undefined index: id_aluno_fk in /home/joao/Projetos/www/crossfit/_class/estacionamento.php on line 73
 [17-Aug-2013 10:37:20 America/Sao_Paulo] PHP Stack trace:
 [17-Aug-2013 10:37:20 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/estacionamento.php:0
+[20-Aug-2013 22:43:17 America/Sao_Paulo] PHP Notice:  Undefined index: senhanova in /home/joao/Projetos/www/crossfit/_class/perfil.php on line 11
+[20-Aug-2013 22:43:17 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:43:17 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[20-Aug-2013 22:43:17 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 48
+[20-Aug-2013 22:43:17 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:43:17 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[20-Aug-2013 22:43:17 America/Sao_Paulo] PHP   2. DB::get_row() /home/joao/Projetos/www/crossfit/_class/perfil.php:13
+[20-Aug-2013 22:43:17 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:48
+[20-Aug-2013 22:44:37 America/Sao_Paulo] PHP Notice:  Undefined index: senhanova in /home/joao/Projetos/www/crossfit/_class/perfil.php on line 11
+[20-Aug-2013 22:44:37 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:44:37 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[20-Aug-2013 22:44:37 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 48
+[20-Aug-2013 22:44:37 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:44:37 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[20-Aug-2013 22:44:37 America/Sao_Paulo] PHP   2. DB::get_row() /home/joao/Projetos/www/crossfit/_class/perfil.php:13
+[20-Aug-2013 22:44:37 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:48
+[20-Aug-2013 22:46:06 America/Sao_Paulo] PHP Notice:  Undefined index: senhanova in /home/joao/Projetos/www/crossfit/_class/perfil.php on line 12
+[20-Aug-2013 22:46:06 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:46:06 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[20-Aug-2013 22:46:40 America/Sao_Paulo] PHP Notice:  Undefined index: senhanova in /home/joao/Projetos/www/crossfit/_class/perfil.php on line 12
+[20-Aug-2013 22:46:40 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:46:40 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[20-Aug-2013 22:46:41 America/Sao_Paulo] PHP Notice:  Undefined index: senhanova in /home/joao/Projetos/www/crossfit/_class/perfil.php on line 12
+[20-Aug-2013 22:46:41 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:46:41 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[20-Aug-2013 22:48:09 America/Sao_Paulo] PHP Notice:  Undefined index: senhanova in /home/joao/Projetos/www/crossfit/_class/perfil.php on line 12
+[20-Aug-2013 22:48:09 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:48:09 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[20-Aug-2013 22:50:59 America/Sao_Paulo] PHP Notice:  Undefined index: senhanova in /home/joao/Projetos/www/crossfit/_class/perfil.php on line 12
+[20-Aug-2013 22:50:59 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:50:59 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[20-Aug-2013 22:52:27 America/Sao_Paulo] PHP Notice:  Undefined index: senhaatual in /home/joao/Projetos/www/crossfit/_class/perfil.php on line 11
+[20-Aug-2013 22:52:27 America/Sao_Paulo] PHP Stack trace:
+[20-Aug-2013 22:52:27 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
