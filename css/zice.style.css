@@ -1059,7 +1059,8 @@ form textarea.largeXL {
 }
 form input.full,
 form textarea.full,
-form select.full {
+form select.full,
+form div.select2-container.full {
 	width: 95%;
 	max-width:95%
 }
@@ -1628,15 +1629,15 @@ label.iPhoneCheckLabelOff span {
 	background-image: url(../images/bg/214.png);
 }
 .main_menu li ul li {
-	height: 45px;
+	/* height: 45px; */
 	background-image:none;
 	border-bottom: 1px #111111 solid;
 	border-top: 1px #333333 solid;
 	width:auto;
- -webkit-transition: all .2s ease-out;
- -moz-transition:all.2s ease-out;
- -o-transition: all .2s ease-out;
- transition: all.2s ease-out;
+	-webkit-transition: all .2s ease-out;
+	-moz-transition:all.2s ease-out;
+	-o-transition: all .2s ease-out;
+	transition: all.2s ease-out;
 	padding-left:0px;
 	padding: 3px 0;
 }

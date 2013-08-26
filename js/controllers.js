@@ -426,6 +426,43 @@ myApp.controller('descontoController', function($scope){
 	});
 });
 
+myApp.controller('formapagamentoController', function($scope){
+	$scope.pesquisaForm = {};
+	$scope.pesquisaDataset = {};
+	$scope.form = {};
+	$scope.pesquisa = function(){
+		$scope.loadData('formapagamento', function(data){
+			$scope.pesquisaDataset = data;
+		});
+	};
+	$scope.save = function(){
+		$scope.$parent.save('formapagamento', $scope.form, function(){
+			$scope.pesquisa();
+		});
+		
+	};
+	$scope.newRow = function(){
+		var dataset = {'_STATE':'I'};
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.edit = function(index){
+		var dataset = angular.copy($scope.pesquisaDataset[index]);
+		dataset['_STATE'] = 'U';
+		$scope.form = dataset;
+		$scope.toggle('form');
+	};
+	$scope.deleteRow = function(index){
+		var dataset = $scope.pesquisaDataset[index];
+		$scope.$parent.deleteRow('formapagamento', dataset, function(){
+			$scope.pesquisa();
+		});
+	};
+	$scope.loadData('formapagamento', function(data){
+		$scope.pesquisaDataset = data;
+	});
+});
+
 myApp.controller('estacionamentoController', function ($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};

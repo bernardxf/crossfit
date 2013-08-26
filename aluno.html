@@ -130,7 +130,7 @@
 						<div class="section">
 							<label>Plano</label>
 							<div>
-								<select class="small selectBox" style="width: 250px" ng-model="form.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+								<select class="selectBox" ng-model="form.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um plano">
 									<option value=""></option>
 									<option ng-repeat="plano in selectData.plano" value="{{plano.id_plano}}">{{plano.nome}}</option>
 								</select>
@@ -148,19 +148,18 @@
 						<div class="section">
 							<label>Forma de Pagamento</label>
 							<div>
-								<select class="selectBox" name="formaPagamento" ng-model="form.forma_pagamento">
-									<option value="1">Cartão de Crédito</option>
-									<option value="2">Cartão de Débito</option>
-									<option value="3">Cheque</option>
-									<option value="4">Dinheiro</option>
+								<select class="selectBox" ng-model="form.id_forma_pagamento_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione a forma de pagamento">
+									<option value=""></option>
+									<option ng-repeat="formapagamento in selectData.formapagamento" value="{{formapagamento.id_forma_pagamento}}">{{formapagamento.nome}}</option>
 								</select>
 							</div>
 						</div>
 						<div class="section">
 							<label>Desconto</label>
 							<div>
-								<select class="small selectBox" style="width: 198px" ng-model="form.id_desconto_fk" ng-options="desc.id_desconto as desc.nome for desc in selData.desconto">
-									<option value="">--Selecione uma opção--</option>
+								<select class="selectBox" ng-model="form.id_desconto_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione o desconto">
+									<option value=""></option>
+									<option ng-repeat="desconto in selectData.desconto" value="{{desconto.id_desconto}}">{{desconto.nome}}</option>
 								</select>
 							</div>
 						</div>
@@ -207,7 +206,7 @@
 						<div class="section">
 							<label>Plano</label>
 							<div>
-							<select class="small selectBox" style="width: 250px" ng-model="pesquisaForm.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+							<select class="full selectBox" ng-model="pesquisaForm.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um plano">
 									<option value=""></option>
 									<option ng-repeat="plano in selectData.plano" value="{{plano.id_plano}}">{{plano.nome}}</option>
 								</select>

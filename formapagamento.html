@@ -1,0 +1,59 @@
+<div ng-controller="formapagamentoController">
+<ul id="shortcut">
+    <li><a href="#" title="Adicionar" ng-click="newRow();"><img src="images/adicionar.png" alt="Adicionar"><strong>Adicionar</strong></a></li>
+    <li><a href="#" title="Listar" ng-click="toggle('grid');"><img src="images/listar.png" alt="Listar"><strong>Listar</strong></a></li>
+</ul>	
+<div ng-switch on="visualType">
+	<div class="row-fluid" ng-switch-when="form">
+		<div class="widget span12 clearfix">
+			<div class="widget-header">
+				<span>Cadastrar</span>
+			</div>
+			<div class="widget-content">
+				<form id="formapagamento_form" class="form">
+					<div class="section">
+						<label>Nome</label>
+						<div>
+							<input class="full" type="text" name="nome" ng-model="form.nome">
+						</div>
+					</div>
+					<div class="section last">
+						<div>
+							<a id="btnSalvar" class="btn btn-success" title="Salvar" ng-click ="save();">Salvar</a>
+							<input type="reset" class="btn" value="Cancelar">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid" ng-switch-when="grid">
+		<div class="widget span12 clearfix">
+			<div class="widget-header">
+				<span>Formas de Pagamento</span>
+			</div>
+			<div class="widget-content">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Cód</th>
+							<th>Nome</th>
+							<th>Ação</th>
+						</tr>
+					</thead>
+					<tbody align="center">
+						<tr ng-repeat="formapagamento in pesquisaDataset">
+							<td>{{formapagamento.id_forma_pagamento}}</td>
+							<td>{{formapagamento.nome}}</td>
+							<td>
+								<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
+								<a ng-click="deleteRow($index);"><img src="images/icon/icon_delete.png"></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

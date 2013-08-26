@@ -1,14 +1,21 @@
 <div class="row-fluid" ng-controller="relalunoController" ng-init="loadSelects();">
-	<div class="widget span4 clearfix">
+	<div class="widget span5 clearfix">
 		<div class="widget-header">
 			<span>Pesquisar</span>
 		</div>
 		<div class="widget-content">
             <form id="relaluno_form">
                 <div class="section">
+                    <label>Data</label>
+                    <div>
+                        <input class="medium" type="text" name="dataini" ng-model="pesquisaForm.data.data_ini" ui-date> a 
+                        <input class="medium" type="text" name="datafim" ng-model="pesquisaForm.data.data_fim" ui-date>
+                    </div>
+                </div>
+                <div class="section">
                     <label>Nome</label>
                     <div>
-                        <select class="small selectBox" style="width: 250px" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+                        <select class="selectBox" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
                             <option value=""></option>
                             <option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
                         </select>
@@ -22,7 +29,7 @@
             </form>
         </div>
     </div>
-    <div class="widget span8 clearfix">
+    <div class="widget span7 clearfix">
         <div class="widget-header">
             <span>Resultado Buscas</span>
         </div>
@@ -42,7 +49,7 @@
                     <tr>
                         <thead>
                             <tr>
-                                <th>Mês</th>
+                                <th>Data</th>
                                 <th>Num. Presenças</th>
                             </tr>
                         </thead>

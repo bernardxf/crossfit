@@ -26,11 +26,32 @@ if($methodToCall == 'pesquisa'){
 			WHERE a.id_aluno = $id_aluno
 			GROUP BY DATE_FORMAT(au.data, '%m/%Y')";
 
+	$pesquisa = $SQL;
+
+    foreach ($dataset as $key => $value) {
+        if ($value != 'null') {
+            if($key == 'data'){ 
+                $data_ini = $dataset['data']['data_ini'];
+                $data_fim = $dataset['data']['data_fim'];
+                if (!$data_ini) continue;
+                
+                $exp_data = explode('/', $data_ini);   
+                $data_ini = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
+                
+                $exp_data = explode('/', $data_fim);   
+                $data_fim = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
+
+                $pesquisa .= " AND data between '$data_ini' AND '$data_fim'";    
+            } else {
+                $pesquisa .= " AND $key = $value";    
+            }
+            
+        }
+    }
+
 	$presencas = DB::get_rows(DB::query($SQL));
 
 	$result = ["aluno" => $aluno, "presencas" => $presencas];
 	echo json_encode($result);
 }
-
-
 ?>
