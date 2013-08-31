@@ -95,7 +95,8 @@ if($methodToCall == 'delete'){
 if($methodToCall == 'loadSelects'){
     $plano = DB::get_rows(DB::query('SELECT id_plano, nome from plano'));
     $desconto = DB::get_rows(DB::query('SELECT id_desconto, nome from desconto'));
-    $selects = array('plano' => $plano, 'desconto' => $desconto);
+    $forma_pagamento = DB::get_rows(DB::query('SELECT id_forma_pagamento, nome from forma_pagamento'));
+    $selects = array('plano' => $plano, 'desconto' => $desconto, 'formaPagamento' => $forma_pagamento);
 
     echo json_encode($selects);
 }
