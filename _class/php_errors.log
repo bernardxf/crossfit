@@ -306,3 +306,101 @@
 [20-Aug-2013 22:52:27 America/Sao_Paulo] PHP Notice:  Undefined index: senhaatual in /home/joao/Projetos/www/crossfit/_class/perfil.php on line 11
 [20-Aug-2013 22:52:27 America/Sao_Paulo] PHP Stack trace:
 [20-Aug-2013 22:52:27 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/perfil.php:0
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Notice:  Undefined index: data_ini in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 17
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Notice:  Undefined index: data_fim in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 18
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Notice:  Undefined offset: 2 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 26
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 26
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Notice:  Undefined offset: 2 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 29
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 29
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/relaluno.php:39
+[31-Aug-2013 17:21:15 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Notice:  Undefined index: data_ini in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 17
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Notice:  Undefined index: data_fim in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 18
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Notice:  Undefined offset: 2 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 26
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 26
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Notice:  Undefined offset: 2 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 29
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 29
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Notice:  Undefined variable: SQl in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 37
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/relaluno.php:41
+[31-Aug-2013 17:21:31 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Notice:  Undefined index: data_ini in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 17
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Notice:  Undefined index: data_fim in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 18
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Notice:  Undefined offset: 2 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 26
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 26
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Notice:  Undefined offset: 2 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 29
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 29
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Notice:  Undefined variable: SQl in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 37
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/relaluno.php:41
+[31-Aug-2013 17:21:44 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Notice:  Undefined index: data_ini in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 17
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Notice:  Undefined index: data_fim in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 18
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Notice:  Undefined offset: 2 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 26
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 26
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Notice:  Undefined offset: 2 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 29
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/joao/Projetos/www/crossfit/_class/relaluno.php on line 29
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/joao/Projetos/www/crossfit/_class/sql.php on line 57
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP Stack trace:
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP   1. {main}() /home/joao/Projetos/www/crossfit/_class/relaluno.php:0
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP   2. DB::get_rows() /home/joao/Projetos/www/crossfit/_class/relaluno.php:38
+[31-Aug-2013 17:22:24 America/Sao_Paulo] PHP   3. mysql_fetch_assoc() /home/joao/Projetos/www/crossfit/_class/sql.php:57

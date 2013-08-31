@@ -8,8 +8,8 @@
                 <div class="section">
                     <label>Data</label>
                     <div>
-                        <input class="medium" type="text" name="dataini" ng-model="pesquisaForm.data.data_ini" ui-date> a 
-                        <input class="medium" type="text" name="datafim" ng-model="pesquisaForm.data.data_fim" ui-date>
+                        <input class="medium" type="text" name="dataini" ng-model="pesquisaForm.data_ini" ui-date> a 
+                        <input class="medium" type="text" name="datafim" ng-model="pesquisaForm.data_fim" ui-date>
                     </div>
                 </div>
                 <div class="section">
@@ -39,29 +39,19 @@
                     <tr>
                         <th>Aluno</th>
                         <th>Plano</th>
+                        <th>Num. Presencas</th>
                     </tr>
                 </thead>
                 <tbody align="center">
                     <tr>
                         <td>{{pesquisaDataset.aluno[0].aluno}}</td>
                         <td>{{pesquisaDataset.aluno[0].plano}}</td>
-                    </tr>
-                    <tr>
-                        <thead>
-                            <tr>
-                                <th>Data</th>
-                                <th>Num. Presenças</th>
-                            </tr>
-                        </thead>
-                        <tbody align="center">
-                            <tr ng-repeat="presenca in pesquisaDataset.presencas">
-                                <td>{{presenca.data}}</td>
-                                <td>{{presenca.num_presencas}}</td>
-                            </tr>
-                        </tbody>
+                        <td>{{pesquisaDataset.presencas[0].num_presencas}}</td>
                     </tr>
                 </tbody>
-            </table>
-        </div>
-    </div>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
 </div>

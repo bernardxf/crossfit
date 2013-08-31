@@ -166,7 +166,6 @@ myApp.controller('alunoController', function($scope){
 	$scope.loadSelects = function(){
 		$scope.callMethod('aluno', 'loadSelects', null, function(response){
 			$scope.selectData = JSON.parse(response);
-			console.log(response);
 			$scope.$apply();
 		});		
 	};
