@@ -130,7 +130,7 @@
 						<div class="section">
 							<label>Plano</label>
 							<div>
-								<select class="selectBox" ng-model="form.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um plano">
+								<select id="plano" class="selectBox" ng-model="form.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um plano">
 									<option value=""></option>
 									<option ng-repeat="plano in selectData.plano" value="{{plano.id_plano}}">{{plano.nome}}</option>
 								</select>
@@ -157,7 +157,7 @@
 						<div class="section">
 							<label>Desconto</label>
 							<div>
-								<select class="selectBox" ng-model="form.id_desconto_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione o desconto">
+								<select id="desconto" class="selectBox" ng-model="form.id_desconto_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione o desconto">
 									<option value=""></option>
 									<option ng-repeat="desconto in selectData.desconto" value="{{desconto.id_desconto}}">{{desconto.nome}}</option>
 								</select>
@@ -166,16 +166,16 @@
 						<div class="section">
 							<label>Valor Total</label>
 							<div>
-								<i class="moeda"></i><input type="text" class="small" name="valorTotal" ng-model="form.valor_total"/>
+								<i class="moeda"></i><input id="valor_total" type="text" class="small" name="valorTotal" ng-model="form.valor_total"/>
 							</div>
 						</div>
 						<div class="section">
 							<label>Status</label>
 							<div>
-								<select class="selectBox" name="status" ng-model="form.status">
-									<option value="1">Ativo</option>
-									<option value="2">Inativo</option>
-									<option value="3">Trancado</option>
+								<select class="selectBox" name="aluno_status" ng-model="form.aluno_status">
+									<option value="ativo">Ativo</option>
+									<option value="inativo">Inativo</option>
+									<option value="trancado">Trancado</option>
 								</select>
 							</div>
 						</div>
@@ -183,7 +183,7 @@
 							<div>
 								<a id="btnCadastrarDesconto" class="btn btn-success" title="Salvar" ng-click ="save();">Salvar</a>
 								<input type="reset" class="btn" value="Cancelar">
-								<a class="btn" title="Imprimir Contrato"><i class="icon-file"></i> Imprimir Contrato</a>
+								<!-- <a class="btn" title="Imprimir Contrato"><i class="icon-file"></i> Imprimir Contrato</a> -->
 							</div>
 						</div>
 					</form>
@@ -253,7 +253,7 @@
 								<td>{{aluno.id_plano_fk | translateValue:selectData.plano:'id_plano'}}</td>
 								<td>
 									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
-									<a ng-click="delete($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+									<a ng-click="deleteRow($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
 									<!-- <a href="javascript:;" class="print" title="Imprimir Contrato"><img src="images/icon/color_18/print2.png"></a> -->
 								</td>
 							</tr>

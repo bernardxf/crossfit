@@ -3,16 +3,15 @@
 include 'sql.php';
 
 $SELECT = 'SELECT id_aluno, nome, DATE_FORMAT(data_nasc, "%d/%m/%Y") as data_nasc, rg, cpf, estado_civil, email, cep, logradouro, complemento, bairro, 
-           cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, forma_pagamento, id_desconto_fk, valor_total, aluno_status, 
+           cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, id_forma_pagamento_fk, id_desconto_fk, valor_total, aluno_status, 
             DATE_FORMAT(data_cad, "%d/%m/%Y") as data_cad, DATE_FORMAT(data_alt, "%d/%m/%Y") as data_alt FROM aluno WHERE 1 = 1';
 
-$INSERT = 'INSERT INTO aluno (nome, data_nasc, rg, cpf, estado_civil, email, cep, logradouro, complemento, bairro, 
-            cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, forma_pagamento, id_desconto_fk, valor_total, aluno_status, data_cad, data_alt) 
-                    VALUES (%s, %s, %d, %d, %s, %s, %s, %s, %s, %s, %s, %d, %s, %s, %d, %d, %d, %d, %s, %d, %d, %d, %s, %s)';
+$INSERT = 'INSERT INTO aluno (nome, data_nasc, rg, cpf, estado_civil, email, cep, logradouro, complemento, bairro, cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, id_forma_pagamento_fk, id_desconto_fk, valor_total, aluno_status, data_cad, data_alt) 
+                  VALUES (%s, %s, %d, %d, %s, %s, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %d, %d, %d, %d, %d, %d, %s, %s, %s)';
 
-$UPDATE = 'UPDATE aluno SET nome = %s, data_nasc = %s, rg = %d, cpf = %d, estado_civil = %s, email = %s, cep = %s, logradouro = %s, complemento = %s,
-        bairro = %s, cidade = %s, uf = %s, tel_fixo = %d, tel_celular = %d, pessoa_ref = %s, tel_ref = %d,
-        plano_saude = %d, atestado_medico = %d, horario_economico = %d, id_plano_fk = %d, forma_pagamento = %s, id_desconto_fk = %d, valor_total = %d, aluno_status = %d, data_alt = %s WHERE id_aluno = %d';
+$UPDATE = 'UPDATE aluno SET nome = %s, data_nasc = %s, rg = %d, cpf = %d, estado_civil = %s, email = %s, cep = %d, logradouro = %s, complemento = %s,
+        bairro = %s, cidade = %s, uf = %s, tel_fixo = %s, tel_celular = %s, pessoa_ref = %s, tel_ref = %s,
+        plano_saude = %s, atestado_medico = %d, horario_economico = %d, id_plano_fk = %d, id_forma_pagamento_fk = %d, id_desconto_fk = %d, valor_total = %d, aluno_status = %s, data_alt = %s WHERE id_aluno = %d';
 
 $methodToCall = $_POST['methodToCall'];
 
@@ -45,7 +44,7 @@ if ($methodToCall == 'save'){
     $atestado_medico = $_POST['dataset']['atestado_medico'];
     $horario_economico = $_POST['dataset']['horario_economico'];
     $plano = $_POST['dataset']['id_plano_fk'];
-    $forma_pagamento = $_POST['dataset']['forma_pagamento'];
+    $forma_pagamento = $_POST['dataset']['id_forma_pagamento_fk'];
     $desconto = $_POST['dataset']['id_desconto_fk'];
     $valor_total = $_POST['dataset']['valor_total'];
     $aluno_status = $_POST['dataset']['aluno_status'];
@@ -57,21 +56,18 @@ if ($methodToCall == 'save'){
 
     if($state == 'I')  {
         
-        DB::query($INSERT, $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, 
-                    $telfixo, $telcel, $pessoaref, $telref, $plano_saude, $atestado_medico, $horario_economico,  $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $dataAtual);
+        DB::query($INSERT, $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, $telfixo, $telcel, $pessoaref, $telref, $plano_saude, $atestado_medico, $horario_economico, $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $dataAtual);
 
         $response['type'] = 'success';
-        $response['message'] = 'Cadastro editado com sucesso';
+        $response['message'] = 'Cadastro efetuado com sucesso';
         echo json_encode($response);
 
     } else if($state == 'U') {
 
-        DB::query($UPDATE, 
-            $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, $telfixo, $telcel, $pessoaref, 
-            $telref, $plano_saude, $atestado_medico, $horario_economico, $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $id);
-
+        DB::query($UPDATE, $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, $telfixo, $telcel, $pessoaref, $telref, $plano_saude, $atestado_medico, $horario_economico, $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $id);
+                            
         $response['type'] = 'success';
-        $response['message'] = 'Cadastro efetuado com sucesso';
+        $response['message'] = 'Cadastro editado com sucesso';
         echo json_encode($response);
         
     } else {
@@ -85,7 +81,7 @@ if ($methodToCall == 'save'){
 
 if($methodToCall == 'delete'){
     $id_aluno = $_POST['dataset']['id_aluno'];
-    DB::query('DELETE from aluno where id_aluno = %s',$id_aluno);
+    DB::query('DELETE from aluno where id_aluno = %d',$id_aluno);
 
     $response['type'] = 'success';
     $response['message'] = 'Excluido com sucesso!';
