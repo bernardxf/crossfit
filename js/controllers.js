@@ -671,6 +671,52 @@ myApp.directive('uiCpf', function() {
 	};
 });
 
+myApp.directive('uiCep', function() {
+	return {
+		require: '?ngModel',
+		link: function($scope, element, attrs, controller) {
+			controller.$render = function(){
+				var value = controller.$viewValue || '';
+				element.val(value);
+				element.mask("99999-999", { completed : function(){
+					var value = this.val();
+					controller.$setViewValue(value);
+
+					var cep = $('#cep').val();
+				    var url = 'http://xtends.com.br/webservices/cep/json/'+cep+'/';    
+				    
+				    $.post(url,{cep:cep},
+				        function (rs) {
+				            rs = $.parseJSON(rs);
+				            if(rs.result == 1){
+				                address = rs.logradouro + ', ' + rs.bairro + ', ' + rs.cidade + ', ' + ', ' + rs.uf;
+				                $('#logradouro').val(rs.logradouro);
+				                $('#bairro').val(rs.bairro);
+				                $('#cidade').val(rs.cidade);
+				                $('#uf').val(rs.uf);
+				                $('#cep').removeClass('invalid');
+				                last_cep = cep;
+				            }
+				            else{
+				                $('#cep').addClass('invalid');    
+				                $('#cep').focus();  
+				                last_cep = 0;
+				            }
+				        })   
+				}});
+			};
+			return element.bind('keyup', function() {
+				return $scope.$apply(function() {
+					if(element.mask().length == 0){
+						return controller.$setViewValue(element.mask());	
+					}
+
+				});
+			});
+		}
+	};
+});
+
 myApp.directive('uiRg', function() {
 	return {
 		require: '?ngModel',

@@ -53,9 +53,15 @@
 							</div>
 						</div>
 						<div class="section">
+							<label>CEP</label>
+							<div>
+								<input id="cep" class="xsmall cep" type="text" name="cep" ng-model="form.cep" ui-cep>
+							</div>
+						</div>
+						<div class="section">
 							<label>Logradouro</label>
 							<div>
-								<input class="full" type="text" name="logradouro" ng-model="form.logradouro">
+								<input id="logradouro" class="full" type="text" name="logradouro" ng-model="form.logradouro">
 							</div>
 						</div>
 						<div class="section">
@@ -67,37 +73,31 @@
 						<div class="section">
 							<label>Bairro</label>
 							<div>
-								<input class="full" type="text" name="bairro" ng-model="form.bairro">
+								<input id="bairro" class="full" type="text" name="bairro" ng-model="form.bairro">
 							</div>
 						</div>
 						<div class="section">
 							<label>Cidade</label>
 							<div>
-								<input class="full" type="text" name="cidade" ng-model="form.cidade">
+								<input id="cidade" class="full" type="text" name="cidade" ng-model="form.cidade">
 							</div>
 						</div>
 						<div class="section">
 							<label>UF</label>
 							<div>
-								<input class="xxsmall uf" type="text" name="uf" ng-model="form.uf">
-							</div>
-						</div>
-						<div class="section">
-							<label>CEP</label>
-							<div>
-								<input class="xsmall cep" type="text" name="cep" ng-model="form.cep">
+								<input id="uf" class="xxsmall uf" type="text" name="uf" ng-model="form.uf">
 							</div>
 						</div>
 						<div class="section">
 							<label>Telefone Fixo</label>
 							<div>
-								<input class="small fone" type="text" name="telfixo" ng-model="form.tel_fixo" ui-phone>
+								<input class="small" type="text" name="tel_fixo" ng-model="form.tel_fixo" ui-phone>
 							</div>
 						</div>
 						<div class="section">
 							<label>Telefone Celular</label>
 							<div>
-								<input class="small fone" type="text" name="telcel" ng-model="form.tel_celular" ui-phone>
+								<input class="small" type="text" name="tel_celular" ng-model="form.tel_celular" ui-phone>
 							</div>
 						</div>
 						<div class="section">
@@ -109,28 +109,28 @@
 						<div class="section">
 							<label>Telefone Referência</label>
 							<div>
-								<input class="small fone" type="text" name="telref" ng-model="form.tel_ref" ui-phone>
+								<input class="small fone" type="text" name="tel_ref" ng-model="form.tel_ref" ui-phone>
 							</div>
 						</div>
 						<div class="section">
 							<label>Plano de Saúde</label>
 							<div>
-								<input class="medium" type="text" name="planoSaude" ng-model="form.plano_saude">
+								<input class="medium" type="text" name="plano_saude" ng-model="form.plano_saude">
 							</div>
 						</div>
 						<div class="section">
 							<label>Atestado Médico</label>
 							<div>
 								<div class="checksquared">
-									<input id="check-1" type="checkbox" value="action" name="atestadoMedico" ng-model="form.atestado_medico">
-									<label title="Sim" for="check-1"></label>
+									<input id="atestado_medico" type="checkbox" value="1" name="atestado_medico" ng-model="form.atestado_medico">
+									<label title="Sim" for="atestado_medico"></label>
 								</div>
 							</div>
 						</div>
 						<div class="section">
 							<label>Plano</label>
 							<div>
-								<select id="plano" class="selectBox" ng-model="form.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um plano">
+								<select class="selectBox large" ng-model="form.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um plano">
 									<option value=""></option>
 									<option ng-repeat="plano in selectData.plano" value="{{plano.id_plano}}">{{plano.nome}}</option>
 								</select>
@@ -140,15 +140,15 @@
 							<label>Horario Econômico</label>
 							<div>
 								<div class="checksquared">
-									<input id="check-1" type="checkbox" value="action" name="horarioeconomico" ng-model="form.horario_economico">
-									<label title="Sim" for="check-1"></label>
+									<input id="horario_economico" type="checkbox" value="1" name="horario_economico" ng-model="form.horario_economico">
+									<label title="Sim" for="horario_economico"></label>
 								</div>
 							</div>
 						</div>
 						<div class="section">
 							<label>Forma de Pagamento</label>
 							<div>
-								<select class="selectBox" ng-model="form.id_forma_pagamento_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione a forma de pagamento">
+								<select class="selectBox large" ng-model="form.id_forma_pagamento_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione a forma de pagamento">
 									<option value=""></option>
 									<option ng-repeat="formapagamento in selectData.formaPagamento" value="{{formapagamento.id_forma_pagamento}}">{{formapagamento.nome}}</option>
 								</select>
@@ -157,7 +157,7 @@
 						<div class="section">
 							<label>Desconto</label>
 							<div>
-								<select id="desconto" class="selectBox" ng-model="form.id_desconto_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione o desconto">
+								<select class="selectBox large" ng-model="form.id_desconto_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione o desconto">
 									<option value=""></option>
 									<option ng-repeat="desconto in selectData.desconto" value="{{desconto.id_desconto}}">{{desconto.nome}}</option>
 								</select>
@@ -166,7 +166,7 @@
 						<div class="section">
 							<label>Valor Total</label>
 							<div>
-								<i class="moeda"></i><input id="valor_total" type="text" class="small" name="valorTotal" ng-model="form.valor_total"/>
+								<i class="moeda"></i><input id="valor_total" type="text" class="small" name="valor_total" ng-model="form.valor_total"/>
 							</div>
 						</div>
 						<div class="section">

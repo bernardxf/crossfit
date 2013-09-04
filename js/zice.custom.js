@@ -152,27 +152,3 @@ function alertMessage(type,str){
 		$.alertbox.animate({ opacity: 0,right: '30'}, 500,function(){ $(this).remove(); });
 	}, 3000);
 }
-
-//busca o cep
-function buscaCEP(){
-    var cep = $('#cep').val();
-    var url = 'http://xtends.com.br/webservices/cep/json/'+cep+'/';    
-    $.post(url,{cep:cep},
-        function (rs) {
-            rs = $.parseJSON(rs);
-            if(rs.result == 1){
-                address = rs.logradouro + ', ' + rs.bairro + ', ' + rs.cidade + ', ' + ', ' + rs.uf;
-                $('#logradouro').val(rs.logradouro);
-                $('#bairro').val(rs.bairro);
-                $('#cidade').val(rs.cidade);
-                $('#uf').val(rs.uf);
-                $('#cep').removeClass('invalid');
-                last_cep = cep;
-            }
-            else{
-                $('#cep').addClass('invalid');    
-                $('#cep').focus();  
-                last_cep = 0;
-            }
-        })    
-}

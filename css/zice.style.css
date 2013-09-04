@@ -1043,12 +1043,19 @@ form input.small {
 	width: 20%;
 }
 form input.medium,
-form textarea.medium {
+form textarea.medium,
+form select.medium,
+form div.select2-container.medium  {
 	width: 40%;
 	max-width:40%
 }
+form select.large,
+form div.select2-container.large {
+	width: 50%;
+	max-width:50%
+}
 form input.large,
-form textarea.large {
+form textarea.large{
 	width: 69%;
 	max-width:69%
 }
