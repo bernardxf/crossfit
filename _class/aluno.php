@@ -7,11 +7,11 @@ $SELECT = 'SELECT id_aluno, nome, DATE_FORMAT(data_nasc, "%d/%m/%Y") as data_nas
             DATE_FORMAT(data_cad, "%d/%m/%Y") as data_cad, DATE_FORMAT(data_alt, "%d/%m/%Y") as data_alt FROM aluno WHERE 1 = 1';
 
 $INSERT = 'INSERT INTO aluno (nome, data_nasc, rg, cpf, estado_civil, email, cep, logradouro, complemento, bairro, cidade, uf, tel_fixo, tel_celular, pessoa_ref, tel_ref, plano_saude, atestado_medico, horario_economico, id_plano_fk, id_forma_pagamento_fk, id_desconto_fk, valor_total, aluno_status, data_cad, data_alt) 
-                  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %d, %d, %d, %d, %d, %d, %s, %s, %s)';
+                  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %d, %d, %d, %d, %s, %s, %s)';
 
 $UPDATE = 'UPDATE aluno SET nome = %s, data_nasc = %s, rg = %s, cpf = %s, estado_civil = %s, email = %s, cep = %s, logradouro = %s, complemento = %s,
         bairro = %s, cidade = %s, uf = %s, tel_fixo = %s, tel_celular = %s, pessoa_ref = %s, tel_ref = %s,
-        plano_saude = %s, atestado_medico = %d, horario_economico = %d, id_plano_fk = %d, id_forma_pagamento_fk = %d, id_desconto_fk = %d, valor_total = %d, aluno_status = %s, data_alt = %s WHERE id_aluno = %d';
+        plano_saude = %s, atestado_medico = %s, horario_economico = %s, id_plano_fk = %d, id_forma_pagamento_fk = %d, id_desconto_fk = %d, valor_total = %d, aluno_status = %s, data_alt = %s WHERE id_aluno = %d';
 
 $methodToCall = $_POST['methodToCall'];
 
@@ -56,7 +56,7 @@ if ($methodToCall == 'save'){
 
     if($state == 'I')  {
         
-        DB::query($INSERT, $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, $tel_fixo, $tel_cel, $pessoa_ref, $tel_ref, $plano_saude, $atestado_medico, $horario_economico, $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $dataAtual);
+        DB::query($INSERT, $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, $tel_fixo, $tel_celular, $pessoa_ref, $tel_ref, $plano_saude, $atestado_medico, $horario_economico, $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $dataAtual);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -64,7 +64,7 @@ if ($methodToCall == 'save'){
 
     } else if($state == 'U') {
 
-        DB::query($UPDATE, $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, $tel_fixo, $tel_cel, $pessoa_ref, $tel_ref, $plano_saude, $atestado_medico, $horario_economico, $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $id);
+        DB::query($UPDATE, $nome, $data_nasc, $rg, $cpf, $estado_civil, $email, $cep, $logradouro, $complemento, $bairro, $cidade, $uf, $tel_fixo, $tel_celular, $pessoa_ref, $tel_ref, $plano_saude, $atestado_medico, $horario_economico, $plano, $forma_pagamento, $desconto, $valor_total, $aluno_status, $dataAtual, $id);
                             
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';

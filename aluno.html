@@ -121,10 +121,10 @@
 						<div class="section">
 							<label>Atestado Médico</label>
 							<div>
-								<div class="checksquared">
-									<input id="atestado_medico" type="checkbox" value="1" name="atestado_medico" ng-model="form.atestado_medico">
-									<label title="Sim" for="atestado_medico"></label>
-								</div>
+								<select class="selectBox" name="atestado_medico" ng-model="form.atestado_medico">
+									<option value="nao">Não</option>
+									<option value="sim">Sim</option>
+								</select>
 							</div>
 						</div>
 						<div class="section">
@@ -139,10 +139,10 @@
 						<div class="section">
 							<label>Horario Econômico</label>
 							<div>
-								<div class="checksquared">
-									<input id="horario_economico" type="checkbox" value="1" name="horario_economico" ng-model="form.horario_economico">
-									<label title="Sim" for="horario_economico"></label>
-								</div>
+								<select class="selectBox" name="horario_economico" ng-model="form.horario_economico">
+									<option value="nao">Não</option>
+									<option value="sim">Sim</option>
+								</select>
 							</div>
 						</div>
 						<div class="section">
@@ -215,10 +215,10 @@
 						<div class="section">
 							<label>Horario Econômico</label>
 							<div>
-								<div class="checksquared">
-									<input id="check-1" type="checkbox" value="action" name="horarioeconomico" ng-model="pesquisaForm.horarioeconimico">
-									<label title="Sim" for="check-1"></label>
-								</div>
+								<select class="selectBox full" name="horarioeconomico" ng-model="pesquisaForm.horarioeconimico">
+									<option value="nao">Não</option>
+									<option value="sim">Sim</option>
+								</select>
 							</div>
 						</div>
 						<div class="section last">
