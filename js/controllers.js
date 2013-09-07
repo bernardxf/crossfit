@@ -689,11 +689,11 @@ myApp.directive('uiCep', function() {
 				        function (rs) {
 				            rs = $.parseJSON(rs);
 				            if(rs.result == 1){
-				                address = rs.logradouro + ', ' + rs.bairro + ', ' + rs.cidade + ', ' + ', ' + rs.uf;
-				                $('#logradouro').val(rs.logradouro);
-				                $('#bairro').val(rs.bairro);
-				                $('#cidade').val(rs.cidade);
-				                $('#uf').val(rs.uf);
+				            	$scope.form.logradouro = rs.logradouro;
+				            	$scope.form.bairro = rs.bairro;
+				            	$scope.form.cidade = rs.cidade;
+				            	$scope.form.uf = rs.uf;
+				            	$scope.$apply();
 				                $('#cep').removeClass('invalid');
 				                last_cep = cep;
 				            }
