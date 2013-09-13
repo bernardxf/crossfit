@@ -20,4 +20,25 @@
             </table>
 		</div>
 	</div>
+    <div class="widget span6 clearfix">
+        <div class="widget-header">
+            <span>Planos Vencendo</span>
+        </div>
+        <div class="widget-content">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data Fim</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr ng-repeat="plano in dashboardData.plano">
+                        <td>{{plano.nome}}</td>
+                        <td>{{plano.plano_fim}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
