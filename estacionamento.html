@@ -14,7 +14,7 @@
 						<div class="section">
 							<label>Aluno</label>
 							<div>
-								<select class="selectBox" ng-model="formEstacionamento.id_aluno_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+								<select class="selectBox large" ng-model="form.id_aluno_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
 									<option value=""></option>
 									<option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
 								</select>
@@ -23,28 +23,37 @@
 						<div class="section">
 							<label>Modelo</label>
 							<div>
-								<input class="full" type="text" name="modelo" ng-model="formEstacionamento.modelo">
+								<input class="full" type="text" name="modelo" ng-model="form.modelo">
 							</div>
 						</div>
 						<div class="section">
 							<label>Cor</label>
 							<div>
-								<input class="full" type="text" name="cor" ng-model="formEstacionamento.cor">
+								<input class="full" type="text" name="cor" ng-model="form.cor">
 							</div>
 						</div>
 						<div class="section">
 							<label>Placa</label>
 							<div>
-								<input class="medium" type="text" name="placa" ng-model="formEstacionamento.placa" ui-placa>
+								<input class="medium" type="text" name="placa" ng-model="form.placa" ui-placa>
 							</div>
 						</div>
 						<div class="section">
-							<label>Plano</label>
+							<label>Plano Início</label>
 							<div>
-								<select class="selectBox" ng-model="formEstacionamento.id_plano_fk" ui-select2="{ allowClear: true}" data-placeholder="Selecione um plano">
-									<option value=""></option>
-									<option ng-repeat="plano in selectData.plano" value="{{plano.id_plano}}">{{plano.nome}}</option>
-								</select>
+								<input class="xsmall" type="text" name="plano_ini" ng-model="form.plano_ini" ui-date>
+							</div>
+						</div>
+						<div class="section">
+							<label>Plano Fim</label>
+							<div>
+								<input class="xsmall" type="text" name="plano_fim" ng-model="form.plano_fim" ui-date>
+							</div>
+						</div>
+						<div class="section">
+							<label>Valor Total</label>
+							<div>
+								<i class="moeda"></i><input id="valor" type="text" class="small" name="valor" ng-model="form.valor"/>
 							</div>
 						</div>
 						<div class="section last">
@@ -94,7 +103,7 @@
 								<th>Modelo</th>
 								<th>Cor</th>
 								<th>Placa</th>
-								<th>Plano</th>
+								<th>Valor</th>
 								<th>Ação</th>
 							</tr>
 						</thead>
@@ -104,7 +113,7 @@
 								<td>{{estacionamento.modelo}}</td>
 								<td>{{estacionamento.cor}}</td>
 								<td>{{estacionamento.placa}}</td>
-								<td>{{estacionamento.id_plano_fk  | translateValue:selectData.plano:'id_plano'}}</td>
+								<td>{{estacionamento.valor}}</td>
 								<td>
 									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
 									<a ng-click="deleteRow($index);" class="delete"><img src="images/icon/icon_delete.png"></a>

@@ -2,11 +2,11 @@
 
 include 'sql.php';
 
-$SELECT = 'SELECT id_estacionamento, id_plano_fk, modelo, cor, placa, id_aluno_fk FROM estacionamento WHERE 1 = 1';
+$SELECT = 'SELECT id_estacionamento, modelo, cor, placa, id_aluno_fk, plano_ini, plano_fim, valor FROM estacionamento WHERE 1 = 1';
 
-$INSERT = 'INSERT INTO estacionamento (id_aluno_fk, modelo, cor, placa, id_plano_fk) VALUES (%s, %s, %s, %s, %d)';
+$INSERT = 'INSERT INTO estacionamento (id_aluno_fk, modelo, cor, placa, plano_ini, plano_fim, valor) VALUES (%s, %s, %s, %s, %s, %s, %s)';
 
-$UPDATE = 'UPDATE estacionamento SET id_aluno_fk = %d, modelo = %s, cor = %s, placa = %s, id_plano_fk = %d WHERE id_estacionamento = %d';
+$UPDATE = 'UPDATE estacionamento SET id_aluno_fk = %d, modelo = %s, cor = %s, placa = %s, plano_ini = %s, plano_fim = %s, valor = %s WHERE id_estacionamento = %d';
 
 $methodToCall = $_POST['methodToCall'];
 $dataset = $_POST['dataset'];
@@ -24,12 +24,20 @@ if ($methodToCall == 'save'){
     $modelo = $_POST['dataset']['modelo'];
     $cor = $_POST['dataset']['cor'];
     $placa = $_POST['dataset']['placa'];
-    $plano = $_POST['dataset']['id_plano_fk'];
+    $plano_ini = $_POST['dataset']['plano_ini'];
+    $plano_fim = $_POST['dataset']['plano_fim'];
+    $valor = $_POST['dataset']['valor'];
     $state = $_POST['dataset']['_STATE'];
+
+    $exp_data = explode('/', $plano_ini);
+    $plano_ini = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
+
+    $exp_data = explode('/', $plano_fim);
+    $plano_fim = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
 
     if($state == 'I'){
         
-        DB::query($INSERT, $aluno, $modelo, $cor, $placa, $plano);
+        DB::query($INSERT, $aluno, $modelo, $cor, $placa, $plano_ini, $plano_fim, $valor);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -37,7 +45,7 @@ if ($methodToCall == 'save'){
 
     } else if($state == 'U'){
 
-        DB::query($UPDATE, $aluno, $modelo, $cor, $placa, $plano, $id);
+        DB::query($UPDATE, $aluno, $modelo, $cor, $placa, $plano_ini, $plano_fim, $valor, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';

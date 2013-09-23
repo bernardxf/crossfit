@@ -41,4 +41,46 @@
             </table>
         </div>
     </div>
+    <div class="widget span6 clearfix" style="margin-left: 0px">
+        <div class="widget-header">
+            <span>Estacionamentos Vencendo</span>
+        </div>
+        <div class="widget-content">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data Fim</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr ng-repeat="estacionamento in dashboardData.estacionamento">
+                        <td>{{estacionamento.nome}}</td>
+                        <td>{{estacionamento.plano_fim}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="widget span6 clearfix">
+        <div class="widget-header">
+            <span>Alunos Trancados</span>
+        </div>
+        <div class="widget-content">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr ng-repeat="aluno in dashboardData.aluno">
+                        <td>{{aluno.nome}}</td>
+                        <td>{{aluno.aluno_status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

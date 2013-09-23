@@ -466,7 +466,7 @@ myApp.controller('formapagamentoController', function($scope){
 myApp.controller('estacionamentoController', function ($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
-	$scope.formEstacionamento = {};
+	$scope.form = {};
 	$scope.selectData = {};
 	$scope.loadSelects = function(){
 		$scope.callMethod('estacionamento', 'loadSelects', null, function(response){
@@ -485,7 +485,6 @@ myApp.controller('estacionamentoController', function ($scope){
 		$scope.$parent.save('estacionamento', $scope.form, function(){
 			$scope.pesquisa();
 		});
-		
 	};
 	$scope.newRow = function(){
 		var dataset = {'_STATE':'I'};
@@ -495,7 +494,7 @@ myApp.controller('estacionamentoController', function ($scope){
 	$scope.edit = function(index){
 		var dataset = angular.copy($scope.pesquisaDataset[index]);
 		dataset['_STATE'] = 'U';
-		$scope.formEstacionamento = dataset;
+		$scope.form = dataset;
 		$scope.toggle('form');
 	};
 	$scope.deleteRow = function(index){
