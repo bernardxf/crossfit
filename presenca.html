@@ -5,7 +5,7 @@
 	</ul>	
 	<div ng-switch on="visualType" >
 		<div class="row-fluid" ng-switch-when="form">
-			<div class="widget span4 clearfix">
+			<div class="widget span5 clearfix">
 				<div class="widget-header">
 					<span>Buscar</span>
 				</div>
@@ -22,12 +22,14 @@
 							<thead>
 								<tr>
 									<th>Nome</th>
+									<th>Plano</th>
 									<th>Presente</th>
 								</tr>
 							</thead>
 							<tbody align="center">
 								<tr ng-repeat="aluno in pesquisaDataset.aluno">	
 									<td>{{aluno.nome}}</td>
+									<td>{{aluno.plano}}</td>
 									<td><img src="images/icon/color_18/directional_right.png" ng-click="addAlunoPresente(aluno);"></a></td>
 								</tr>
 							</tbody>
@@ -35,7 +37,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="widget span8 clearfix">
+			<div class="widget span7 clearfix">
 				<div class="widget-header">
 					<span>Alunos</span>
 				</div>

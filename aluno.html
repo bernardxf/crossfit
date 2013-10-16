@@ -233,9 +233,21 @@
 						<div class="section">
 							<label>Horario Econômico</label>
 							<div>
-								<select class="selectBox full" name="horarioeconomico" ng-model="pesquisaForm.horarioeconimico">
+								<select class="selectBox full" name="horario_economico" ng-model="pesquisaForm.horario_economico">
+									<option value=""></option>
 									<option value="nao">Não</option>
 									<option value="sim">Sim</option>
+								</select>
+							</div>
+						</div>
+						<div class="section">
+							<label>Status</label>
+							<div>
+								<select class="selectBox full" name="aluno_status" ng-model="pesquisaForm.aluno_status">
+									<option value=""></option>
+									<option value="ativo">Ativo</option>
+									<option value="inativo">Inativo</option>
+									<option value="trancado">Trancado</option>
 								</select>
 							</div>
 						</div>

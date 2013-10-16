@@ -59,7 +59,8 @@ if($methodToCall == 'pesquisaAluno'){
 	$nomeAluno = $dataset['nomeAluno'];
 
 	if ($nomeAluno) {
-		$query = "SELECT id_aluno, nome from aluno WHERE nome like '".$nomeAluno."%'";
+		//$query = "SELECT id_aluno, nome from aluno WHERE nome like '".$nomeAluno."%'";
+		$query = "SELECT A.id_aluno, A.nome, A.id_plano_fk, P.nome AS plano from aluno AS A INNER JOIN plano AS P ON (A.id_plano_fk = P.id_plano) WHERE A.nome like '".$nomeAluno."%'";
 		$rows = DB::get_rows(DB::query($query));
 
 
