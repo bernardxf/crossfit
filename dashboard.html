@@ -1,5 +1,32 @@
 <div class="row-fluid" ng-controller="dashboardController" ng-init="loadData();">
-	<div class="widget span6 clearfix">
+	<div class="widget span12 clearfix">
+        <div class="widget-header">
+            <span>Alunos</span>
+        </div>
+        <div class="widget-content">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Ativos</th>
+                        <th>Bolsistas 50%</th>
+                        <th>Bolsistas 100%</th>
+                        <th>Inativos</th>
+                        <th>Trancados</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr ng-repeat="alunos in dashboardData.alunos">
+                        <td>{{alunos.ativo}}</td>
+                        <td>{{alunos.bolsa50}}</td>
+                        <td>{{alunos.bolsa100}}</td>
+                        <td>{{alunos.inativo}}</td>
+                        <td>{{alunos.trancado}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="widget span6 clearfix" style="margin-left: 0px">
 		<div class="widget-header">
 			<span>Aniversariantes do mês</span>
 		</div>

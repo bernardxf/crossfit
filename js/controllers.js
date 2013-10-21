@@ -202,7 +202,7 @@ myApp.controller('alunoController', function($scope){
 
 myApp.controller('presencaController', ["$scope", "$filter", function($scope,$filter){
 	$scope.today = $filter('date')(new Date(),'dd/MM/yyyy');
-	$scope.pesquisaForm = {"presenca" : {"data" : '05/08/2013'}};
+	$scope.pesquisaForm = {"presenca" : {"data" : $scope.today}};
 	$scope.pesquisaDataset = {};
 	$scope.alunosPresente = [];
 	$scope.formAula = {};

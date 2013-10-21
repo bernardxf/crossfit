@@ -14,7 +14,9 @@
 
 	    $aluno = DB::get_rows(DB::query("SELECT nome, aluno_status FROM aluno WHERE aluno_status = 'trancado' ORDER BY nome ASC"));
 
-	    $result = array('aniversarios' => $aniversarios, 'plano' => $plano, 'estacionamento' => $estacionamento, 'aluno' => $aluno);
+	    $alunos = DB::get_rows(DB::query("SELECT (SELECT count(*) FROM aluno WHERE aluno_status = 'ativo') as ativo, (SELECT count(*) FROM aluno WHERE id_desconto_fk = 14) as bolsa50, (SELECT count(*) FROM aluno WHERE id_desconto_fk = 15) as bolsa100, (SELECT count(*) FROM aluno WHERE aluno_status = 'inativo') as inativo, (SELECT count(*) FROM aluno WHERE aluno_status = 'trancado') as trancado FROM aluno LIMIT 0,1"));
+
+	    $result = array('aniversarios' => $aniversarios, 'plano' => $plano, 'estacionamento' => $estacionamento, 'aluno' => $aluno, 'alunos' => $alunos);
 	    echo json_encode($result);
 	}
 ?>
