@@ -123,8 +123,9 @@
 								<td>{{fisionutri.tipo | translateValue:selectData.tipo:'id_tipo'}}</td>
 								<td>{{fisionutri.valor}}</td>
 								<td>
-									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
-lo									</td>
+								    <a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
+									<a ng-click="deleteRow($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+								</td>
 							</tr>
 						</tbody>
 					</table>

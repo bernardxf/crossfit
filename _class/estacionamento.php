@@ -2,11 +2,11 @@
 
 include 'sql.php';
 
-$SELECT = 'SELECT id_estacionamento, modelo, cor, placa, id_aluno_fk, plano_ini, plano_fim, valor FROM estacionamento WHERE 1 = 1';
+$SELECT = 'SELECT id_estacionamento, modelo, cor, placa, id_aluno_fk, plano_ini, plano_fim, valor, estacionamento_status, observacao FROM estacionamento WHERE 1 = 1';
 
-$INSERT = 'INSERT INTO estacionamento (id_aluno_fk, modelo, cor, placa, plano_ini, plano_fim, valor) VALUES (%s, %s, %s, %s, %s, %s, %s)';
+$INSERT = 'INSERT INTO estacionamento (id_aluno_fk, modelo, cor, placa, plano_ini, plano_fim, valor, estacionamento_status, observacao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)';
 
-$UPDATE = 'UPDATE estacionamento SET id_aluno_fk = %d, modelo = %s, cor = %s, placa = %s, plano_ini = %s, plano_fim = %s, valor = %s WHERE id_estacionamento = %d';
+$UPDATE = 'UPDATE estacionamento SET id_aluno_fk = %d, modelo = %s, cor = %s, placa = %s, plano_ini = %s, plano_fim = %s, valor = %s, estacionamento_status = %s, observacao = %s WHERE id_estacionamento = %d';
 
 $methodToCall = $_POST['methodToCall'];
 $dataset = $_POST['dataset'];
@@ -27,6 +27,8 @@ if ($methodToCall == 'save'){
     $plano_ini = $_POST['dataset']['plano_ini'];
     $plano_fim = $_POST['dataset']['plano_fim'];
     $valor = $_POST['dataset']['valor'];
+    $estacionamento_status = $_POST['dataset']['estacionamento_status'];
+    $observacao = $_POST['dataset']['observacao'];
     $state = $_POST['dataset']['_STATE'];
 
     $exp_data = explode('/', $plano_ini);
@@ -37,7 +39,7 @@ if ($methodToCall == 'save'){
 
     if($state == 'I'){
         
-        DB::query($INSERT, $aluno, $modelo, $cor, $placa, $plano_ini, $plano_fim, $valor);
+        DB::query($INSERT, $aluno, $modelo, $cor, $placa, $plano_ini, $plano_fim, $valor, $estacionamento_status, $observacao);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -45,7 +47,7 @@ if ($methodToCall == 'save'){
 
     } else if($state == 'U'){
 
-        DB::query($UPDATE, $aluno, $modelo, $cor, $placa, $plano_ini, $plano_fim, $valor, $id);
+        DB::query($UPDATE, $aluno, $modelo, $cor, $placa, $plano_ini, $plano_fim, $valor, $estacionamento_status, $observacao, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -80,9 +82,18 @@ if($methodToCall == 'loadSelects'){
 if($methodToCall == 'pesquisa'){
     $id_aluno_fk = $dataset['id_aluno'];
     
-    $SQL = 'SELECT * FROM estacionamento where id_aluno_fk = %s';
+    if ($id_aluno_fk != ''){
 
-    $rows = DB::get_rows(DB::query($SQL,$id_aluno_fk));
+        $SQL = 'SELECT E.id_estacionamento, E.modelo, E.cor, E.placa, E.id_aluno_fk, E.plano_ini, E.plano_fim, E.valor, E.estacionamento_status, E.observacao, A.nome FROM estacionamento AS E INNER JOIN aluno AS A ON (E.id_aluno_fk = A.id_aluno) WHERE id_aluno_fk = %s';
+        $rows = DB::get_rows(DB::query($SQL,$id_aluno_fk));
+    
+    } else {
+
+        $SQL = 'SELECT E.id_estacionamento, E.modelo, E.cor, E.placa, E.id_aluno_fk, E.plano_ini, E.plano_fim, E.valor, E.estacionamento_status, E.observacao, A.nome FROM estacionamento AS E INNER JOIN aluno AS A ON (E.id_aluno_fk = A.id_aluno) ORDER BY A.nome ASC';
+        $rows = DB::get_rows(DB::query($SQL));
+
+    }
+    
     echo json_encode($rows);
 }
 

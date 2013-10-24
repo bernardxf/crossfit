@@ -56,6 +56,22 @@
 								<i class="moeda"></i><input id="valor" type="text" class="small" name="valor" ng-model="form.valor"/>
 							</div>
 						</div>
+						<div class="section">
+							<label>Status</label>
+							<div>
+								<select class="selectBox" name="estacionamento_status" ng-model="form.estacionamento_status">
+									<option value="ativo">Ativo</option>
+									<option value="inativo">Inativo</option>
+									<option value="trancado">Trancado</option>
+								</select>
+							</div>
+						</div>
+						<div class="section">
+							<label>Observação</label>
+							<div>
+								<textarea name="observacao" ng-model="form.observacao" class="full"></textarea>
+							</div>
+						</div>
 						<div class="section last">
 							<div>
 								<a class="btn btn-success" title="Salvar" ng-click="save();">Salvar</a>
@@ -109,7 +125,7 @@
 						</thead>
 						<tbody align="center">
 							<tr ng-repeat="estacionamento in pesquisaDataset">
-								<td>{{estacionamento.id_aluno_fk | translateValue:selectData.aluno:'id_aluno'}}</td>
+								<td>{{estacionamento.nome}}</td>
 								<td>{{estacionamento.modelo}}</td>
 								<td>{{estacionamento.cor}}</td>
 								<td>{{estacionamento.placa}}</td>
