@@ -8,9 +8,9 @@
 		$SQL = "SELECT nome, DATE_FORMAT(data_nasc, '%d/%m/%Y') as data_nasc FROM aluno WHERE DATE_FORMAT(data_nasc, '%m') = DATE_FORMAT(SYSDATE(), '%m') ORDER BY data_nasc";
 	    $aniversarios = DB::get_rows(DB::query($SQL));
 
-	    $plano = DB::get_rows(DB::query("SELECT nome, DATE_FORMAT(plano_fim, '%d/%m/%Y') as plano_fim FROM aluno WHERE aluno_status = 'ativo' AND to_days(plano_fim) - to_days(SYSDATE()) <= 7 ORDER BY plano_fim"));
+	    $plano = DB::get_rows(DB::query("SELECT nome, DATE_FORMAT(plano_fim, '%d/%m/%Y') as plano_fim FROM aluno WHERE aluno_status = 'ativo' AND to_days(plano_fim) - to_days(SYSDATE()) <= 7 ORDER BY YEAR(plano_fim) ASC, MONTH(plano_fim) ASC, DAY(plano_fim) ASC"));
 	    
-	    $estacionamento = DB::get_rows(DB::query("SELECT E.id_aluno_fk, DATE_FORMAT(E.plano_fim, '%d/%m/%Y') as plano_fim, A.nome FROM estacionamento AS E INNER JOIN aluno AS A ON (E.id_aluno_fk = A.id_aluno) WHERE to_days(E.plano_fim) - to_days(NOW()) <= 7 ORDER BY E.plano_fim DESC"));
+	    $estacionamento = DB::get_rows(DB::query("SELECT E.id_aluno_fk, DATE_FORMAT(E.plano_fim, '%d/%m/%Y') as plano_fim, A.nome FROM estacionamento AS E INNER JOIN aluno AS A ON (E.id_aluno_fk = A.id_aluno) WHERE estacionamento_status = 'trancado' OR to_days(E.plano_fim) - to_days(NOW()) <= 0 ORDER BY YEAR(E.plano_fim) ASC, MONTH(E.plano_fim) ASC, DAY(E.plano_fim) ASC"));
 
 	    $aluno = DB::get_rows(DB::query("SELECT nome, aluno_status FROM aluno WHERE aluno_status = 'trancado' ORDER BY nome ASC"));
 

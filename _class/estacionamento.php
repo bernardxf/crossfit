@@ -2,7 +2,7 @@
 
 include 'sql.php';
 
-$SELECT = 'SELECT id_estacionamento, modelo, cor, placa, id_aluno_fk, plano_ini, plano_fim, valor, estacionamento_status, observacao FROM estacionamento WHERE 1 = 1';
+$SELECT = 'SELECT id_estacionamento, modelo, cor, placa, id_aluno_fk, DATE_FORMAT(plano_ini, "%d/%m/%Y") as plano_ini, DATE_FORMAT(plano_fim, "%d/%m/%Y") as plano_fim, valor, estacionamento_status, observacao FROM estacionamento WHERE 1 = 1';
 
 $INSERT = 'INSERT INTO estacionamento (id_aluno_fk, modelo, cor, placa, plano_ini, plano_fim, valor, estacionamento_status, observacao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)';
 

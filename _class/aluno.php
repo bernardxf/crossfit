@@ -89,7 +89,7 @@ if ($methodToCall == 'save'){
 
 if($methodToCall == 'delete'){
     $id_aluno = $_POST['dataset']['id_aluno'];
-    DB::query('DELETE FROM aluno WHERE id_aluno = %d',$id_aluno);
+    DB::query('DELETE from aluno where id_aluno = %d',$id_aluno);
 
     $response['type'] = 'success';
     $response['message'] = 'Excluido com sucesso!';
