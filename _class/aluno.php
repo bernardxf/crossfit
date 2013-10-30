@@ -112,7 +112,7 @@ if($methodToCall == 'pesquisa'){
 
     foreach ($dataset as $key => $value) {
         if ($value != 'null') {
-            $pesquisa .= " AND $key like '$value%'";    
+            $pesquisa .= " AND $key like '%$value%'";    
         }
     }
 

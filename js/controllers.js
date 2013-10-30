@@ -276,10 +276,6 @@ myApp.controller('aulaExpController', function($scope){
 	$scope.pesquisaForm = {};
 	$scope.pesquisaDataset = {};
 	$scope.form = {};
-	$scope.selectData = {
-		"confirmacao" : [{"id_confirmacao":1, "nome":"Confirmado"},{"id_confirmacao":2, "nome":"Não Confirmado"}],
-		"presente" : [{"id_presente":1, "nome":"Presente"},{"id_presente":0, "nome":"Faltou"}]
-	};
 	$scope.pesquisa = function(){
 		var dataset = $scope.pesquisaForm;
 		$scope.callMethod('aulaexp', 'pesquisa', dataset, function(response){

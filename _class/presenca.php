@@ -60,13 +60,13 @@ if($methodToCall == 'pesquisaAluno'){
 
 	if ($nomeAluno) {
 		//$query = "SELECT id_aluno, nome from aluno WHERE nome like '".$nomeAluno."%'";
-		$query = "SELECT A.id_aluno, A.nome, A.id_plano_fk, P.nome AS plano from aluno AS A INNER JOIN plano AS P ON (A.id_plano_fk = P.id_plano) WHERE A.nome like '".$nomeAluno."%'";
+		$query = "SELECT A.id_aluno, A.nome, A.id_plano_fk, A.aluno_status, P.nome AS plano from aluno AS A INNER JOIN plano AS P ON (A.id_plano_fk = P.id_plano) WHERE A.nome like '%".$nomeAluno."%'";
 		$rows = DB::get_rows(DB::query($query));
 
 
 		echo json_encode($rows);	
 	} else {
-		$query = "SELECT id_aluno, nome from aluno";
+		$query = "SELECT A.id_aluno, A.nome, A.id_plano_fk, A.aluno_status, P.nome AS plano from aluno AS A INNER JOIN plano AS P ON (A.id_plano_fk = P.id_plano)";
 		$rows = DB::get_rows(DB::query($query));
 
 		echo json_encode($rows);	

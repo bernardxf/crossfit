@@ -2,11 +2,11 @@
 
 include 'sql.php';
 
-$SELECT = 'SELECT id_aulaexp, nome, DATE_FORMAT(data, "%d/%m/%Y") as data, telefone, confirmado, presente FROM aulaexp WHERE 1 = 1';
+$SELECT = 'SELECT id_aulaexp, nome, DATE_FORMAT(data_aula, "%d/%m/%Y") as data_aula, telefone, email, confirmado, presente FROM aulaexp';
 
-$INSERT = 'INSERT INTO aulaexp (nome, data, telefone, confirmado, presente) VALUES (%s, %s, %s, %d, %d)';
+$INSERT = 'INSERT INTO aulaexp (nome, data_aula, telefone, email, confirmado, presente) VALUES (%s, %s, %s, %s, %s, %s)';
 
-$UPDATE = 'UPDATE aulaexp SET nome = %s, data = %s, telefone = %s, confirmado = %d, presente = %d WHERE id_aulaexp = %d';
+$UPDATE = 'UPDATE aulaexp SET nome = %s, data_aula = %s, telefone = %s, email = %s, confirmado = %s, presente = %s WHERE id_aulaexp = %d';
 
 $methodToCall = $_POST['methodToCall'];
 $dataset = $_POST['dataset'];
@@ -20,18 +20,19 @@ if ($methodToCall == 'save'){
 
     $id = $_POST['dataset']['id_aulaexp'];
     $nome = $_POST['dataset']['nome'];
-    $data = $_POST['dataset']['data'];
+    $data_aula = $_POST['dataset']['data_aula'];
     $telefone = $_POST['dataset']['telefone'];
+    $email = $_POST['dataset']['email'];
     $confirmado = $_POST['dataset']['confirmado'];
     $presente = $_POST['dataset']['presente'];
     $state = $_POST['dataset']['_STATE'];
 
-    $exp_data = explode('/', $data);
-    $data = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
+    $exp_data = explode('/', $data_aula);
+    $data_aula = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
 
     if($state == 'I')  {
 
-        DB::query($INSERT, $nome, $data, $telefone, $confirmado, $presente);
+        DB::query($INSERT, $nome, $data_aula, $telefone, $email, $confirmado, $presente);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro efetuado com sucesso';
@@ -39,7 +40,7 @@ if ($methodToCall == 'save'){
 
     } else if ($state == 'U') {
 
-        DB::query($UPDATE, $nome, $data, $telefone, $confirmado, $presente, $id);
+        DB::query($UPDATE, $nome, $data_aula, $telefone, $email, $confirmado, $presente, $id);
 
         $response['type'] = 'success';
         $response['message'] = 'Cadastro editado com sucesso';
@@ -64,14 +65,36 @@ if($methodToCall == 'delete'){
 }
 
 if($methodToCall == 'pesquisa'){
-    $data = $dataset['data'];
-    $exp_data = explode('/', $data);
-    $data = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
+    $data_aula = $dataset['data_aula'];
+    $dataset = $_POST['dataset'];
+    $pesquisa = $SELECT;
 
-    $SQL = "SELECT id_aulaexp, nome, data, telefone, confirmado, presente from aulaexp 
-            where data = '%s'";
-    $rows = DB::get_rows(DB::query($SQL, $data));
+    if ($data_aula != '') {
+
+        foreach ($dataset as $key => $value) {
+            if ($value != 'null') {
+                if($key == 'data_aula'){ 
+                    $data_aula = $dataset['data_aula'];
+                    
+                    $exp_data = explode('/',$data_aula);   
+                    $data_aula = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
+                    
+                    $pesquisa .= " WHERE data_aula = '" . $data_aula . "'";    
+                } else {
+                    $pesquisa .= " AND $key = $value";    
+                }
+            }
+        }
+
+        $rows = DB::get_rows(DB::query($pesquisa));
+
+    } else {
+
+        $rows = DB::get_rows(DB::query($SELECT));      
+
+    }
     echo json_encode($rows);
+
 }
 
 ?>

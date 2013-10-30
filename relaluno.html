@@ -15,7 +15,7 @@
                 <div class="section">
                     <label>Nome</label>
                     <div>
-                        <select class="selectBox" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
+                        <select class="selectBox full" ng-model="pesquisaForm.id_aluno" ui-select2="{ allowClear: true}" data-placeholder="Selecione um aluno">
                             <option value=""></option>
                             <option ng-repeat="aluno in selectData.aluno" value="{{aluno.id_aluno}}">{{aluno.nome}}</option>
                         </select>

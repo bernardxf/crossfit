@@ -20,7 +20,7 @@
 						<div class="section">
 							<label>Data Aula</label>
 							<div>
-								<input class="medium data" type="text" name="data" ng-model="form.data" ui-date>
+								<input class="medium data" type="text" name="data_aula" ng-model="form.data_aula" ui-date>
 							</div>
 						</div>
 						<div class="section">
@@ -30,21 +30,27 @@
 							</div>
 						</div>
 						<div class="section">
+							<label>E-mail</label>
+							<div>
+								<input class="large fone" type="text" name="email" ng-model="form.email">
+							</div>
+						</div>
+						<div class="section">
 							<label>Confirmado</label>
 							<div>
-								<div class="checksquared">
-									<input id="confirmado" type="checkbox" value="action" name="confirmado" ng-model="form.confirmado">
-									<label title="Sim" for="confirmado"></label>
-								</div>
+								<select class="selectBox" name="confirmado" ng-model="form.confirmado">
+									<option value="nao">Não</option>
+									<option value="sim">Sim</option>
+								</select>
 							</div>
 						</div>
 						<div class="section">
 							<label>Presente</label>
 							<div>
-								<div class="checksquared">
-									<input id="presente" type="checkbox" value="action" name="presente" ng-model="form.presente">
-									<label title="Sim" for="presente"></label>
-								</div>
+								<select class="selectBox" name="presente" ng-model="form.presente">
+									<option value="nao">Não</option>
+									<option value="sim">Sim</option>
+								</select>
 							</div>
 						</div>
 						<div class="section last">
@@ -67,7 +73,7 @@
 						<div class="section">
 							<label>Data Aula</label>
 							<div>
-								<input class="medium" type="text" name="data" ng-model="pesquisaForm.data" ui-date>
+								<input class="medium" type="text" name="data_aula" ng-model="pesquisaForm.data_aula" ui-date>
 							</div>
 						</div>
 						<div class="section last">
@@ -90,6 +96,7 @@
 								<th>Nome</th>
 								<th>Data Aula</th>
 								<th>Telefone</th>
+								<th>Email</th>
 								<th>Confirmado</th>
 								<th>Presente</th>
 								<th>Ação</th>
@@ -98,13 +105,14 @@
 						<tbody align="center">
 							<tr ng-repeat="aulaexp in pesquisaDataset">
 								<td>{{aulaexp.nome}}</td>
-								<td>{{aulaexp.data | date:'dd/MM/yyyy'}}</td>
+								<td>{{aulaexp.data_aula}}</td>
 								<td>{{aulaexp.telefone}}</td>
-								<td>{{aulaexp.confirmado | translateValue:selectData.confirmacao:'id_confirmacao'}}</td>
-								<td>{{aulaexp.presente | translateValue:selectData.presente:'id_presente'}}</td>
+								<td>{{aulaexp.email}}</td>
+								<td>{{aulaexp.confirmado}}</td>
+								<td>{{aulaexp.presente}}</td>
 								<td>
 									<a ng-click="edit($index);"><img src="images/icon/icon_edit.png"></a>
-									<a ng-click="delete($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
+									<a ng-click="deleteRow($index);" class="delete"><img src="images/icon/icon_delete.png"></a>
 								</td>
 							</tr>
 						</tbody>

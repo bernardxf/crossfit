@@ -23,6 +23,7 @@
 								<tr>
 									<th>Nome</th>
 									<th>Plano</th>
+									<th>Status</th>
 									<th>Presente</th>
 								</tr>
 							</thead>
@@ -30,6 +31,7 @@
 								<tr ng-repeat="aluno in pesquisaDataset.aluno">	
 									<td>{{aluno.nome}}</td>
 									<td>{{aluno.plano}}</td>
+									<td>{{aluno.aluno_status}}</td>
 									<td><img src="images/icon/color_18/directional_right.png" ng-click="addAlunoPresente(aluno);"></a></td>
 								</tr>
 							</tbody>
