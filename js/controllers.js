@@ -513,17 +513,24 @@ myApp.controller('relaulaController', function ($scope) {
 	};
 	$scope.loadChart = function(){
 		var dataValues = $scope.processData("num_presentes");
+		var dataValuesExc = $scope.processData("excedente");
 		var labelValues = $scope.processLabel("data");
 		var lineChartData = {
 			labels : labelValues,
 			datasets : [
-			{
-				fillColor : "rgba(151,187,205,0.5)",
-				strokeColor : "rgba(151,187,205,1)",
-				pointColor : "rgba(151,187,205,1)",
-				pointStrokeColor : "#fff",
-				data : dataValues
-			}
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : dataValues
+				},
+				{
+					fillColor : "rgba(247,70,74,0.5)",
+					strokeColor : "rgba(247,70,74,1)",
+					pointColor : "rgba(247,70,74,1)",
+					data : dataValuesExc
+				}
 			]
 		}
 

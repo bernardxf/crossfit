@@ -84,12 +84,12 @@ if($methodToCall == 'pesquisa'){
     
     if ($id_aluno_fk != ''){
 
-        $SQL = 'SELECT E.id_estacionamento, E.modelo, E.cor, E.placa, E.id_aluno_fk, E.plano_ini, E.plano_fim, E.valor, E.estacionamento_status, E.observacao, A.nome FROM estacionamento AS E INNER JOIN aluno AS A ON (E.id_aluno_fk = A.id_aluno) WHERE id_aluno_fk = %s';
-        $rows = DB::get_rows(DB::query($SQL,$id_aluno_fk));
+        $SQL = 'SELECT E.id_estacionamento, E.modelo, E.cor, E.placa, E.id_aluno_fk, DATE_FORMAT(E.plano_ini, "%d/%m/%Y") as plano_ini, DATE_FORMAT(E.plano_fim, "%d/%m/%Y") as plano_fim, E.valor, E.estacionamento_status, E.observacao, A.nome FROM estacionamento AS E INNER JOIN aluno AS A ON (E.id_aluno_fk = A.id_aluno) WHERE id_aluno_fk = '. $id_aluno_fk;
+        $rows = DB::get_rows(DB::query($SQL));
     
     } else {
 
-        $SQL = 'SELECT E.id_estacionamento, E.modelo, E.cor, E.placa, E.id_aluno_fk, E.plano_ini, E.plano_fim, E.valor, E.estacionamento_status, E.observacao, A.nome FROM estacionamento AS E INNER JOIN aluno AS A ON (E.id_aluno_fk = A.id_aluno) ORDER BY A.nome ASC';
+        $SQL = 'SELECT E.id_estacionamento, E.modelo, E.cor, E.placa, E.id_aluno_fk, DATE_FORMAT(E.plano_ini, "%d/%m/%Y") as plano_ini, DATE_FORMAT(E.plano_fim, "%d/%m/%Y") as plano_fim, E.valor, E.estacionamento_status, E.observacao, A.nome FROM estacionamento AS E INNER JOIN aluno AS A ON (E.id_aluno_fk = A.id_aluno) ORDER BY A.nome ASC';
         $rows = DB::get_rows(DB::query($SQL));
 
     }

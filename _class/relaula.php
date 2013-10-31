@@ -17,7 +17,7 @@ if($methodToCall == 'pesquisa'){
 
 	$horario = $dataset['horario'];
     
-    $pesquisa = "SELECT count(*) num_presentes, DATE_FORMAT(a.data, '%d/%m/%Y') as data from alunos_aula as aa
+    $pesquisa = "SELECT count(*) num_presentes, DATE_FORMAT(a.data, '%d/%m/%Y') as data, a.excedente from alunos_aula as aa
                 join aula a on aa.id_aula_fk = a.id_aula 
                 WHERE horario = '".$horario."' AND data BETWEEN '".$dataini."' AND '".$datafim."'
                 GROUP BY data";

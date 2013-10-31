@@ -21,7 +21,9 @@ if($methodToCall == 'loadData'){
 if($methodToCall == 'save'){
 	$aula = $dataset['aula'];
 	$alunoAula = $dataset['aluno_aula'];
+	
 	if($aula['id_aula_fk']) {
+		
 		$alunosRemovidos = $dataset['alunos_removidos'];
 		
 		foreach ($alunosRemovidos as $aluno) {
@@ -35,15 +37,20 @@ if($methodToCall == 'save'){
 				DB::query($SQL, ($key+1), $aluno['id_aluno'], $aula['id_aula_fk']);
 			}
 		}
+		
+		$excedente = $aula['excedente'];
+		$SQL = 'UPDATE aula SET excedente = %s WHERE id_aula = %d';
+		DB::query($SQL, $excedente, $aula['id_aula_fk']);
 
 	} else {
 		$horario = $aula['horario'];
 		$data = $aula['data'];
+		$excedente = $aula['excedente'];
 		$exp_data = explode('/', $data);
 		$data = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
 
-		$SQL = 'INSERT INTO aula(data, horario) VALUES (%s, %s)';
-		DB::query($SQL, $data, $horario);
+		$SQL = 'INSERT INTO aula(data, horario, excedente) VALUES (%s, %s, %d)';
+		DB::query($SQL, $data, $horario, $excedente);
 
 		$result = DB::get_rows(DB::query('SELECT MAX(id_aula) as lastId from aula'));
 
@@ -79,13 +86,13 @@ if($methodToCall == 'pesquisaAula'){
 	$exp_data = explode('/', $data);
 	$data = $exp_data[2]."-".$exp_data[1]."-".$exp_data[0];
 
-	$SQl = "SELECT aa.id_aula_fk, aa.id_aluno_aula, al.id_aluno, aa.num_senha, DATE_FORMAT(au.data, '%d/%m/%Y') as data, au.horario, al.nome from alunos_aula aa 
+	$SQl = "SELECT aa.id_aula_fk, aa.id_aluno_aula, al.id_aluno, aa.num_senha, DATE_FORMAT(au.data, '%d/%m/%Y') as data, au.horario, au.excedente, al.nome from alunos_aula aa 
 			join aula au on aa.id_aula_fk = au.id_aula
 			join aluno al on aa.id_aluno_fk = al.id_aluno where data = '".$data."'";
 
 	$rows['alunos_aula'] = DB::get_rows(DB::query($SQl));
 
-	$SQl = "SELECT aa.id_aula_fk, count(aa.id_aluno_aula) as alunos_aula, DATE_FORMAT(au.data, '%d/%m/%Y') as data, au.horario from alunos_aula aa 
+	$SQl = "SELECT aa.id_aula_fk, count(aa.id_aluno_aula) as alunos_aula, DATE_FORMAT(au.data, '%d/%m/%Y') as data, au.horario, au.excedente from alunos_aula aa 
 			join aula au on aa.id_aula_fk = au.id_aula
 			join aluno al on aa.id_aluno_fk = al.id_aluno where data = '".$data."' GROUP BY aa.id_aula_fk";	
 

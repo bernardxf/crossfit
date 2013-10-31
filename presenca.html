@@ -57,6 +57,12 @@
 								<input class="full" type="text" name="horario" ng-model="formAula.horario" ng-readonly="editing" ui-hour/>
 							</div>
 						</div>
+						<div class="section">
+							<label>Excedentes</label>
+							<div>
+								<input class="large" type="text" name="excedente" ng-model="formAula.excedente"/>
+							</div>
+						</div>
 						<ol class="rectangle-list">
 							<li ng-repeat="aluno in alunosPresente">{{aluno.nome}}<a class="ico color cross" ng-click="removeAlunoPresente($index);"></a></li>
 						</ol>
@@ -102,6 +108,7 @@
 								<th>Data</th>
 								<th>Horario</th>
 								<th>Num. Presentes</th>
+								<th>Num. Excedentes</th>
 								<th>Ação</th>
 							</tr>
 						</thead>
@@ -110,6 +117,7 @@
 								<td>{{aula.data}}</td>
 								<td>{{aula.horario}}</td>
 								<td>{{aula.alunos_aula}}</td>
+								<td>{{aula.excedente}}</td>
 								<td>
 									<a ng-click="editAlunosPresentes($index);"><img src="images/icon/icon_edit.png"></a>
 								</td>
